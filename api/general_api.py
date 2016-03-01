@@ -17,8 +17,8 @@ class ResetServer(Resource):
         db = client.recmusicapiopenshift
         #db.rates.remove()
         #db.songs.remove()
-        songs = db.songs
-        songs.insert_many(songsList)
+        #songs = db.songs
+        #songs.insert_many(songsList)
         #collections_names=db.collection_names()
         return "db created"
 api.add_resource(ResetServer, '/reset')
