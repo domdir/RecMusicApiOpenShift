@@ -1,9 +1,14 @@
-from api import api, rec_music_server
+from flaskapp import api,client
 import json
 import os
-from api import client
-
 from flask_restful import Resource
+
+
+class Home(Resource):
+    def get(self):
+        return "home"
+
+api.add_resource(Home, '/')
 
 class ResetServer(Resource):
     def get(self):
