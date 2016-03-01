@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
-import pymongo
+from pymongo import MongoClient
+
 import os
 
 app = Flask(__name__)
@@ -8,9 +9,8 @@ api=Api(app)
 
 @app.route('/')
 def hello_world():
-    #mongo_con = pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_HOST'],
-    #                           int(os.environ['OPENSHIFT_MONGODB_DB_PORT']))
-    #db = mongo_con[os.environ['OPENSHIFT_APP_NAME']]
+
+    client = MongoClient('localhost', 27017)
     return 'test World!'
 
 if __name__ == '__main__':
