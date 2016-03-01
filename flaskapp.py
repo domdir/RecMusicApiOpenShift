@@ -8,9 +8,12 @@ import os
 app = Flask(__name__)
 api=Api(app)
 
+
 class ResetServer(Resource):
     def get(self):
+        client = MongoClient('localhost', 27017)
         return "test"
+
 api.add_resource(ResetServer, '/')
 
 if __name__ == '__main__':
