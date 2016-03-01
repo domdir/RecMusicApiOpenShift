@@ -15,4 +15,3 @@ api.add_resource(ResetServer, '/')
 
 
 
-from api import routes
