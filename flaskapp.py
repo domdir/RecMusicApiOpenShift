@@ -11,7 +11,7 @@ api=Api(app)
 def hello_world():
     print "test"
     client = MongoClient("mongodb://$OPENSHIFT_MONGODB_DB_HOST:OPENSHIFT_MONGODB_DB_PORT/")
-    db = client.recmusicapiopenshift
+    #db = client.recmusicapiopenshift
 
     return 'test World!'
 
