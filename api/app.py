@@ -7,16 +7,16 @@ import os
 
 app = Flask(__name__)
 api=Api(app)
+client = MongoClient('localhost', 27017)
+db = client.recmusicapiopenshift
 
 
 class ResetServer(Resource):
     def get(self):
-        client = MongoClient('localhost', 27017)
-        db = client.recmusicapiopenshift
-
+        collections_names=db.collection_names()
+        print collections_names
         return "test"
 
 api.add_resource(ResetServer, '/')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+from api import routes

@@ -1,0 +1,853 @@
+[{
+        "s_artists": ["David Guetta","Nicki Minaj"],
+        "s_title": "Hey Mama",
+        "s_genres":["Electronic"],
+        "s_video_id":"uO59tfQ2TbA"
+    },
+    {
+        "s_artists": ["David Guetta"],
+        "s_title": "Lovers On The Sun",
+        "s_genres":["Electronic"],
+        "s_video_id":"BPiW0tkWfeg"
+    },
+
+    {
+        "s_artists": ["Fritz Kalkbrenner","Paul Kalkbrenner"],
+        "s_title": "Sky and Sand",
+        "s_genres":["Electronic"],
+        "s_video_id":"XINlEYXA3k0"
+    },
+    {
+        "s_artists": ["Calvin Harris","Ellie Goulding"],
+        "s_title": "Outside",
+        "s_genres":["Electronic"],
+        "s_video_id":"J9NQFACZYEU"
+    },
+
+    {
+        "s_artists": ["Kygo","Conrad Sewell"],
+        "s_title": "Firestone",
+        "s_genres":["Electronic"],
+        "s_video_id":"9Sc-ir2UwGU"
+    },
+
+    {
+        "s_artists": ["Disclosure"],
+        "s_title": "Omen",
+        "s_genres":["Electronic"],
+        "s_video_id":"fB63ztKnGvo"
+    },
+    {
+        "s_artists": ["Flume"],
+        "s_title": "You & Me",
+        "s_genres":["Electronic"],
+        "s_video_id":"_zPlr-o-YEQ"
+    },
+    {
+        "s_artists": ["deadmau5"],
+        "s_title": "The Veldt",
+        "s_genres":["Electronic"],
+        "s_video_id":"xvtNS6hbVy4"
+    },
+    {
+        "s_artists": ["Asaf Avidan"],
+        "s_title": "One day",
+        "s_genres":["Electronic"],
+        "s_video_id":"KRAMNWzfjcg"
+    },
+    {
+        "s_artists": ["Swedish House Mafia"],
+        "s_title": "Don't You Worry Child",
+        "s_genres":["Electronic"],
+        "s_video_id":"1y6smkh6c-0"
+    },
+    {
+        "s_artists": ["Bakermat"],
+        "s_title": "One Day",
+        "s_genres":["Electronic"],
+        "s_video_id":"6BV37Dcxj9s"
+    },
+    {
+        "s_artists": ["Lilly Wood","The Prick","Robin Schulz"],
+        "s_title": "Prayer In C",
+        "s_genres":["Electronic"],
+        "s_video_id":"fiore9Z5iUg"
+    },
+
+    {
+        "s_artists": ["The War on Drugs"],
+        "s_title": "Red Eyes",
+        "s_genres":["Indie"],
+        "s_video_id":"1LmX5c7HoUw"
+    },
+    {
+        "s_artists": ["Bon Iver"],
+        "s_title": "Blood Bank",
+        "s_genres":["Indie"],
+        "s_video_id":"k-BZ0D92mtU"
+    },
+    {
+        "s_artists": ["Radical Face"],
+        "s_title": "Doorways",
+        "s_genres":["Indie"],
+        "s_video_id":"vE2Urfcrfbw"
+    },
+    {
+        "s_artists": ["MGMT"],
+        "s_title": "Kids",
+        "s_genres":["Indie","Electronic"],
+        "s_video_id":"fe4EK4HSPkI"
+    },
+    {
+        "s_artists": ["The Naked And Famous"],
+        "s_title": "Young Blood",
+        "s_genres":["Indie"],
+        "s_video_id":"0YuSg4mts9E"
+    },
+    {
+        "s_artists": ["Matt Corby"],
+        "s_title": "Monday",
+        "s_genres":["Indie"],
+        "s_video_id":"pPnA-Vs5ATU"
+    },
+    {
+        "s_artists": ["Chet Faker"],
+        "s_title": "Talk Is Cheap",
+        "s_genres":["Indie"],
+        "s_video_id":"aP_-P_BS6KY"
+    },
+    {
+        "s_artists": ["José González"],
+        "s_title": "Step Out",
+        "s_genres":["Indie"],
+        "s_video_id":"c7-4IZyNUtA"
+    },
+    {
+        "s_artists": ["alt-J"],
+        "s_title": "Breezeblocks",
+        "s_genres":["Indie"],
+        "s_video_id":"rVeMiVU77wo"
+    },
+    {
+        "s_artists": ["Kensington"],
+        "s_title": "WAR",
+        "s_genres":["Indie"],
+        "s_video_id":"dkmjCAjAQug"
+    },
+
+
+
+
+
+
+    {
+        "s_artists": ["Wu-Tang Clan"],
+        "s_title": "Method Man",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"PEnwXYJcSZc"
+    },
+    {
+        "s_artists": ["Jay-Z","Kanye West"],
+        "s_title": "No Church In The Wild",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"FJt7gNi3Nr4"
+    },
+    {
+        "s_artists": ["2pac"],
+        "s_title": "Life Goes On",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"W69SSLfRJho"
+    },
+    {
+        "s_artists": ["Lil Wayne"],
+        "s_title": "LolliPop",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"2IH8tNQAzSs"
+    },
+    {
+        "s_artists": ["Jay-Z"],
+        "s_title": "99 Porblems",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"OEHSRgwvbcI"
+    },
+    {
+        "s_artists": ["The Game"],
+        "s_title": "How We Do",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"PH34kMOjmQk"
+    },
+    {
+        "s_artists": ["Kardinal Offishall"],
+        "s_title": "CLEAR!",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"E3wSI7zQf6A"
+    },
+    {
+        "s_artists": ["2pac","Dr. Dre"],
+        "s_title": "California Love",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"5wBTdfAkqGU"
+    },
+    {
+        "s_artists": ["Wiz Khalifa"],
+        "s_title": "See You Again",
+        "s_genres":["Hip Hop"],
+        "s_video_id":"RgKAFK5djSk"
+    },
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["B.B. King"],
+        "s_title": "The Thrill is Gone",
+        "s_genres":["Blues"],
+        "s_video_id":"PEnwXYJcSZc"
+    },
+    {
+        "s_artists": ["Keb Mo"],
+        "s_title": "Am I Wrong",
+        "s_genres":["Blues"],
+        "s_video_id":"qKQWhsLbe9E"
+    },
+    {
+        "s_artists": ["Muddy Waters"],
+        "s_title": "Mannish Boy",
+        "s_genres":["Blues"],
+        "s_video_id":"w5IOou6qN1o"
+    },
+    {
+        "s_artists": ["Sonny Boy Williamson"],
+        "s_title": "Help Me",
+        "s_genres":["Blues"],
+        "s_video_id":"QPeP3M-NqFo"
+    },
+    {
+        "s_artists": ["Big Walter Horton"],
+        "s_title": "Have A Good Time",
+        "s_genres":["Blues"],
+        "s_video_id":"WQI4MP2T6gs"
+    },
+
+
+
+
+
+
+    {
+        "s_artists": ["Giovanni Allevi"],
+        "s_title": "Back To Life",
+        "s_genres":["Classical"],
+        "s_video_id":"TFIBFd3gKHE"
+    },
+    {
+        "s_artists": ["Ludovico Einaudi"],
+        "s_title": "Night",
+        "s_genres":["Classical"],
+        "s_video_id":"k9NM-yK1C2I"
+    },
+    {
+        "s_artists": ["Chopin"],
+        "s_title": "Spring Waltz",
+        "s_genres":["Classical"],
+        "s_video_id":"KmzFDEu2RoA"
+    },
+    {
+        "s_artists": ["Johann Sebastian Bach"],
+        "s_title": "Air",
+        "s_genres":["Classical"],
+        "s_video_id":"rrVDATvUitA"
+    },
+    {
+        "s_artists": ["Beethoven"],
+        "s_title": "5th Symphony",
+        "s_genres":["Classical"],
+        "s_video_id":"_4IRMYuE1hI"
+    },
+
+
+
+
+
+
+    {
+        "s_artists": ["Miles Davis"],
+        "s_title": "Blue in Green",
+        "s_genres":["Jazz"],
+        "s_video_id":"PoPL7BExSQU"
+    },
+    {
+        "s_artists": ["Dave Brubeck"],
+        "s_title": "Take Five",
+        "s_genres":["Jazz"],
+        "s_video_id":"PHdU5sHigYQ"
+    },
+    {
+        "s_artists": ["Duke Ellington"],
+        "s_title": "Take the A Train",
+        "s_genres":["Jazz"],
+        "s_video_id":"cb2w2m1JmCY"
+    },
+    {
+        "s_artists": ["Glenn Miller"],
+        "s_title": "In The Mood",
+        "s_genres":["Jazz"],
+        "s_video_id":"FAQgXPTekOU"
+    },
+    {
+        "s_artists": ["Fats Waller"],
+        "s_title": "Ain't Misbehavin'",
+        "s_genres":["Jazz"],
+        "s_video_id":"PSNPpssruFY"
+    },
+
+
+    {
+        "s_artists": ["Dropkick Murphys"],
+        "s_title": "I'm Shipping Up To Boston",
+        "s_genres":["Folk"],
+        "s_video_id":"x-64CaD8GXw"
+    },
+    {
+        "s_artists": ["Mumford & Sons"],
+        "s_title": "Little Lion Man",
+        "s_genres":["Folk"],
+        "s_video_id":"lLJf9qJHR3E"
+    },
+    {
+        "s_artists": ["Mumford & Sons"],
+        "s_title": "Roll Away Your Stone",
+        "s_genres":["Folk"],
+        "s_video_id":"xUsFijbyouo"
+    },
+    {
+        "s_artists": ["Radical Face"],
+        "s_title": "We’re On Our Way",
+        "s_genres":["Folk"],
+        "s_video_id":"l0sQVIDOQRk"
+    },
+    {
+        "s_artists": ["Oscar Isaac"],
+        "s_title": "Green Green Rocky Road",
+        "s_genres":["Folk"],
+        "s_video_id":"1Q5m2DEf7ag"
+    },
+    {
+        "s_artists": ["Bear's Den"],
+        "s_title": "Agape",
+        "s_genres":["Folk"],
+        "s_video_id":"q1MmYVcDyMs"
+    },
+    {
+        "s_artists": ["Of Monsters And Men"],
+        "s_title": "Little Talks",
+        "s_genres":["Folk"],
+        "s_video_id":"ghb6eDopW8I"
+    },
+    {
+        "s_artists": ["The Lumineers"],
+        "s_title": "Stubborn Love",
+        "s_genres":["Folk"],
+        "s_video_id":"UJWk_KNbDHo"
+    },
+    {
+        "s_artists": ["Old Crow Medicine Show"],
+        "s_title": "Wagon Wheel",
+        "s_genres":["Folk"],
+        "s_video_id":"1gX1EP6mG-E"
+    },
+    {
+        "s_artists": ["X Ambassadors"],
+        "s_title": "Renegades",
+        "s_genres":["Folk"],
+        "s_video_id":"1u-niluB8HI"
+    },
+    {
+        "s_artists": ["Jeff Buckley"],
+        "s_title": "Hallelujah",
+        "s_genres":["Folk"],
+        "s_video_id":"y8AWFf7EAc4"
+    },
+    {
+        "s_artists": ["The Staves"],
+        "s_title": "Mexico",
+        "s_genres":["Folk"],
+        "s_video_id":"hYV0Wp0MdZ4"
+    },
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Bullet For My Valentine"],
+        "s_title": "Your Betrayal",
+        "s_genres":["Metal"],
+        "s_video_id":"IHgFJEJgUrg"
+    },
+    {
+        "s_artists": ["Metallica"],
+        "s_title": "Nothing Else Matters",
+        "s_genres":["Metal"],
+        "s_video_id":"Tj75Arhq5ho"
+    },
+    {
+        "s_artists": ["Iron Maiden"],
+        "s_title": "Fear of The Dark",
+        "s_genres":["Metal"],
+        "s_video_id":"p32b5nNq1zw"
+    },
+    {
+        "s_artists": ["Metallica"],
+        "s_title": "Master Of Puppets",
+        "s_genres":["Metal"],
+        "s_video_id":"xnKhsTXoKCI"
+    },
+    {
+        "s_artists": ["System Of A Down"],
+        "s_title": "Chop Suey!",
+        "s_genres":["Metal"],
+        "s_video_id":"CSvFpBOe8eY"
+    },
+    {
+        "s_artists": ["System Of A Down"],
+        "s_title": "Toxicity",
+        "s_genres":["Metal"],
+        "s_video_id":"64FrYGRrKVY"
+    },
+    {
+        "s_artists": ["Korn"],
+        "s_title": "Coming Undone",
+        "s_genres":["Metal"],
+        "s_video_id":"CSJXle3LP_Q"
+    },
+    {
+        "s_artists": ["Linkin Park"],
+        "s_title": "Faint",
+        "s_genres":["Metal"],
+        "s_video_id":"LYU-8IFcDPw"
+    },
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Justin Bieber"],
+        "s_title": "What Do You Mean?",
+        "s_genres":["Pop"],
+        "s_video_id":"DK_0jXPuIr0"
+    },
+    {
+        "s_artists": ["Adele"],
+        "s_title": "Hello",
+        "s_genres":["Pop"],
+        "s_video_id":"YQHsXMglC9A"
+    },
+    {
+        "s_artists": ["Drake"],
+        "s_title": "Hotline Bling",
+        "s_genres":["Pop"],
+        "s_video_id":"uxpDa-c-4Mc"
+    },
+    {
+        "s_artists": ["MIKA"],
+        "s_title": "Staring At The Sun",
+        "s_genres":["Pop"],
+        "s_video_id":"NSKHc_iLKhI"
+    },
+    {
+        "s_artists": ["Ed Sheeran"],
+        "s_title": "Photograph",
+        "s_genres":["Pop"],
+        "s_video_id":"nSDgHBxUbVQ"
+    },
+    {
+        "s_artists": ["Madonna"],
+        "s_title": "Gosttown",
+        "s_genres":["Pop"],
+        "s_video_id":"GgDxv0Qg_Rg"
+    },
+    {
+        "s_artists": ["Lady Gaga"],
+        "s_title": "Bad Romance",
+        "s_genres":["Pop"],
+        "s_video_id":"qrO4YZeyl0I"
+    },
+    {
+        "s_artists": ["Backstreet Boys"],
+        "s_title": "I Want It That Way",
+        "s_genres":["Pop"],
+        "s_video_id":"4fndeDfaWCg"
+    },
+    {
+        "s_artists": ["Pharrell Williams"],
+        "s_title": "Happy",
+        "s_genres":["Pop"],
+        "s_video_id":"ZbZSe6N_BXs"
+    },
+    {
+        "s_artists": ["WALK THE MOON"],
+        "s_title": "Shut up and Dance",
+        "s_genres":["Pop"],
+        "s_video_id":"6JCLY0Rlx6Q"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["blink 182"],
+        "s_title": "What's My Age Again?",
+        "s_genres":["Punk"],
+        "s_video_id":"K7l5ZeVVoCA"
+    },
+    {
+        "s_artists": ["The Offspring"],
+        "s_title": "The Kids Aren't Alright",
+        "s_genres":["Punk"],
+        "s_video_id":"VrZ4sMRYimw"
+    },
+    {
+        "s_artists": ["Yellowcard"],
+        "s_title": "Ocean Avenue",
+        "s_genres":["Punk"],
+        "s_video_id":"X9fLbfzCqWw"
+    },
+    {
+        "s_artists": ["Green Day"],
+        "s_title": "Basket Case",
+        "s_genres":["Punk"],
+        "s_video_id":"NUTGr5t3MoY"
+    },
+    {
+        "s_artists": ["Sum 41"],
+        "s_title": "The Hell Song",
+        "s_genres":["Punk"],
+        "s_video_id":"7pE8ReA5cn4"
+    },
+    {
+        "s_artists": ["Ramones"],
+        "s_title": "Blitzkrieg Bop",
+        "s_genres":["Punk"],
+        "s_video_id":"c1BOsShTyng"
+    },
+    {
+        "s_artists": ["Iggy Pop"],
+        "s_title": "The Passenger",
+        "s_genres":["Punk"],
+        "s_video_id":"hLhN__oEHaw"
+    },
+    {
+        "s_artists": ["+44"],
+        "s_title": "When Your Heart Stops Beating",
+        "s_genres":["Punk"],
+        "s_video_id":"2nWv2Hz_GXs"
+    },
+    {
+        "s_artists": ["The Clash"],
+        "s_title": "London Calling",
+        "s_genres":["Punk"],
+        "s_video_id":"EfK-WX2pa8c"
+    },
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Bob Marley"],
+        "s_title": "Don't worry be Happy",
+        "s_genres":["Reggae"],
+        "s_video_id":"L3HQMbQAWRc"
+    },
+    {
+        "s_artists": ["Snoop Lion"],
+        "s_title": "Smoke The Weed",
+        "s_genres":["Reggae"],
+        "s_video_id":"-MI3CKL4NMI"
+    },
+    {
+        "s_artists": ["Koauka"],
+        "s_title": "Take You For A Ride",
+        "s_genres":["Reggae"],
+        "s_video_id":"Hb-XDdwUI5I"
+    },
+    {
+        "s_artists": ["SOJA"],
+        "s_title": "I Don't Wanna Wait",
+        "s_genres":["Reggae"],
+        "s_video_id":"30GHWqX4OEo"
+    },
+    {
+        "s_artists": ["Bob Marley"],
+        "s_title": "No Woman No Cry",
+        "s_genres":["Reggae"],
+        "s_video_id":"wt9Nm2_MJP8"
+    },
+    {
+        "s_artists": ["Fiji"],
+        "s_title": "I'll Be All Yours",
+        "s_genres":["Reggae"],
+        "s_video_id":"t9qG8ifCOJg"
+    },
+    {
+        "s_artists": ["Sean Paul"],
+        "s_title": "Hold My Hand",
+        "s_genres":["Reggae"],
+        "s_video_id":"i1o9HMGaWxM"
+    },
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Bruce Springsteen"],
+        "s_title": "Born in the U.S.A.",
+        "s_genres":["Rock"],
+        "s_video_id":"EPhWR4d3FJQ"
+    },
+    {
+        "s_artists": ["Bob Dylan"],
+        "s_title": "Knockin'on Heaven's Door",
+        "s_genres":["Rock"],
+        "s_video_id":"rnKbImRPhTE"
+    },
+    {
+        "s_artists": ["Foo Fighters"],
+        "s_title": "Learn To Fly",
+        "s_genres":["Rock"],
+        "s_video_id":"1VQ_3sBZEm0"
+    },
+    {
+        "s_artists": ["Goo Goo Dolls"],
+        "s_title": "Iris",
+        "s_genres":["Rock"],
+        "s_video_id":"NdYWuo9OFAw"
+    },
+    {
+        "s_artists": ["AC/DC"],
+        "s_title": "Back in Black",
+        "s_genres":["Rock"],
+        "s_video_id":"pAgnJDJN4VA"
+    },
+    {
+        "s_artists": ["Kings Of Leon"],
+        "s_title": "Beautiful War",
+        "s_genres":["Rock"],
+        "s_video_id":"RVDc6bYy3j4"
+    },
+    {
+        "s_artists": ["Dire Straits"],
+        "s_title": "Walk Of Life",
+        "s_genres":["Rock"],
+        "s_video_id":"kd9TlGDZGkI"
+    },
+    {
+        "s_artists": ["Nirvana"],
+        "s_title": "Smells Like Teen Spirit",
+        "s_genres":["Rock"],
+        "s_video_id":"hTWKbfoikeg"
+    },
+    {
+        "s_artists": ["Muse"],
+        "s_title": "Mercy",
+        "s_genres":["Rock"],
+        "s_video_id":"yj8Xpdx60Ws"
+    },
+    {
+        "s_artists": ["Red Hot Chili Peppers"],
+        "s_title": "Otherside",
+        "s_genres":["Rock"],
+        "s_video_id":"rn_YodiJO6k"
+    },
+    {
+        "s_artists": ["Eddie Vedder"],
+        "s_title": "Guaranteed",
+        "s_genres":["Rock"],
+        "s_video_id":"ZtZ1TK1Sfpg"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Phillip Phillips"],
+        "s_title": "Home",
+        "s_genres":["Country"],
+        "s_video_id":"HoRkntoHkIE"
+    },
+    {
+        "s_artists": ["John Denver"],
+        "s_title": "Take Me Home Country Roads",
+        "s_genres":["Country"],
+        "s_video_id":"1vrEljMfXYo"
+    },
+    {
+        "s_artists": ["The Decemberists"],
+        "s_title": "Don't Carry It All",
+        "s_genres":["Country"],
+        "s_video_id":"eDO4bzFWewk"
+    },
+    {
+        "s_artists": ["Neil Young"],
+        "s_title": "Heart of Gold",
+        "s_genres":["Country"],
+        "s_video_id":"pO8kTRv4l3o"
+    },
+    {
+        "s_artists": ["Neal McCoy"],
+        "s_title": "Wink",
+        "s_genres":["Country"],
+        "s_video_id":"ER2rmsyrkYg"
+    },
+    {
+        "s_artists": ["Lynyrd Skynyrd"],
+        "s_title": "Sweet Home Alabama",
+        "s_genres":["Country"],
+        "s_video_id":"ye5BuYf8q4o"
+    },
+    {
+        "s_artists": ["Cam"],
+        "s_title": "Burning House",
+        "s_genres":["Country"],
+        "s_video_id":"uyGSe76rAJc"
+    },
+    {
+        "s_artists": ["Willie Nelson"],
+        "s_title": "Django and Jimmie",
+        "s_genres":["Country"],
+        "s_video_id":"nxJWmZEwAG8"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "s_artists": ["Beat Connection"],
+        "s_title": "So Good",
+        "s_genres":["Funk"],
+        "s_video_id":"XGaUmZX_srk"
+    },
+    {
+        "s_artists": ["Jurassick Funk"],
+        "s_title": "Pick Up On Your Line",
+        "s_genres":["Funk"],
+        "s_video_id":"VDPDm6N2Xa4"
+    },
+    {
+        "s_artists": ["Bruno Mars"],
+        "s_title": "Uptown Funk",
+        "s_genres":["Funk"],
+        "s_video_id":"WhF6thLUeN0"
+    },
+    {
+        "s_artists": ["Michael Franks"],
+        "s_title": "Read My Lips",
+        "s_genres":["Funk"],
+        "s_video_id":"WhF6thLUeN0"
+    },
+    {
+        "s_artists": ["Jamiroquai"],
+        "s_title": "Virtual Insanity",
+        "s_genres":["Funk"],
+        "s_video_id":"4JkIs37a2JE"
+    },
+    {
+        "s_artists": ["Groove Armada"],
+        "s_title": "My Friend",
+        "s_genres":["Funk"],
+        "s_video_id":"JxohJX9ElpE"
+    },
+
+
+    {
+        "s_artists": ["Village People"],
+        "s_title": "YMCA",
+        "s_genres":["Disco"],
+        "s_video_id":"CS9OO0S5w2k"
+    },
+    {
+        "s_artists": ["Sandy Marton"],
+        "s_title": "People From Ibiza",
+        "s_genres":["Disco"],
+        "s_video_id":"bp_vo3J432s"
+    },
+    {
+        "s_artists": ["Snap!"],
+        "s_title": "Rhythm Is A Dancer",
+        "s_genres":["Disco"],
+        "s_video_id":"u_ppF2yK4NM"
+    },
+    {
+        "s_artists": ["Corona"],
+        "s_title": "Rhythm of the Night",
+        "s_genres":["Disco"],
+        "s_video_id":"u3ltZmI5LQw"
+    },
+    {
+        "s_artists": ["John Scatman"],
+        "s_title": "I'm a Scatman",
+        "s_genres":["Disco"],
+        "s_video_id":"y6oXW_YiV6g"
+    },
+    {
+        "s_artists": ["Haddaway"],
+        "s_title": "What Is Love",
+        "s_genres":["Disco"],
+        "s_video_id":"xhrBDcQq2DM"
+    }]
