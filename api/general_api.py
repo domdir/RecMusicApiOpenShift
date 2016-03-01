@@ -12,8 +12,8 @@ api.add_resource(Home, '/')
 
 class ResetServer(Resource):
     def get(self):
-        file_path = os.getcwd() + "/data/songs.json"
-        #songsList = json.load(open(file_path))
+        file_path = os.getcwd() + "/app-deployments/current/repo/data/songs.json"
+        songsList = json.load(open(file_path))
         #db = client.rec_music_core_db
         #db.rates.remove()
         #db.songs.remove()
