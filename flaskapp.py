@@ -12,6 +12,8 @@ api=Api(app)
 class ResetServer(Resource):
     def get(self):
         client = MongoClient('localhost', 27017)
+        db = client.recmusicapiopenshift
+
         return "test"
 
 api.add_resource(ResetServer, '/')
