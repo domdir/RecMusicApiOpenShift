@@ -9,8 +9,9 @@ api=Api(app)
 
 @app.route('/')
 def hello_world():
-
-    client = MongoClient('localhost', 27017)
+    print "test"
+    client = MongoClient("mongodb://$OPENSHIFT_MONGODB_DB_HOST:OPENSHIFT_MONGODB_DB_PORT/")
+    db = client.recmusicapiopenshift
     return 'test World!'
 
 if __name__ == '__main__':
