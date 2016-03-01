@@ -13,6 +13,3 @@ class ResetServer(Resource):
 
 api.add_resource(ResetServer, '/')
 
-if __name__ == '__main__':
-    app.run()
-
