@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import os
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
