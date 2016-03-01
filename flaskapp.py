@@ -8,9 +8,9 @@ api=Api(app)
 
 @app.route('/')
 def hello_world():
-    mongo_con = pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_HOST'],
-                               int(os.environ['OPENSHIFT_MONGODB_DB_PORT']))
-    db = mongo_con[os.environ['OPENSHIFT_APP_NAME']]
+    #mongo_con = pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_HOST'],
+    #                           int(os.environ['OPENSHIFT_MONGODB_DB_PORT']))
+    #db = mongo_con[os.environ['OPENSHIFT_APP_NAME']]
     return 'test World!'
 
 if __name__ == '__main__':
