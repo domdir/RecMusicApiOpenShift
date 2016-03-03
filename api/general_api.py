@@ -16,11 +16,12 @@ class ResetServer(Resource):
         #file_path = os.getcwd() + "/app-deployments/current/repo/data/songs.json"
         #songsList = json.load(open(file_path))
         db = client.recmusicapiopenshift
+        res=list(db.test.find({}))
         #db.rates.remove()
         #db.songs.remove()
         #songs = db.songs
 
         #songs.insert_many(songsList)
         #collections_names=db.collection_names()
-        return client
+        return res
 api.add_resource(ResetServer, '/reset')
