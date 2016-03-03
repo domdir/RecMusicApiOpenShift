@@ -21,5 +21,5 @@ class ResetServer(Resource):
 
         #songs.insert_many(songsList)
         #collections_names=db.collection_names()
-        return db
+        return client
 api.add_resource(ResetServer, '/reset')
