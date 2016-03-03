@@ -15,7 +15,6 @@ class ResetServer(Resource):
         songsList = json.load(open(file_path))
         db.songs.remove()
         db.rates.remove()
-        db.test.remove()
         songs = db.songs
         songs.insert_many(songsList)
         return "db_erased"
