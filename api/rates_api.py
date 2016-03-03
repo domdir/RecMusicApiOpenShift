@@ -50,7 +50,6 @@ api.add_resource(GetUnratedSong, '/api/get_song/<user_id>')
 
 class GetSongsByGenre(Resource):
     def get(self, genre):
-        db = client.rec_music_core_db
         songs = db.songs
         f = songs.find(
                 {
