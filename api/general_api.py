@@ -18,6 +18,7 @@ class ResetServer(Resource):
         #db.rates.remove()
         #db.songs.remove()
         #songs = db.songs
+
         #songs.insert_many(songsList)
         #collections_names=db.collection_names()
         return db
