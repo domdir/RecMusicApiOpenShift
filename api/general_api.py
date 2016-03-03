@@ -1,3 +1,5 @@
+from flask import logging
+
 from flaskapp import api,db
 import json
 import os
@@ -17,5 +19,7 @@ class ResetServer(Resource):
         db.rates.remove()
         songs = db.songs
         songs.insert_many(songsList)
+        logger=logging.getLogger(__name__)
+        logger.warning("test")
         return "db_erased"
 api.add_resource(ResetServer, '/reset')

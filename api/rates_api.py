@@ -1,3 +1,6 @@
+from logging import Logger
+
+from flask import logging
 from flask_restful import Resource
 from random import shuffle
 from flaskapp import api, db
@@ -6,6 +9,8 @@ class GetUnratedSong(Resource):
 ########################################
     def get(self, user_id):
         already_voted=self.getAlreadyVotedSongs(user_id)
+        logger=logging.getLogger(__name__)
+        logger.warning("test")
         print "song already voted {}".format(len(already_voted))
         available_song=self.getAvailableSongs(already_voted)
         print "song available {}".format(len(available_song))
