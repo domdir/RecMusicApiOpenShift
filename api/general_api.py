@@ -1,5 +1,5 @@
 import logging
-from flaskapp import api,db
+from flaskapp import api,db,app
 import json
 import os
 from flask_restful import Resource
@@ -22,6 +22,8 @@ class ResetServer(Resource):
         #logger=logging.getLogger(__name__)
         logging.basicConfig()
         logging.debug('This message should go to the log file')
+        app.logger.addHandler(logging.StreamHandler(sys.stdout))
+        app.logger.setLevel(logging.ERROR)
 
         return "db_erased"
 api.add_resource(ResetServer, '/reset')
