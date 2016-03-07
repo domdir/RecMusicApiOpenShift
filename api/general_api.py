@@ -7,6 +7,7 @@ import json
 import os
 from flask_restful import Resource
 
+LOGFILE = "recmusic.log"
 
 class Home(Resource):
     def get(self):
@@ -21,9 +22,8 @@ class ResetServer(Resource):
         db.rates.remove()
         songs = db.songs
         songs.insert_many(songsList)
-
-        #logger=logging.getLogger(__name__)
-        logging.basicConfig()
+        logPath = os.join(os.environ["OPENSHIFT_LOG_DIR"],LOGFILE)
+        logging.basicConfig(filename=logPath, level=logging.DEBUG)
         logging.debug('This message should go to the log file')
         app.logger.addHandler(logging.StreamHandler(sys.stdout))
         app.logger.setLevel(logging.ERROR)
