@@ -25,6 +25,7 @@ class ResetServer(Resource):
         logPath = os.path.join(os.environ["OPENSHIFT_LOG_DIR"],LOGFILE)
         logging.basicConfig(filename=logPath, level=logging.DEBUG)
         logging.debug('This message should go to the log file')
+
         app.logger.addHandler(logging.StreamHandler(sys.stdout))
         app.logger.setLevel(logging.ERROR)
 
