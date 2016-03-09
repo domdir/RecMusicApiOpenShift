@@ -29,7 +29,6 @@ class ResetServer(Resource):
 
         app.logger.addHandler(logging.StreamHandler(sys.stdout))
         app.logger.setLevel(logging.ERROR)
-
         return "db_erased_1"
 api.add_resource(ResetServer, '/reset')
 
