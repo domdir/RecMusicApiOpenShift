@@ -32,3 +32,8 @@ class ResetServer(Resource):
 
         return "db_erased_1"
 api.add_resource(ResetServer, '/reset')
+
+class Ping(Resource):
+    def get(self):
+        return "pong"
+api.add_resource(Ping, '/ping')
