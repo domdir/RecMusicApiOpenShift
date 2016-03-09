@@ -30,9 +30,9 @@ class ResetServer(Resource):
         app.logger.addHandler(logging.StreamHandler(sys.stdout))
         app.logger.setLevel(logging.ERROR)
         return "db_erased_2"
-api.add_resource(ResetServer, '/reset')
+api.add_resource(ResetServer, '/api/reset')
 
 class Ping(Resource):
     def get(self):
         return "pong"
-api.add_resource(Ping, '/ping')
+api.add_resource(Ping, 'api/ping')
