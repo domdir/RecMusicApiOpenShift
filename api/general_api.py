@@ -36,4 +36,4 @@ api.add_resource(ResetServer, '/api/reset')
 class Ping(Resource):
     def get(self):
         return "pong"
-api.add_resource(Ping, 'api/ping')
+api.add_resource(Ping, '/api/ping')
