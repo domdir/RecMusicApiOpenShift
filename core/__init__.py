@@ -14,7 +14,7 @@ logging.debug('test new app')
 print "2"
 mes_core = Flask(__name__)
 #app = Flask(__name__, static_folder='static', static_url_path='/static')
-print os.path.abspath(os.path.join(os.path.dirname(__file__), "./users.txt"))
+logging.debug(os.path.abspath(os.path.join(os.path.dirname(__file__),"movies_info.csv")))
 print os.environ["OPENSHIFT_HOMEDIR"]
 print os.environ["OPENSHIFT_DATA_DIR"]
 
