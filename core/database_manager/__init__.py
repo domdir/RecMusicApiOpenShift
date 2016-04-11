@@ -10,7 +10,6 @@ db = SQLAlchemy(mes_core)
 
 print "sql create"
 from core.database_manager.user_favorite_genres import UserFavoriteGenre
-from core.database_manager.trailer_ini_rates import TrailerIniRate
 from core.database_manager.trailer_rates import TrailerRate
 
 #db.drop_all()
