@@ -11,7 +11,7 @@ LOGFILE = "recmusic.log"
 
 class Home(Resource):
     def get(self):
-        return "home"
+        return "Hello"
 api.add_resource(Home, '/')
 
 class ResetServer(Resource):
