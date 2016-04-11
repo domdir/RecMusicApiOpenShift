@@ -18,8 +18,10 @@ print "--------------------------"+ os.path.abspath(os.path.join(os.path.dirname
 print "-------------------------- "+os.environ["OPENSHIFT_HOMEDIR"]
 print "-------------------------- "+os.environ["OPENSHIFT_DATA_DIR"]
 
-path = os.path.abspath(os.path.join(os.path.dirname(__file__),"/csv/movies_info.csv"))
-movie_table = pd.read_csv(path, ",")
+path = os.getcwd()+ "/csv/movies_info.csv"
+print path
+
+#movie_table = pd.read_csv(path, ",")
 # movie_table = movie_table.drop("Unnamed: 0", 1)
 
 print "3"
