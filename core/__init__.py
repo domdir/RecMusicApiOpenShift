@@ -14,11 +14,12 @@ logging.debug('test new app')
 print "2"
 mes_core = Flask(__name__)
 #app = Flask(__name__, static_folder='static', static_url_path='/static')
-print "--------------------------"+ os.path.abspath(os.path.join(os.path.dirname(__file__),"movies_info.csv"))
+print "--------------------------"+ os.path.abspath(os.path.join(os.path.dirname(__file__),"/csv/movies_info.csv"))
 print "-------------------------- "+os.environ["OPENSHIFT_HOMEDIR"]
 print "-------------------------- "+os.environ["OPENSHIFT_DATA_DIR"]
 
-movie_table = pd.read_csv(os.getcwd() + "app-deployments/current/repo/csv/movies_info.csv", ",")
+path = os.path.abspath(os.path.join(os.path.dirname(__file__),"/csv/movies_info.csv"))
+movie_table = pd.read_csv(path, ",")
 # movie_table = movie_table.drop("Unnamed: 0", 1)
 
 print "3"
