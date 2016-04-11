@@ -101,7 +101,7 @@ def movies_rated_by():
         movie["user_rate"] = rate
 
         movie.reset_index(drop=True)
-        for j in movie.index:
+        for j in range(0,len(movie)):
             m_j = movie.iloc[j]
             m_j = m_j.to_json()
             resp.update({i: m_j})
