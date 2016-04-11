@@ -1,4 +1,3 @@
-"""""
 import random
 from core import movie_table, mes_core
 from flask import request, jsonify, send_file
@@ -33,4 +32,3 @@ def get_rec():
 
     print len(movies)
     return jsonify(movies)
-"""""
