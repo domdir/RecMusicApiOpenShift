@@ -14,6 +14,7 @@ class Home(Resource):
         return "Hello"
 api.add_resource(Home, '/')
 
+
 class ResetServer(Resource):
     def get(self):
         file_path = os.getcwd() + "/app-deployments/current/repo/data/songs.json"
