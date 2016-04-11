@@ -1,4 +1,4 @@
 Flask==0.10.1
 flask_restful
-Sql-Alchemy
+Flask-SQLAlchemy
 pymongo
