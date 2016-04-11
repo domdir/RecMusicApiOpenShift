@@ -91,16 +91,17 @@ def movies_rated_by():
         limit=10
     rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(limit)
     rated_not_skipped=[]
+
     for r in rated_by_user:
+        print r
+        print r.get_rate()
         if r.get_rate()!=-1:
             rated_not_skipped.append(r)
     resp = {}
     i = 0
     for rate in rated_not_skipped:
-        print rate.get_imdb_id()
         imdb_id = rate.get_imdb_id()
         rate=rate.get_rate()
-        print rate
         movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id].copy()
         movie["user_rate"] = rate
 
