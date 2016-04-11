@@ -93,8 +93,8 @@ def movies_rated_by():
     rated_not_skipped=[]
 
     for r in rated_by_user:
-        print "xxxxxxxxxxx" + r
-        print "------------"+ r.get_rate()
+
+        print "------------"+ str(r.get_rate())
         if r.get_rate()!=-1:
             rated_not_skipped.append(r)
     resp = {}
