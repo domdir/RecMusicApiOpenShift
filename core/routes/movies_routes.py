@@ -1,4 +1,11 @@
 print "movies routes"
+from flask import request, jsonify, send_file
+
+
+
+"""
+
+
 import random
 from core import movie_table
 from core import mes_core
@@ -166,3 +173,4 @@ def get_movies():
             # print json_string
     print len(movies)
     return jsonify(movies)
+"""""

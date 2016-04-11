@@ -1,9 +1,9 @@
-from flask import Flask
-from flask_restful import Api
+#from flask import Flask
+#from flask_restful import Api
 #from flask_restful import Resource
-from pymongo import MongoClient
+#from pymongo import MongoClient
 
-mes_core = Flask(__name__)
+#mes_core = Flask(__name__)
 #app.config['PROPAGATE_EXCEPTIONS'] = True
 
 #api=Api(app)
@@ -14,4 +14,4 @@ mes_core = Flask(__name__)
 #from api import general_api
 
 
-from core import  routes
+#from core import  routes

@@ -1,3 +1,6 @@
+
+"""""
+
 from core.database_manager import db
 from core.database_manager.trailer_ini_rates import TrailerIniRate
 from core.database_manager.trailer_rates import TrailerRate
@@ -25,3 +28,5 @@ def save_rec_rate():
     db.session.add(rate)
     db.session.commit()
     return jsonify({})
+
+"""""
