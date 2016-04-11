@@ -13,5 +13,4 @@ def save_rec_rate():
     db.session.add(rate)
     db.session.commit()
 
-
     return jsonify({})
