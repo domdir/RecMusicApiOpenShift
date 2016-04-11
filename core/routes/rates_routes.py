@@ -12,4 +12,6 @@ def save_rec_rate():
     print json_data["movie_id"]
     db.session.add(rate)
     db.session.commit()
+
+
     return jsonify({})
