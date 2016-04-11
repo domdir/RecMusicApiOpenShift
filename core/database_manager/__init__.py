@@ -1,5 +1,7 @@
-print "INI_ database"
 from flask_sqlalchemy import SQLAlchemy
+"""
+
+
 from core import mes_core
 
 mes_core.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database_manager/db/MesProject_OpenShift_DB.db'
@@ -14,3 +16,4 @@ from core.database_manager.trailer_rates import TrailerRate
 
 db.drop_all()
 db.create_all()
+"""
