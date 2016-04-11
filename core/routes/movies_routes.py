@@ -95,7 +95,9 @@ def movies_rated_by():
     for rate in rated_by_user:
         print rate.get_imdb_id()
         imdb_id = rate.get_imdb_id()
+        rate=rate.get_rate()
         movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id]
+        movie["rate"]=rate
         movie = movie.to_json()
         resp.update({i: movie})
         i += 1

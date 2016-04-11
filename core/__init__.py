@@ -15,16 +15,12 @@ print "2"
 mes_core = Flask(__name__)
 mes_core.config['PROPAGATE_EXCEPTIONS'] = True
 
-#app = Flask(__name__, static_folder='static', static_url_path='/static')
-print "--------------------------"+ os.path.abspath(os.path.join(os.path.dirname(__file__),"/csv/movies_info.csv"))
-print "-------------------------- "+os.environ["OPENSHIFT_HOMEDIR"]
-print "-------------------------- "+os.environ["OPENSHIFT_DATA_DIR"]
 
 path = os.getcwd()+ "/app-root/repo/csv/movies_info.csv"
 print path
 
 movie_table = pd.read_csv(path, ",")
-# movie_table = movie_table.drop("Unnamed: 0", 1)
+movie_table = movie_table.drop("Unnamed: 0", 1)
 
 print "3"
 

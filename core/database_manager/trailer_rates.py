@@ -16,5 +16,8 @@ class TrailerRate(db.Model):
     def get_imdb_id(self):
         return self.movie_id
 
+    def get_rate(self):
+        return self.rate
+
     def __repr__(self):
         return 'rated_by: {0} , imdb_id: {1}, rate: {2}'.format(self.rated_by,self.movie_id,self.rate)
