@@ -89,7 +89,7 @@ def movies_rated_by():
     print "limit"+str( limit)
     if not limit:
         limit=10
-    rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(limit)
+    rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(int(limit))
     rated_not_skipped=[]
 
     for r in rated_by_user:
