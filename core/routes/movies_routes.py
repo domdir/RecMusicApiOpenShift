@@ -92,7 +92,7 @@ def movies_rated_by():
     rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(limit)
     rated_not_skipped=[]
     for r in rated_by_user:
-        if r.get_rate!=-1:
+        if r.get_rate()!=-1:
             rated_not_skipped.append(r)
     resp = {}
     i = 0
