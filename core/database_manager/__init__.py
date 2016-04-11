@@ -1,5 +1,4 @@
-from flask.ext.sqlalchemy import SQLAlchemy
-"""
+from flask_sqlalchemy import SQLAlchemy
 
 
 from core import mes_core
@@ -16,4 +15,3 @@ from core.database_manager.trailer_rates import TrailerRate
 
 db.drop_all()
 db.create_all()
-"""
