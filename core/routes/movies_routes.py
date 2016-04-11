@@ -86,7 +86,7 @@ def save_genres_liked():
 def movies_rated_by():
     user_id = request.args.get('user_id')
     limit = request.args.get('limit')
-    print limit
+    print "limit"+str( limit)
     if not limit:
         limit=10
     rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(limit)
