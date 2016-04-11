@@ -98,7 +98,7 @@ def movies_rated_by():
         rate=rate.get_rate()
         print rate
         movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id]
-        movie["rate"]=rate
+        movie["rate_1000"]=rate
         movie = movie.to_json()
         resp.update({i: movie})
         i += 1
