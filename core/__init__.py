@@ -9,7 +9,7 @@ LOGFILE = "recmusic.log"
 
 logPath = os.path.join(os.environ["OPENSHIFT_LOG_DIR"], LOGFILE)
 logging.basicConfig(filename=logPath, level=logging.DEBUG)
-logging.debug('This message should go to the log file')
+logging.debug('test new app')
 
 print "2"
 mes_core = Flask(__name__)
