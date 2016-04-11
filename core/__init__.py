@@ -1,7 +1,7 @@
 print "1"
 from flask import Flask
-import pandas as pd
-import os
+#import pandas as pd
+#import os
 
 print "2"
 mes_core = Flask(__name__)
