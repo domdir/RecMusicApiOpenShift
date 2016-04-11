@@ -27,4 +27,4 @@ movie_table = pd.read_csv(path, ",")
 print "3"
 
 import routes
-# import database_manager
+import database_manager

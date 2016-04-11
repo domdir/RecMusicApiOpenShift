@@ -2,7 +2,7 @@ print "INI_ database"
 from flask_sqlalchemy import SQLAlchemy
 from core import mes_core
 
-mes_core.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database_manager/db/MesProject_DB.db'
+mes_core.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database_manager/db/MesProject_OpenShift_DB.db'
 mes_core.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
 
 db = SQLAlchemy(mes_core)
