@@ -146,6 +146,7 @@ def get_movies():
     tmp = []
     safe_iter = 0
 
+    #ADD IF THE MOVIES IS ALREADY VOTED
     while (len(movies) < num_movies) and (safe_iter < 100):
         if len(tmp_table) < 100:
             j = random.randrange(1, len(tmp_table))
