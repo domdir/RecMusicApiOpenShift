@@ -82,10 +82,6 @@ def save_genres_liked():
 
 
 
-@mes_core.route('/')
-def home_route():
-    return jsonify({"test"})
-
 @mes_core.route('/movies_rated_by')
 def movies_rated_by():
     user_id = request.args.get('user_id')
