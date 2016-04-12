@@ -3,7 +3,11 @@ from core import movie_table, mes_core
 from flask import request, jsonify, send_file
 import time
 
-movie_table_sorted_by_pop = movie_table.sort_values(by=['IMDB_VOTES'], ascending=[0])
+rec_types = {
+    "RANDOM": 0,
+    "TOP_POP":1,
+
+}
 
 
 @mes_core.route('/get_rec', methods=["GET"])
@@ -12,7 +16,7 @@ def get_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    print "num of rec"+num_of_rec
+    print "num of rec" + num_of_rec
     if num_of_rec:
         num_movies = int(num_of_rec)
         if num_movies > 20:

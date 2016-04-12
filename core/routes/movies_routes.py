@@ -1,6 +1,6 @@
 import random
 from core import movie_table_all, col_to_keep, movie_table_all_ordered, empty_df
-from core import mes_core
+from core import mes_core,get_table,get_table_by_genre
 from flask import request, jsonify, send_file
 import json
 import os
@@ -10,127 +10,8 @@ from core.database_manager import db
 
 from pandas import Series
 
-"""
-create all the data frame divided by genre, it's much faster! already ordered by pop
-"""
-
-movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_adventure = \
-    movie_table_all[movie_table_all["Adventure"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-        col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_animation = \
-    movie_table_all[movie_table_all["Animation"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-        col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_children = \
-    movie_table_all[movie_table_all["Children"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-        col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_crime = movie_table_all[movie_table_all["Crime"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_documentary = \
-    movie_table_all[movie_table_all["Documentary"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-        col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_drama = movie_table_all[movie_table_all["Drama"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_horror = movie_table_all[movie_table_all["Horror"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_musical = movie_table_all[movie_table_all["Musical"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_romance = movie_table_all[movie_table_all["Romance"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_thriller = \
-    movie_table_all[movie_table_all["Thriller"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-        col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-movie_table_western = movie_table_all[movie_table_all["Western"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
-    col_to_keep].copy()
-movie_table_action.reset_index(drop=True, inplace=True)
-
-print "CREATED ALL THE TABLES"
 
 
-def get_table_by_genre(genre):
-    return {
-        'Action': lambda: movie_table_action.copy(),
-        'Adventure': lambda: movie_table_adventure.copy(),
-        'Animation': lambda: movie_table_animation.copy(),
-        'Children': lambda: movie_table_children.copy(),
-        'Comedy': lambda: movie_table_comedy.copy(),
-        'Crime': lambda: movie_table_crime.copy(),
-        'Documentary': lambda: movie_table_documentary.copy(),
-        'Drama': lambda: movie_table_drama.copy(),
-        'Fantasy': lambda: movie_table_fantasy.copy(),
-        'Horror': lambda: movie_table_horror.copy(),
-        'Musical': lambda: movie_table_musical.copy(),
-        'Romance ': lambda: movie_table_romance.copy(),
-        'SciFi': lambda: movie_table_scifi.copy(),
-        'Thriller': lambda: movie_table_thriller.copy(),
-        'Western': lambda: movie_table_western.copy(),
-    }.get(genre)
-
-
-def get_table(table):
-    """
-
-    :rtype: DataFrame
-    """
-    return {
-        'empty_table': lambda: empty_df.copy(),
-        'all_table': lambda: movie_table_all.copy()
-    }.get(table)
-
-
-#########################################
-
-
-"""
-
-@mes_core.route('/save_genres_liked', methods=['POST'])
-def save_genres_liked():
-    print "save_genres_liked"
-    json_data = request.get_json(force=True)
-    print json_data
-    print json_data["genres_liked"]
-    print json_data["genres_liked"][0]
-    genres = UserFavoriteGenre(json_data["user_id"], json_data["genres_liked"][0], json_data["genres_liked"][1],
-                               json_data["genres_liked"][2], json_data["genres_liked"][3])
-    db.session.add(genres)
-    db.session.commit()
-    return jsonify({})
-"""
 
 """
 
@@ -181,11 +62,17 @@ def movies_rated_by():
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
     print "get_ini_movies"
+    num_of_movies = request.args.get('num_of_movies')
     genre = request.args.get('genre')
     years = request.args.get('years')
 
     if not genre or not years:
         return jsonify({})
+
+    if not num_of_movies:
+        num_of_movies=5
+    else:
+        num_of_movies=int(num_of_movies)
 
     tmp_table = get_table_by_genre(genre)()
 
@@ -202,7 +89,7 @@ def get_ini_movies():
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    while (len(movies_selected) <= 5) and (safe_iter < 100):
+    while (len(movies_selected) <= num_of_movies) and (safe_iter < 20):
         if len(tmp_table.index) < 50:
             j = random.randrange(1, len(tmp_table.index))
         else:

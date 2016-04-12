@@ -32,6 +32,112 @@ empty_df=movie_table_all[movie_table_all["IMDB_ID"]=="kkkkkkkkk"][col_to_keep]
 
 
 
+"""
+create all the data frame divided by genre, it's much faster! already ordered by pop
+"""
+
+movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_adventure = \
+    movie_table_all[movie_table_all["Adventure"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_animation = \
+    movie_table_all[movie_table_all["Animation"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_children = \
+    movie_table_all[movie_table_all["Children"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_crime = movie_table_all[movie_table_all["Crime"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_documentary = \
+    movie_table_all[movie_table_all["Documentary"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_drama = movie_table_all[movie_table_all["Drama"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_horror = movie_table_all[movie_table_all["Horror"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_musical = movie_table_all[movie_table_all["Musical"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_romance = movie_table_all[movie_table_all["Romance"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_thriller = \
+    movie_table_all[movie_table_all["Thriller"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+movie_table_western = movie_table_all[movie_table_all["Western"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True, inplace=True)
+
+print "CREATED ALL THE TABLES"
+
+
+def get_table_by_genre(genre):
+    return {
+        'Action': lambda: movie_table_action.copy(),
+        'Adventure': lambda: movie_table_adventure.copy(),
+        'Animation': lambda: movie_table_animation.copy(),
+        'Children': lambda: movie_table_children.copy(),
+        'Comedy': lambda: movie_table_comedy.copy(),
+        'Crime': lambda: movie_table_crime.copy(),
+        'Documentary': lambda: movie_table_documentary.copy(),
+        'Drama': lambda: movie_table_drama.copy(),
+        'Fantasy': lambda: movie_table_fantasy.copy(),
+        'Horror': lambda: movie_table_horror.copy(),
+        'Musical': lambda: movie_table_musical.copy(),
+        'Romance ': lambda: movie_table_romance.copy(),
+        'SciFi': lambda: movie_table_scifi.copy(),
+        'Thriller': lambda: movie_table_thriller.copy(),
+        'Western': lambda: movie_table_western.copy(),
+    }.get(genre)
+
+
+def get_table(table):
+    """
+
+    :rtype: DataFrame
+    """
+    return {
+        'empty_table': lambda: empty_df.copy(),
+        'all_table': lambda: movie_table_all.copy()
+    }.get(table)
+
+
+#########################################
+
+
 import routes
 import database_manager
 
