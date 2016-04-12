@@ -79,6 +79,7 @@ movie_table_western = movie_table_all[movie_table_all["Western"] == "1"].sort_va
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True)
 
+print "CREATED ALL THE TABLES"
 
 def get_table_by_genre(genre):
     return {
@@ -178,10 +179,12 @@ def movies_rated_by():
 
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
+    print "get_ini_movies"
     genre = request.args.get('genre')
     years = request.args.get('years')
 
     if not genre or not years:
+        print "return"
         return jsonify({})
 
     tmp_table = get_table_by_genre(genre)
@@ -197,6 +200,7 @@ def get_ini_movies():
 
     years_series = Series(years_complete)
 
+    print tmp_table.head()
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
 
     movies_selected = {}
