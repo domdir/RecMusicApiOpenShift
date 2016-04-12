@@ -181,59 +181,38 @@ def movies_rated_by():
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
     print "get_ini_movies"
-
     genre = request.args.get('genre')
     years = request.args.get('years')
 
     if not genre or not years:
-        print "return"
         return jsonify({})
 
     tmp_table = get_table_by_genre(genre)()
 
-    print years
-
     years_split = years.split(",")
-    print years_split
     years_complete = []
     for year in years_split:
         for i in range(0, 10):
             years_complete.append(int(year) + i)
 
-    #print years_complete
     years_series = Series(years_complete)
-    #print years_series
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
-    #tmp_table.drop('IMDB_VOTES', axis=1, inplace=True)
     tmp_table.reset_index(drop=True, inplace=True)
-
-   #print tmp_table.head()
 
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    print "before while"
-    while (len(movies_selected) < 5) and (safe_iter < 100):
-        print "inside while"
-        print movies_selected
+    while (len(movies_selected) <= 5) and (safe_iter < 100):
         if len(tmp_table.index) < 50:
-            print "IF"
             j = random.randrange(1, len(tmp_table.index))
         else:
-            print "ELSE"
             j = random.randrange(1, 50)
-            print "AFTER RAND"
         safe_iter += 1
         if j not in tmp:
-            print "IN J IF"
             movie = tmp_table.iloc[j]
-            print "1"
             movie = movie.to_json()
-            print "2"
             movies_selected.update({len(movies_selected): movie})
-            print "3"
             tmp.append(j)
-            print "4"
     return jsonify(movies_selected)
 
 
