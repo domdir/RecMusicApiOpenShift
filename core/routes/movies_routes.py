@@ -175,6 +175,7 @@ def movies_rated_by():
     return jsonify(resp)
 """
 
+
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
     genre = request.args.get('genre')
@@ -215,6 +216,7 @@ def get_ini_movies():
             tmp.append(j)
 
     return movies_selected
+
 
 """
 

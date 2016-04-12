@@ -1,3 +1,4 @@
+print "init"
 from flask import Flask
 import pandas as pd
 import logging
@@ -13,7 +14,7 @@ logging.debug('test new app')
 mes_core = Flask(__name__)
 mes_core.config['PROPAGATE_EXCEPTIONS'] = True
 
-path = os.getcwd() + "/app-root/repo/csv/movie_info_with_genres.csv"
+path = os.getcwd() + "/app-root/repo/csv/movie_info_reduced_with_genres.csv"
 movie_table_all = pd.read_csv(path, ",", dtype=object)
 movie_table_all = movie_table_all.drop("Unnamed: 0", 1)
 
