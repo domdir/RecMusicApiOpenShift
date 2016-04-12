@@ -1,56 +1,14 @@
 import random
-from core import movie_table
+from core import movie_table_sorted_by_pop
 from core import mes_core
 from flask import request, jsonify, send_file
 import json
 import os
 from core.database_manager.user_favorite_genres import UserFavoriteGenre
-from core.database_manager.trailer_rates import TrailerRate
+from core.database_manager.trailer_seen import TrailerSeen
 from core.database_manager import db
 
 from pandas import Series
-
-movie_table_sorted_by_pop = movie_table.sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
-
-ALL_GENRES = {
-    'ACTION': 'Action',
-    'ADVENTURE': 'Adventure',
-    'ANIMATION': 'Animation',
-    'CHILDREN': 'Children',
-    'COMEDY': 'Comedy',
-    'CRIME': 'Crime',
-    'DOCUMENTARY': 'Documentary',
-    'DRAMA': 'Drama',
-    'FANTASY': 'Fantasy',
-    'FILMNOIR': 'FilmNoir',
-    'HORROR': 'Horror',
-    'IMAX': 'IMAX',
-    'MUSICAL': 'Musical',
-    'MISTERY': 'Mystery',
-    'ROMANCE ': 'Romance',
-    'SCIFI': 'SciFi',
-    'THRILLER': 'Thriller',
-    'WAR': 'War',
-    'WESTERN': 'Western',
-}
-
-MAIN_GENRES = {
-    'ACTION': {"name": 'Action', "img": 'action.png'},
-    'ADVENTURE': {"name": 'Adventure', "img": 'adventure.png'},
-    'ANIMATION': {"name": 'Animation', "img": 'animation.png'},
-    'CHILDREN': {"name": 'Children', "img": 'children.png'},
-    'COMEDY': {"name": 'Comedy', "img": 'comedy.png'},
-    'CRIME': {"name": 'Crime', "img": 'crime.png'},
-    'DOCUMENTARY': {"name": 'Documentary', "img": 'documentary.png'},
-    'DRAMA': {"name": 'Drama', "img": 'drama.png'},
-    'FANTASY': {"name": 'Fantasy', "img": 'fantasy.png'},
-    'HORROR': {"name": 'Horror', "img": 'horror.png'},
-    'MUSICAL': {"name": 'Musical', "img": 'musical.png'},
-    'ROMANCE ': {"name": 'Romance', "img": 'romance.png'},
-    'SCIFI': {"name": 'SciFi', "img": 'sciFi.png'},
-    'THRILLER': {"name": 'Thriller', "img": 'thriller.png'},
-    'WESTERN': {"name": 'Western', "img": 'western.png'},
-}
 
 
 @mes_core.route('/save_genres_liked', methods=['POST'])
@@ -67,45 +25,37 @@ def save_genres_liked():
     return jsonify({})
 
 
-# @mes_core.route('/get_genres', methods=['GET'])
-# def get_genres():
-#    return jsonify(MAIN_GENRES)
 
-
-# @mes_core.route('/get_img/<genre_img_name>', methods=['GET'])
-# def get_img(genre_img_name):
-#    img_id = request.args.get('num_movies')
-#    if os.path.isfile(os.getcwd() + '/static/genre/' + genre_img_name):
-#        return send_file(os.getcwd() + '/static/genre/' + genre_img_name, mimetype='image')
-#    else:
-#        return "not exist"
-
-
-
-@mes_core.route('/movies_rated_by')
+@mes_core.route('/movies_seen_by')
 def movies_rated_by():
     user_id = request.args.get('user_id')
     limit = request.args.get('limit')
-    print "limit"+ str(limit)
+    skipped=request.args.get('skipped')
+    rec_type=request.args.get('rec_type')
+
+    print "userId "+user_id
+    print "limit "+ limit
+    print "skipped " + skipped
+    print "rec_type "+ rec_type
 
     if not limit:
         print "NOT LIMIT"
-        limit=10
+        limit=5
 
-    rated_by_user = TrailerRate.query.filter_by(rated_by=user_id).limit(int(limit))
-    rated_not_skipped=[]
+    if not skipped:
+        print "NOT SKIPPED"
+        skipped = 0
 
-    for r in rated_by_user:
-        print "*****************"+ str(r.get_rate())
-        if int(r.get_rate()) != -1:
-            print "NOT -1"
-            rated_not_skipped.append(r)
+    if skipped:
+        rated_by_user = TrailerSeen.query.filter_by(rated_by=user_id).limit(int(limit))
+    else:
+        rated_by_user = TrailerSeen.query.filter_by(rated_by=user_id, skipped=0).limit(int(limit))
 
     resp = {}
     i = 0
-    for rate in rated_not_skipped:
-        imdb_id = rate.get_imdb_id()
-        rate=rate.get_rate()
+    for rate in rated_by_user:
+        imdb_id = rate.imdb_id
+        rate=rate.rate
         movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id].copy()
         movie["user_rate"] = rate
 
@@ -118,17 +68,38 @@ def movies_rated_by():
     return jsonify(resp)
 
 
+ALL_GENRES = {
+    'Action': '0',
+    'Adventure': '1',
+    'Animation': '2',
+    'Children': '3',
+    'Comedy': '4',
+    'Crime': '5',
+    'Documentary': '6',
+    'Drama': '7',
+    'Fantasy': '8',
+    'FilmNoir': '9',
+    'Horror': '10',
+    'IMAX': '11',
+    'Musical': '12',
+    'Mystery': '13',
+    'Romance ': '14',
+    'SciFi': 'SciFi',
+    'Thriller': '15',
+    'War': '16',
+    'Western': '17',
+}
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
     num_movies = request.args.get('num_movies')
     genres = request.args.get('genres')
-    query_type = request.args.get('type')
+    order_by = request.args.get('order_by')
     years = request.args.get('years')
 
-    Corner_Motion = request.args.get('Corner_Motion')
-    Color_variance = request.args.get('Color_variance')
-    Object_Motion = request.args.get('Object_Motion')
-    Lightening_Key = request.args.get('Lightening_Key')
+    f1 = request.args.get('f1')
+    f2 = request.args.get('f2')
+    f4 = request.args.get('f4')
+    f6 = request.args.get('f6')
 
     tmp_table = movie_table_sorted_by_pop.copy()
     print years
@@ -147,11 +118,14 @@ def get_movies():
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
 
     if genres:
+        genres_list =genres.split(",")
+
         if (genres == "SciFi"):
             genres = "Sci-Fi"
+
         tmp_table = tmp_table[tmp_table['GENRES'].str.contains(genres)]
-    tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
-    tmp_table.reset_index(drop=True)
+        tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
+        tmp_table.reset_index(drop=True)
 
     if num_movies:
         num_movies = int(num_movies)
@@ -180,3 +154,20 @@ def get_movies():
             # print json_string
     print len(movies)
     return jsonify(movies)
+
+
+
+# @mes_core.route('/get_genres', methods=['GET'])
+# def get_genres():
+#    return jsonify(MAIN_GENRES)
+
+
+# @mes_core.route('/get_img/<genre_img_name>', methods=['GET'])
+# def get_img(genre_img_name):
+#    img_id = request.args.get('num_movies')
+#    if os.path.isfile(os.getcwd() + '/static/genre/' + genre_img_name):
+#        return send_file(os.getcwd() + '/static/genre/' + genre_img_name, mimetype='image')
+#    else:
+#        return "not exist"
+
+
