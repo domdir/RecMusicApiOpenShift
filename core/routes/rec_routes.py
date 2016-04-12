@@ -1,11 +1,11 @@
-from core import mes_core,get_table
+from core import mes_core, get_table
 from flask import request, jsonify
-from core.rec_engine import random_rec,rec_types
+from core.rec_engine import random_rec, rec_types
 
-
-rec_router={
-    "RANDOM":random_rec,
+rec_router = {
+    0: random_rec,
 }
+
 
 @mes_core.route('/get_rec', methods=["GET"])
 def get_rec():
@@ -30,9 +30,8 @@ def get_rec():
     print for_who
     print type
 
-    rec_type=rec_types.get(type,"RANDOM")
+    rec_type = rec_types.get(type, "RANDOM")
     print rec_type
     print rec_router.get(rec_type)
 
     return jsonify({})
-
