@@ -31,7 +31,7 @@ def get_rec():
     print type
 
     rec_type=rec_types.get(type,"RANDOM")
-    movies_to_rec = rec_router.get(rec_type)(get_table('all_table'),num_of_rec)
+    print rec_router.get(rec_type)
 
     return jsonify(movies_to_rec)
 
