@@ -31,7 +31,7 @@ def get_rec():
     print type
 
     rec_type=rec_types.get(type,"RANDOM")
-    print rec_types
+    print rec_type
     print rec_router.get(rec_type)
 
     return jsonify({})
