@@ -181,7 +181,8 @@ def movies_rated_by():
 def get_ini_movies():
     print "get_ini_movies"
 
-    movie_table_fantasy.head()
+    print "head"
+    print movie_table_fantasy.head()
 
     genre = request.args.get('genre')
     years = request.args.get('years')
