@@ -18,7 +18,6 @@ path = os.getcwd() + "/app-root/repo/csv/movie_info_reduced_with_genre.csv"
 movie_table_all = pd.read_csv(path, ",") #dtype=object)
 movie_table_all.drop("Unnamed: 0", 1, inplace=True)
 
-print  movie_table_all.dtypes
 
 col_to_keep = ["IMDB_ID", "TITLE", "GENRES", "YEAR",
                "LENGTH", "POSTER", "YOU_TUBE_ID", "IMDB_RATING", "IMDB_VOTES",

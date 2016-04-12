@@ -200,21 +200,21 @@ def get_ini_movies():
         for i in range(0, 10):
             years_complete.append(int(year) + i)
 
-    print years_complete
+    #print years_complete
     years_series = Series(years_complete)
-    print years_series
+    #print years_series
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
 
     tmp_table.reset_index(drop=True, inplace=True)
 
-    print tmp_table.head()
+   #print tmp_table.head()
 
     movies_selected = {}
     tmp = []
     safe_iter = 0
 
     while (len(movies_selected) < 5) and (safe_iter < 100):
-        if len(tmp_table) < 50:
+        if len(tmp_table.index) < 50:
             j = random.randrange(1, len(tmp_table.index))
         else:
             j = random.randrange(1, 50)
