@@ -13,7 +13,7 @@ def get_rec():
     # time.sleep(5)
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
-    type = request.args.get('type')
+    type = request.args.get('rec_type')
 
     if not for_who:
         return jsonify({})
@@ -33,7 +33,7 @@ def get_rec():
     rec_type = rec_types.get(type, "RANDOM")
     print rec_type
 
-    table_to_use=get_table('all_table')()
+    table_to_use = get_table('all_table')()
 
-    t=rec_router.get(rec_type)(table_to_use,5)
+    t = rec_router.get(rec_type)(table_to_use, 5)
     return jsonify(t)
