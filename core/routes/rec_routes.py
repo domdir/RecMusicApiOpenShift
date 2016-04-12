@@ -3,7 +3,7 @@ from flask import request, jsonify
 from core.rec_engine import random_rec, rec_types
 
 rec_router = {
-    0: random_rec,
+    0: random_rec.random_rec,
 }
 
 
