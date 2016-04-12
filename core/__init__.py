@@ -19,7 +19,7 @@ movie_table_all = pd.read_csv(path, ",", dtype=object)
 movie_table_all = movie_table_all.drop("Unnamed: 0", 1)
 
 col_to_keep = ["IMDB_ID", "TITLE", "GENRES", "YEAR",
-               "LENGTH", "POSTER", "YOUTUBE_ID", "IMDB_RATING", "IMDB_VOTES",
+               "LENGTH", "POSTER", "YOU_TUBE_ID", "IMDB_RATING", "IMDB_VOTES",
                "f1", "f2", "f4", "f6"]
 
 movie_table_all_ordered=movie_table_all[col_to_keep].sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
