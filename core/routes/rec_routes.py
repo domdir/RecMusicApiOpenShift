@@ -33,7 +33,7 @@ def get_rec():
     rec_type = rec_types.get(type, "RANDOM")
     print rec_type
 
-    table_to_use=get_table('all_table')
+    table_to_use=get_table('all_table')()
     table_to_use.head()
 
     #t=rec_router.get(rec_type)(table_to_use,5)
