@@ -14,68 +14,68 @@ from pandas import Series
 create all the data frame divided by genre, it's much faster! already ordered by pop
 """
 
-movie_table_action = movie_table_all[movie_table_all["Action"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_adventure = \
-    movie_table_all[movie_table_all["Adventure"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    movie_table_all[movie_table_all["Adventure"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_animation = \
-    movie_table_all[movie_table_all["Animation"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    movie_table_all[movie_table_all["Animation"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_children = \
-    movie_table_all[movie_table_all["Children"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    movie_table_all[movie_table_all["Children"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_crime = movie_table_all[movie_table_all["Crime"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_crime = movie_table_all[movie_table_all["Crime"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_documentary = \
-    movie_table_all[movie_table_all["Documentary"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    movie_table_all[movie_table_all["Documentary"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_drama = movie_table_all[movie_table_all["Drama"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_drama = movie_table_all[movie_table_all["Drama"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_horror = movie_table_all[movie_table_all["Horror"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_horror = movie_table_all[movie_table_all["Horror"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_musical = movie_table_all[movie_table_all["Musical"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_musical = movie_table_all[movie_table_all["Musical"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_romance = movie_table_all[movie_table_all["Romance"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_romance = movie_table_all[movie_table_all["Romance"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_thriller = \
-    movie_table_all[movie_table_all["Thriller"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    movie_table_all[movie_table_all["Thriller"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 
-movie_table_western = movie_table_all[movie_table_all["Western"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+movie_table_western = movie_table_all[movie_table_all["Western"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
 movie_table_action.reset_index(drop=True, inplace=True)
 

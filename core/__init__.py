@@ -5,11 +5,11 @@ import logging
 
 import os
 
-LOGFILE = "recmusic.log"
+#LOGFILE = "recmusic.log"
 
-logPath = os.path.join(os.environ["OPENSHIFT_LOG_DIR"], LOGFILE)
-logging.basicConfig(filename=logPath, level=logging.DEBUG)
-logging.debug('test new app')
+#logPath = os.path.join(os.environ["OPENSHIFT_LOG_DIR"], LOGFILE)
+#logging.basicConfig(filename=logPath, level=logging.DEBUG)
+#logging.debug('test new app')
 
 mes_core = Flask(__name__)
 mes_core.config['PROPAGATE_EXCEPTIONS'] = True
