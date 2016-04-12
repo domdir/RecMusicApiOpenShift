@@ -212,11 +212,14 @@ def get_ini_movies():
     movies_selected = {}
     tmp = []
     safe_iter = 0
-
+    print "before while"
     while (len(movies_selected) < 5) and (safe_iter < 100):
+        print "inside while"
         if len(tmp_table.index) < 50:
+            print "IF"
             j = random.randrange(1, len(tmp_table.index))
         else:
+            print "ELSE"
             j = random.randrange(1, 50)
         safe_iter += 1
         if j not in tmp:
