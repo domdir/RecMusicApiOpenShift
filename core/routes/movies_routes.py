@@ -121,7 +121,7 @@ def get_movies():
 
     if genres:
         genres_list =genres.split(",")
-        print genres
+        print genres_list
         #if (genres == "SciFi"):
         #    genres = "Sci-Fi"
 
