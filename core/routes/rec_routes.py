@@ -1,38 +1,32 @@
-import random
-from core import movie_table, mes_core
-from flask import request, jsonify, send_file
-import time
+from core import mes_core,get_table
+from flask import request, jsonify
+from core.rec_engine import random_rec,rec_types
 
-rec_types = {
-    "RANDOM": 0,
-    "TOP_POP":1,
 
+rec_router={
+    "RANDOM":random_rec,
 }
-
 
 @mes_core.route('/get_rec', methods=["GET"])
 def get_rec():
     # time.sleep(5)
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
+    type = request.args.get('type')
 
-    print "num of rec" + num_of_rec
-    if num_of_rec:
-        num_movies = int(num_of_rec)
-        if num_movies > 20:
-            num_movies = 1
+    if not for_who:
+        return jsonify({})
+
+    if not num_of_rec:
+        num_of_rec = 1
     else:
-        num_movies = 1
-    movies = {}
+        num_of_rec = int(num_of_rec)
 
-    for i in range(0, num_movies):
-        print i
-        j = random.randrange(1, 100)
-        movie = movie_table_sorted_by_pop.iloc[j]
-        movie = movie.to_json()
-        movies.update({i: movie})
-        # json_string = json.dumps(movies)
-        # print json_string
+    if not type:
+        type = "RANDOM"
 
-    print len(movies)
-    return jsonify(movies)
+    rec_type=rec_types.get(type,"RANDOM")
+    movies_to_rec = rec_router.get(rec_type)(get_table('all_table'),num_of_rec)
+
+    return jsonify(movies_to_rec)
+
