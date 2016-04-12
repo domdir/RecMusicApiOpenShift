@@ -89,6 +89,8 @@ ALL_GENRES = {
     'War': '16',
     'Western': '17',
 }
+
+
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
     num_movies = request.args.get('num_movies')
@@ -120,12 +122,15 @@ def get_movies():
     if genres:
         genres_list =genres.split(",")
 
-        if (genres == "SciFi"):
-            genres = "Sci-Fi"
+        #if (genres == "SciFi"):
+        #    genres = "Sci-Fi"
 
-        tmp_table = tmp_table[tmp_table['GENRES'].str.contains(genres)]
-        tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
-        tmp_table.reset_index(drop=True)
+        #tmp_table = tmp_table[tmp_table['GENRES'].str.contains(genres)]
+        #tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
+        #tmp_table.reset_index(drop=True)
+    return jsonify({"test"})
+
+    """
 
     if num_movies:
         num_movies = int(num_movies)
@@ -169,5 +174,5 @@ def get_movies():
 #        return send_file(os.getcwd() + '/static/genre/' + genre_img_name, mimetype='image')
 #    else:
 #        return "not exist"
-
+"""
 
