@@ -180,6 +180,9 @@ def movies_rated_by():
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
     print "get_ini_movies"
+
+    movie_table_fantasy.head()
+
     genre = request.args.get('genre')
     years = request.args.get('years')
 
