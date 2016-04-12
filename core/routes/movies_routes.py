@@ -1,5 +1,5 @@
 import random
-from core import movie_table_sorted_by_pop
+from core import movie_table_all, col_to_keep, movie_table_all_ordered, empty_df
 from core import mes_core
 from flask import request, jsonify, send_file
 import json
@@ -10,6 +10,111 @@ from core.database_manager import db
 
 from pandas import Series
 
+"""
+create all the data frame divided by genre, it's much faster! already ordered by pop
+"""
+
+movie_table_action = movie_table_all[movie_table_all["Action"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_adventure = \
+    movie_table_all[movie_table_all["Adventure"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_animation = \
+    movie_table_all[movie_table_all["Animation"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_children = \
+    movie_table_all[movie_table_all["Children"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_crime = movie_table_all[movie_table_all["Crime"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_documentary = \
+    movie_table_all[movie_table_all["Documentary"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_drama = movie_table_all[movie_table_all["Drama"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_horror = movie_table_all[movie_table_all["Horror"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_musical = movie_table_all[movie_table_all["Musical"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_romance = movie_table_all[movie_table_all["Romance"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_thriller = \
+    movie_table_all[movie_table_all["Thriller"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+        col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+movie_table_western = movie_table_all[movie_table_all["Western"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
+    col_to_keep].copy()
+movie_table_action.reset_index(drop=True)
+
+
+def get_table_by_genre(genre):
+    return {
+        'Action': lambda: movie_table_action.copy(),
+        'Adventure': lambda: movie_table_adventure,
+        'Animation': lambda: movie_table_animation,
+        'Children': lambda: movie_table_children,
+        'Comedy': lambda: movie_table_comedy,
+        'Crime': lambda: movie_table_crime,
+        'Documentary': lambda: movie_table_documentary,
+        'Drama': lambda: movie_table_drama,
+        'Fantasy': lambda: movie_table_fantasy,
+        'Horror': lambda: movie_table_horror,
+        'Musical': lambda: movie_table_musical,
+        'Romance ': lambda: movie_table_romance,
+        'SciFi': lambda: movie_table_scifi,
+        'Thriller': lambda: movie_table_thriller,
+        'Western': lambda: movie_table_western,
+    }.get(genre)
+
+
+def get_table(table):
+    """
+
+    :rtype: DataFrame
+    """
+    return {
+        'empty_table': lambda: empty_df.copy(),
+        'all_table': lambda: movie_table_all.copy()
+    }.get(table)
+
+
+#########################################
+
+
+"""
 
 @mes_core.route('/save_genres_liked', methods=['POST'])
 def save_genres_liked():
@@ -23,24 +128,26 @@ def save_genres_liked():
     db.session.add(genres)
     db.session.commit()
     return jsonify({})
+"""
 
+"""
 
 
 @mes_core.route('/movies_seen_by')
 def movies_rated_by():
     user_id = request.args.get('user_id')
     limit = request.args.get('limit')
-    skipped=request.args.get('skipped')
-    rec_type=request.args.get('rec_type')
+    skipped = request.args.get('skipped')
+    rec_type = request.args.get('rec_type')
 
-    print "userId "+user_id
-    print "limit "+ limit
+    print "userId " + user_id
+    print "limit " + limit
     print "skipped " + skipped
-    print "rec_type "+ rec_type
+    print "rec_type " + rec_type
 
     if not limit:
         print "NOT LIMIT"
-        limit=5
+        limit = 5
 
     if not skipped:
         print "NOT SKIPPED"
@@ -55,41 +162,61 @@ def movies_rated_by():
     i = 0
     for rate in rated_by_user:
         imdb_id = rate.imdb_id
-        rate=rate.rate
+        rate = rate.rate
         movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id].copy()
         movie["user_rate"] = rate
 
         movie.reset_index(drop=True)
-        for j in range(0,len(movie)):
+        for j in range(0, len(movie)):
             m_j = movie.iloc[j]
             m_j = m_j.to_json()
             resp.update({i: m_j})
             i += 1
     return jsonify(resp)
+"""
 
+@mes_core.route('/get_ini_movies', methods=['GET'])
+def get_ini_movies():
+    genre = request.args.get('genre')
+    years = request.args.get('years')
 
-ALL_GENRES = {
-    'Action': '0',
-    'Adventure': '1',
-    'Animation': '2',
-    'Children': '3',
-    'Comedy': '4',
-    'Crime': '5',
-    'Documentary': '6',
-    'Drama': '7',
-    'Fantasy': '8',
-    'FilmNoir': '9',
-    'Horror': '10',
-    'IMAX': '11',
-    'Musical': '12',
-    'Mystery': '13',
-    'Romance ': '14',
-    'SciFi': 'SciFi',
-    'Thriller': '15',
-    'War': '16',
-    'Western': '17',
-}
+    if not genre or not years:
+        return jsonify({})
 
+    tmp_table = get_table_by_genre(genre)
+
+    print years
+
+    years_split = years.split(",")
+    print years_split
+    years_complete = []
+    for year in years_split:
+        for i in range(0, 10):
+            years_complete.append(int(year) + i)
+
+    years_series = Series(years_complete)
+
+    tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
+
+    movies_selected = {}
+    tmp = []
+    safe_iter = 0
+
+    while (len(movies_selected) < 5) and (safe_iter < 100):
+        if len(tmp_table) < 100:
+            j = random.randrange(1, len(tmp_table))
+        else:
+            j = random.randrange(1, 100)
+        safe_iter += 1
+        if j not in tmp:
+            movie = tmp_table.iloc[j]
+            movie = movie.to_json()
+            movies_selected.update({j: movie})
+            tmp.append(j)
+
+    return movies_selected
+
+"""
 
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
@@ -103,7 +230,14 @@ def get_movies():
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    tmp_table = movie_table_sorted_by_pop.copy()
+    tmp_table = get_table("empty_table")
+
+    if genres:
+        genres_list = genres.split(",")
+        for genre in genres_list:
+            tmp_table.concat(tmp_table, get_table_by_genre(genre))
+    else:
+        tmp_table = tmp_table.concat(tmp_table, get_table("all_table"))
     print years
     if not years:
         return jsonify({})
@@ -118,19 +252,8 @@ def get_movies():
     years_series = Series(years_complete)
 
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
-
-    if genres:
-        genres_list =genres.split(",")
-        print genres_list
-        #if (genres == "SciFi"):
-        #    genres = "Sci-Fi"
-
-        #tmp_table = tmp_table[tmp_table['GENRES'].str.contains(genres)]
-        #tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
-        #tmp_table.reset_index(drop=True)
-    return jsonify({})
-
-    """
+    tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
+    tmp_table.reset_index(drop=True)
 
     if num_movies:
         num_movies = int(num_movies)
@@ -143,7 +266,7 @@ def get_movies():
     tmp = []
     safe_iter = 0
 
-    #ADD IF THE MOVIES IS ALREADY VOTED
+    # ADD IF THE MOVIES IS ALREADY VOTED
     while (len(movies) < num_movies) and (safe_iter < 100):
         if len(tmp_table) < 100:
             j = random.randrange(1, len(tmp_table))
@@ -161,7 +284,6 @@ def get_movies():
     return jsonify(movies)
 
 
-
 # @mes_core.route('/get_genres', methods=['GET'])
 # def get_genres():
 #    return jsonify(MAIN_GENRES)
@@ -175,4 +297,3 @@ def get_movies():
 #    else:
 #        return "not exist"
 """
-

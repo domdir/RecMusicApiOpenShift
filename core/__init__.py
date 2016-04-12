@@ -13,41 +13,28 @@ logging.debug('test new app')
 mes_core = Flask(__name__)
 mes_core.config['PROPAGATE_EXCEPTIONS'] = True
 
+path = os.getcwd() + "/app-root/repo/csv/movie_info_with_genres.csv"
+movie_table_all = pd.read_csv(path, ",", dtype=object)
+movie_table_all = movie_table_all.drop("Unnamed: 0", 1)
 
-path = os.getcwd()+ "/app-root/repo/csv/movie_info_reduced.csv"
-movie_table = pd.read_csv(path, ",")
-movie_table = movie_table.drop("Unnamed: 0", 1)
-movie_table_sorted_by_pop = movie_table.sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
+col_to_keep = ["IMDB_ID", "TITLE", "GENRES", "YEAR",
+               "LENGTH", "POSTER", "YOUTUBE_ID", "IMDB_RATING", "IMDB_VOTES",
+               "f1", "f2", "f4", "f6"]
+
+movie_table_all_ordered=movie_table_all[col_to_keep].sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
+
+empty_df=movie_table_all[movie_table_all["IMDB_ID"]=="kkkkkkkkk"][col_to_keep]
+
+# path = os.getcwd()+ "/app-root/repo/csv/movie_info_reduced.csv"
+# movie_table_sorted_by_pop = movie_table.sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
+
 
 
 import routes
 import database_manager
 
 
-
-
-ALL_GENRES = {
-    'Action': '0',
-    'Adventure': '1',
-    'Animation': '2',
-    'Children': '3',
-    'Comedy': '4',
-    'Crime': '5',
-    'Documentary': '6',
-    'Drama': '7',
-    'Fantasy': '8',
-    'FilmNoir': '9',
-    'Horror': '10',
-    'IMAX': '11',
-    'Musical': '12',
-    'Mystery': '13',
-    'Romance ': '14',
-    'SciFi': 'SciFi',
-    'Thriller': '15',
-    'War': '16',
-    'Western': '17',
-}
-
+"""
 MAIN_GENRES = {
     'ACTION': {"name": 'Action', "img": 'action.png'},
     'ADVENTURE': {"name": 'Adventure', "img": 'adventure.png'},
@@ -65,3 +52,4 @@ MAIN_GENRES = {
     'THRILLER': {"name": 'Thriller', "img": 'thriller.png'},
     'WESTERN': {"name": 'Western', "img": 'western.png'},
 }
+"""
