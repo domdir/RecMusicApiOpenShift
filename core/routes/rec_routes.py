@@ -9,6 +9,7 @@ rec_router={
 
 @mes_core.route('/get_rec', methods=["GET"])
 def get_rec():
+    print "get_rec"
     # time.sleep(5)
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
@@ -24,6 +25,10 @@ def get_rec():
 
     if not type:
         type = "RANDOM"
+
+    print num_of_rec
+    print for_who
+    print type
 
     rec_type=rec_types.get(type,"RANDOM")
     movies_to_rec = rec_router.get(rec_type)(get_table('all_table'),num_of_rec)
