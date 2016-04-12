@@ -234,7 +234,7 @@ def get_ini_movies():
             print "3"
             tmp.append(j)
             print "4"
-    return movies_selected
+    return jsonify(movies_selected)
 
 
 """
