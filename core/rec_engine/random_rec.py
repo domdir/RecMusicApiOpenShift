@@ -3,6 +3,7 @@ from core import get_table
 
 
 def random_rec(table_to_use, num_of_rec):
+    print "random rec"
     movies_to_rec = {}
     tmp = []
     safe_iter = 0
