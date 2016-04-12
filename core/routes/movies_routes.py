@@ -204,7 +204,7 @@ def get_ini_movies():
     years_series = Series(years_complete)
     #print years_series
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
-
+    #tmp_table.drop('IMDB_VOTES', axis=1, inplace=True)
     tmp_table.reset_index(drop=True, inplace=True)
 
    #print tmp_table.head()
@@ -222,13 +222,18 @@ def get_ini_movies():
         else:
             print "ELSE"
             j = random.randrange(1, 50)
+            print "AFTER RAND"
         safe_iter += 1
         if j not in tmp:
+            print "IN J IF"
             movie = tmp_table.iloc[j]
+            print "1"
             movie = movie.to_json()
-            movies_selected.update({j: movie})
+            print "2"
+            movies_selected.update({len(movies_selected): movie})
+            print "3"
             tmp.append(j)
-
+            print "4"
     return movies_selected
 
 
