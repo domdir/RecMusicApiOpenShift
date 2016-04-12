@@ -16,70 +16,71 @@ create all the data frame divided by genre, it's much faster! already ordered by
 
 movie_table_action = movie_table_all[movie_table_all["Action"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_adventure = \
     movie_table_all[movie_table_all["Adventure"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_animation = \
     movie_table_all[movie_table_all["Animation"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_children = \
     movie_table_all[movie_table_all["Children"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_comedy = movie_table_all[movie_table_all["Comedy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_crime = movie_table_all[movie_table_all["Crime"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_documentary = \
     movie_table_all[movie_table_all["Documentary"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_drama = movie_table_all[movie_table_all["Drama"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_fantasy = movie_table_all[movie_table_all["Fantasy"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_horror = movie_table_all[movie_table_all["Horror"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_musical = movie_table_all[movie_table_all["Musical"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_romance = movie_table_all[movie_table_all["Romance"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_scifi = movie_table_all[movie_table_all["SciFi"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_thriller = \
     movie_table_all[movie_table_all["Thriller"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
         col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 movie_table_western = movie_table_all[movie_table_all["Western"] == "1"].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.reset_index(drop=True,inplace=True)
+movie_table_action.reset_index(drop=True, inplace=True)
 
 print "CREATED ALL THE TABLES"
+
 
 def get_table_by_genre(genre):
     return {
@@ -201,10 +202,11 @@ def get_ini_movies():
 
     years_series = Series(years_complete)
 
-    print tmp_table.head()
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
 
-    tmp_table.reset_index(drop=True,inplace=True)
+    tmp_table.reset_index(drop=True, inplace=True)
+
+    print tmp_table.head()
 
     movies_selected = {}
     tmp = []
@@ -212,7 +214,7 @@ def get_ini_movies():
 
     while (len(movies_selected) < 5) and (safe_iter < 100):
         if len(tmp_table) < 50:
-            j = random.randrange(1, len(tmp_table))
+            j = random.randrange(1, len(tmp_table.index))
         else:
             j = random.randrange(1, 50)
         safe_iter += 1
