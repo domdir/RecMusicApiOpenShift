@@ -191,7 +191,7 @@ def get_ini_movies():
         print "return"
         return jsonify({})
 
-    tmp_table = get_table_by_genre(genre)
+    tmp_table = get_table_by_genre(genre)()
 
     print years
 
