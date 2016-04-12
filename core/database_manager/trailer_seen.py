@@ -19,5 +19,5 @@ class TrailerSeen(db.Model):
 
     def __repr__(self):
         return 'seen_by: {0} , imdb_id: {1}, rate: {2},' \
-               ' is_skipped: {3}, type_of_rec: {4}'.format(self.rated_by, self.movie_id,
+               ' is_skipped: {3}, type_of_rec: {4}'.format(self.seen_by, self.movie_id,
                                                            self.rate, self.is_skipped, self.type_of_rec)
