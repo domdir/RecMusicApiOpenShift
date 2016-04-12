@@ -128,7 +128,7 @@ def get_movies():
         #tmp_table = tmp_table[tmp_table['GENRES'].str.contains(genres)]
         #tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
         #tmp_table.reset_index(drop=True)
-    return jsonify({"test"})
+    return jsonify({})
 
     """
 
