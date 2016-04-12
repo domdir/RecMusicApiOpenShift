@@ -200,8 +200,9 @@ def get_ini_movies():
         for i in range(0, 10):
             years_complete.append(int(year) + i)
 
+    print years_complete
     years_series = Series(years_complete)
-
+    print years_series
     tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
 
     tmp_table.reset_index(drop=True, inplace=True)
