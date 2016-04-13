@@ -163,13 +163,13 @@ def get_movies():
 
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
 
-    print len(tmp_table.index)
-    print tmp_table.head()
+    #print len(tmp_table.index)
+    #print tmp_table.head()
     movies_selected = tmp_table.iloc[:num_movies]
 
     movies_selected.reset_index(drop=True, inplace=True)
 
-    print movies_selected.head()
+    #print movies_selected.head()
 
     rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, is_skipped=0)
     rated_by_user_imdbid=[]
