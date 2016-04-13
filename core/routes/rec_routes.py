@@ -30,6 +30,6 @@ def get_rec():
         rec_type = rec_types.get(req, "RANDOM")
         table_to_use = get_table('all_table')()
         t = rec_router.get(rec_type)(table_to_use, 1)
-        resp.update(t)
+        resp.update({len(resp),t})
 
     return jsonify(resp)
