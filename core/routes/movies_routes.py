@@ -164,5 +164,5 @@ def get_movies():
         m = tmp_table.iloc[i]
         m_j = m.to_json()
         print m_j
-        movies_selected.update({len(movies_selected): m_j})
+        movies.update({len(movies_selected): m_j})
     return jsonify(movies)
