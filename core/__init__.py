@@ -56,10 +56,10 @@ create all the data frame divided by genre, it's much faster! already ordered by
 
 movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-print movie_table_action.head()
+#print movie_table_action.head()
 #movie_table_action.drop(col_to_drop, inplace=True)
 movie_table_action.reset_index(drop=True, inplace=True)
-print movie_table_action.head()
+#print movie_table_action.head()
 
 
 
@@ -153,7 +153,7 @@ def get_table(table):
     """
     return {
         'empty_table': lambda: empty_df.copy(),
-        'all_table': lambda: movie_table_all.copy()
+        'all_table': lambda: movie_table_all[[col_to_keep]].copy()
     }.get(table)
 
 
