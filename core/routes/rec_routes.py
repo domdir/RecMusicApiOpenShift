@@ -25,13 +25,15 @@ def get_rec():
 
     print rec_request_list
     resp = {}
-
+    i=0
     for req in rec_request_list:
         rec_type = rec_types.get(req, "RANDOM")
 
         table_to_use = get_table('all_table')()
         t = rec_router.get(rec_type)(table_to_use, 1)
         print t
-        resp.update(t)
+
+        i+=1
+        resp.update({1:t})
 
     return jsonify(resp)
