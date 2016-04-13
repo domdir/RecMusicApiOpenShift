@@ -41,7 +41,9 @@ def movies_rated_by():
         all_movie = get_table("all_table")()
         movie=all_movie[all_movie["IMDB_ID"]==imdb_id]
         movie["user_rate"] = rate
-        m_j = movie.to_json()
+        movie.reset_index(drop=True, inplace=True)
+        t=movie.iloc[0]
+        m_j = t.to_json()
         print m_j
         resp.update({len(resp): m_j})
 
