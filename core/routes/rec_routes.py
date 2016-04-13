@@ -23,7 +23,9 @@ def get_rec():
     except:
         return jsonify({})
 
+    print rec_request_list
     resp = {}
+
     for req in rec_request_list:
         print req
         rec_type = rec_types.get(req, "RANDOM")
