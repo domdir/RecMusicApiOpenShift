@@ -19,7 +19,7 @@ def get_rec():
     print rec_request_list
 
     try:
-        rec_request_list = rec_request_list.split(str=",")
+        rec_request_list = rec_request_list.split(",")
     except:
         return jsonify({})
 
