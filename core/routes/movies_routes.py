@@ -165,9 +165,8 @@ def get_movies():
     print tmp_table.head()
     movies_selected = tmp_table.iloc[:num_movies]
 
-    tmp_table.reset_index(drop=True, inplace=True)
+    movies_selected.reset_index(drop=True, inplace=True)
 
-    print "len: "+ str(len(movies_selected.index))
     print movies_selected.head()
     for i in movies_selected.index:
         m = tmp_table.iloc[i]
