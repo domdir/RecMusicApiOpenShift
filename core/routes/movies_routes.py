@@ -168,7 +168,7 @@ def get_movies():
     tmp_table.reset_index(drop=True, inplace=True)
 
     print "len: "+ str(len(movies_selected.index))
-
+    print movies_selected.head()
     for i in movies_selected.index:
         m = tmp_table.iloc[i]
         m_j = m.to_json()
