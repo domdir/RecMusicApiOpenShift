@@ -93,6 +93,26 @@ def get_ini_movies():
     return jsonify(movies_selected)
 
 
+genres_list = [
+
+    'Action',
+    'Adventure',
+    'Animation',
+    'Children',
+    'Comedy',
+    'Crime',
+    'Documentary',
+    'Drama',
+    'Fantasy',
+    'Horror',
+    'Musical',
+    'Romance',
+    'SciFi',
+    'Thriller',
+    'Western',
+]
+
+
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
     num_movies = request.args.get('num_movies')
@@ -107,9 +127,7 @@ def get_movies():
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    print genre
-    print str(genre)
-    if str(genre):
+    if genre in genres_list:
         tmp_table = get_table_by_genre(genre)()
     else:
         tmp_table = get_table("all_table")()
