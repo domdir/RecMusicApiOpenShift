@@ -39,10 +39,10 @@ def movies_rated_by():
         imdb_id = rate.imdb_id
         rate = rate.rate
         all_movie = get_table("all_table")()
-        movie=all_movie[all_movie["IMDB_ID"]==imdb_id]
+        movie = all_movie[all_movie["IMDB_ID"] == imdb_id]
         movie["user_rate"] = rate
         movie.reset_index(drop=True, inplace=True)
-        t=movie.iloc[0]
+        t = movie.iloc[0]
         m_j = t.to_json()
         resp.update({len(resp): m_j})
 
@@ -79,7 +79,7 @@ def get_ini_movies():
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    while (len(movies_selected) <= num_of_movies-1) and (safe_iter < 20):
+    while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
         if len(tmp_table.index) < 50:
             j = random.randrange(1, len(tmp_table.index))
         else:
@@ -95,13 +95,12 @@ def get_ini_movies():
 
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
-
     num_movies = request.args.get('num_movies')
     genre = request.args.get('genre')
     order_by = request.args.get('order_by')
     years = request.args.get('years')
 
-    features=request.args.get('features')
+    features = request.args.get('features')
 
     f1 = request.args.get('f1')
     f2 = request.args.get('f2')
@@ -109,9 +108,9 @@ def get_movies():
     f6 = request.args.get('f6')
 
     if genre:
-        tmp_table=get_table_by_genre(genre)
+        tmp_table = get_table_by_genre(genre)
     else:
-        tmp_table =get_table("all_table")
+        tmp_table = get_table("all_table")()
 
     print years
     if not years:
@@ -131,15 +130,14 @@ def get_movies():
     tmp_table.reset_index(drop=True)
 
     if not num_movies:
-        num_movies=10
+        num_movies = 10
 
     movies = {}
-    movies_selected=tmp_table[num_movies:]
+    movies_selected = tmp_table[num_movies:]
 
     tmp_table.reset_index(drop=True, inplace=True)
     for i in tmp_table.index:
-        m=tmp_table.iloc[i]
-        m_j=m.to_json()
+        m = tmp_table.iloc[i]
+        m_j = m.to_json()
         movies_selected.update({len(movies_selected): m_j})
     return jsonify(movies)
-
