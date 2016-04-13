@@ -56,7 +56,8 @@ create all the data frame divided by genre, it's much faster! already ordered by
 
 movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-movie_table_action.drop(col_to_drop, inplace=True)
+print movie_table_action.head()
+#movie_table_action.drop(col_to_drop, inplace=True)
 movie_table_action.reset_index(drop=True, inplace=True)
 
 
@@ -64,12 +65,12 @@ movie_table_action.reset_index(drop=True, inplace=True)
 movie_table_adventure = \
     movie_table_all[movie_table_all["Adventure"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[col_to_keep].copy()
 
-movie_table_adventure.drop(col_to_drop, inplace=True)
+#movie_table_adventure.drop(col_to_drop, inplace=True)
 movie_table_adventure.reset_index(drop=True, inplace=True)
 
 movie_table_animation = \
     movie_table_all[movie_table_all["Animation"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[col_to_keep].copy()
-movie_table_animation.drop(col_to_drop, inplace=True)
+#movie_table_animation.drop(col_to_drop, inplace=True)
 movie_table_animation.reset_index(drop=True, inplace=True)
 
 movie_table_children = \
