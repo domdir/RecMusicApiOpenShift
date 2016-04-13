@@ -34,6 +34,6 @@ def get_rec():
         print t
 
         i+=1
-        resp.update({1:t})
+        resp.update({i:t})
 
     return jsonify(resp)
