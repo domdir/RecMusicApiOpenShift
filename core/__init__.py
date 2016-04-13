@@ -153,7 +153,7 @@ def get_table(table):
     """
     return {
         'empty_table': lambda: empty_df.copy(),
-        'all_table': lambda: movie_table_all[[col_to_keep]].copy()
+        'all_table': lambda: movie_table_all.copy()[col_to_keep]
     }.get(table)
 
 
