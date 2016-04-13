@@ -93,28 +93,26 @@ def get_ini_movies():
     return jsonify(movies_selected)
 
 
-"""
-
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
+
     num_movies = request.args.get('num_movies')
-    genres = request.args.get('genres')
+    genre = request.args.get('genre')
     order_by = request.args.get('order_by')
     years = request.args.get('years')
+
+    features=request.args.get('features')
 
     f1 = request.args.get('f1')
     f2 = request.args.get('f2')
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    tmp_table = get_table("empty_table")
-
-    if genres:
-        genres_list = genres.split(",")
-        for genre in genres_list:
-            tmp_table.concat(tmp_table, get_table_by_genre(genre))
+    if genre:
+        tmp_table=get_table_by_genre(genre)
     else:
-        tmp_table = tmp_table.concat(tmp_table, get_table("all_table"))
+        tmp_table =get_table("all_table")
+
     print years
     if not years:
         return jsonify({})
@@ -132,45 +130,16 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
     tmp_table.reset_index(drop=True)
 
-    if num_movies:
-        num_movies = int(num_movies)
-        if num_movies > 20:
-            num_movies = 10
-    else:
-        num_movies = 10
+    if not num_movies:
+        num_movies=10
 
     movies = {}
-    tmp = []
-    safe_iter = 0
+    movies_selected=tmp_table[num_movies:]
 
-    # ADD IF THE MOVIES IS ALREADY VOTED
-    while (len(movies) < num_movies) and (safe_iter < 100):
-        if len(tmp_table) < 100:
-            j = random.randrange(1, len(tmp_table))
-        else:
-            j = random.randrange(1, 100)
-        safe_iter += 1
-        if j not in tmp:
-            movie = tmp_table.iloc[j]
-            movie = movie.to_json()
-            movies.update({j: movie})
-            tmp.append(j)
-            # json_string = json.dumps(movies)
-            # print json_string
-    print len(movies)
+    tmp_table.reset_index(drop=True, inplace=True)
+    for i in tmp_table.index:
+        m=tmp_table.iloc[i]
+        m_j=m.to_json()
+        movies_selected.update({len(movies_selected): m_j})
     return jsonify(movies)
 
-
-# @mes_core.route('/get_genres', methods=['GET'])
-# def get_genres():
-#    return jsonify(MAIN_GENRES)
-
-
-# @mes_core.route('/get_img/<genre_img_name>', methods=['GET'])
-# def get_img(genre_img_name):
-#    img_id = request.args.get('num_movies')
-#    if os.path.isfile(os.getcwd() + '/static/genre/' + genre_img_name):
-#        return send_file(os.getcwd() + '/static/genre/' + genre_img_name, mimetype='image')
-#    else:
-#        return "not exist"
-"""
