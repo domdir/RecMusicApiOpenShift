@@ -42,6 +42,7 @@ def movies_rated_by():
         movie=all_movie[all_movie["IMDB_ID"]==imdb_id]
         movie["user_rate"] = rate
         m_j = movie.to_json()
+        print m_j
         resp.update({len(resp): m_j})
 
     return jsonify(resp)
