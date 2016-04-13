@@ -132,12 +132,12 @@ def get_movies():
     else:
         tmp_table = get_table("all_table")()
 
-    print years
+    #print years
     if not years:
         return jsonify({})
 
     years_split = years.split(",")
-    print years_split
+    #print years_split
     years_complete = []
     for year in years_split:
         for i in range(0, 10):
@@ -149,19 +149,18 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
     tmp_table.reset_index(drop=True)
 
-    if not int(num_movies):
-        num_movies = 10
-
-    print genre
-    print num_movies
-    print years
+    #print genre
+    #print num_movies
+    #print years
 
     movies = {}
-    movies_selected = tmp_table[num_movies:]
+    movies_selected = tmp_table.iloc[:num_movies]
 
     tmp_table.reset_index(drop=True, inplace=True)
+
     print num_movies
     print movies_selected
+
     for i in tmp_table.index:
         m = tmp_table.iloc[i]
         m_j = m.to_json()
