@@ -39,7 +39,7 @@ def movies_rated_by():
         imdb_id = rate.imdb_id
         rate = rate.rate
         all_movie = get_table("all_table")()
-        movie=all_movie[all_movie["IMDB"]==imdb_id]
+        movie=all_movie[all_movie["IMDB_ID"]==imdb_id]
         movie["user_rate"] = rate
         m_j = movie.to_json()
         resp.update({len(resp): m_j})
