@@ -115,7 +115,7 @@ genres_list = [
 
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
-    num_movies = request.args.get('num_movies')
+    num_movies = request.args.get('num_of_movies')
     genre = request.args.get('genre')
     order_by = request.args.get('order_by')
     years = request.args.get('years')
