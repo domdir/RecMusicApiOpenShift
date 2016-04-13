@@ -59,6 +59,7 @@ movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values
 print movie_table_action.head()
 #movie_table_action.drop(col_to_drop, inplace=True)
 movie_table_action.reset_index(drop=True, inplace=True)
+print movie_table_action.head()
 
 
 
