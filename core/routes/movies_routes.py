@@ -107,7 +107,9 @@ def get_movies():
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    if genre:
+    print genre
+    print str(genre)
+    if str(genre):
         tmp_table = get_table_by_genre(genre)()
     else:
         tmp_table = get_table("all_table")()
@@ -131,6 +133,10 @@ def get_movies():
 
     if not num_movies:
         num_movies = 10
+
+    print genre
+    print num_movies
+    print years
 
     movies = {}
     movies_selected = tmp_table[num_movies:]
