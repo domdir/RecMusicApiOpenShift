@@ -44,7 +44,6 @@ def movies_rated_by():
         movie.reset_index(drop=True, inplace=True)
         t=movie.iloc[0]
         m_j = t.to_json()
-        print m_j
         resp.update({len(resp): m_j})
 
     return jsonify(resp)
@@ -80,7 +79,7 @@ def get_ini_movies():
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    while (len(movies_selected) <= num_of_movies) and (safe_iter < 20):
+    while (len(movies_selected) <= num_of_movies-1) and (safe_iter < 20):
         if len(tmp_table.index) < 50:
             j = random.randrange(1, len(tmp_table.index))
         else:
