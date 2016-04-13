@@ -25,7 +25,9 @@ def get_rec():
 
     resp = {}
     for req in rec_request_list:
+        print req
         rec_type = rec_types.get(req, "RANDOM")
+        print rec_type
         table_to_use = get_table('all_table')()
         t = rec_router.get(rec_type)(table_to_use, 1)
         resp.update(t)
