@@ -108,7 +108,7 @@ def get_movies():
     f6 = request.args.get('f6')
 
     if genre:
-        tmp_table = get_table_by_genre(genre)
+        tmp_table = get_table_by_genre(genre)()
     else:
         tmp_table = get_table("all_table")()
 
