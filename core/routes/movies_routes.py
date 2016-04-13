@@ -1,6 +1,6 @@
 import random
 from core import movie_table_all, col_to_keep, movie_table_all_ordered, empty_df
-from core import mes_core,get_table,get_table_by_genre
+from core import mes_core, get_table, get_table_by_genre
 from flask import request, jsonify, send_file
 import json
 import os
@@ -11,52 +11,40 @@ from core.database_manager import db
 from pandas import Series
 
 
-
-
-"""
-
-
 @mes_core.route('/movies_seen_by')
 def movies_rated_by():
     user_id = request.args.get('user_id')
     limit = request.args.get('limit')
-    skipped = request.args.get('skipped')
-    rec_type = request.args.get('rec_type')
-
-    print "userId " + user_id
-    print "limit " + limit
-    print "skipped " + skipped
-    print "rec_type " + rec_type
+    show_skipped = request.args.get('show_skipped')
 
     if not limit:
         print "NOT LIMIT"
         limit = 5
 
-    if not skipped:
+    if not show_skipped:
         print "NOT SKIPPED"
-        skipped = 0
+        show_skipped = 0
 
-    if skipped:
+    print "userId " + user_id
+    print "limit " + limit
+    print "show_skipped " + show_skipped
+
+    if show_skipped:
         rated_by_user = TrailerSeen.query.filter_by(rated_by=user_id).limit(int(limit))
     else:
         rated_by_user = TrailerSeen.query.filter_by(rated_by=user_id, skipped=0).limit(int(limit))
 
     resp = {}
-    i = 0
     for rate in rated_by_user:
         imdb_id = rate.imdb_id
         rate = rate.rate
-        movie = movie_table_sorted_by_pop[movie_table_sorted_by_pop["IMDB_ID"] == imdb_id].copy()
+        all_movie = get_table("all_table")()
+        movie=all_movie[all_movie["IMDB"]==imdb_id]
         movie["user_rate"] = rate
+        m_j = movie.to_json()
+        resp.update({len(resp): m_j})
 
-        movie.reset_index(drop=True)
-        for j in range(0, len(movie)):
-            m_j = movie.iloc[j]
-            m_j = m_j.to_json()
-            resp.update({i: m_j})
-            i += 1
     return jsonify(resp)
-"""
 
 
 @mes_core.route('/get_ini_movies', methods=['GET'])
@@ -70,9 +58,9 @@ def get_ini_movies():
         return jsonify({})
 
     if not num_of_movies:
-        num_of_movies=5
+        num_of_movies = 5
     else:
-        num_of_movies=int(num_of_movies)
+        num_of_movies = int(num_of_movies)
 
     tmp_table = get_table_by_genre(genre)()
 
