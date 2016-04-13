@@ -149,7 +149,7 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
     tmp_table.reset_index(drop=True)
 
-    if not num_movies:
+    if not int(num_movies):
         num_movies = 10
 
     print genre
@@ -160,9 +160,11 @@ def get_movies():
     movies_selected = tmp_table[num_movies:]
 
     tmp_table.reset_index(drop=True, inplace=True)
+    print num_movies
+    print movies_selected
     for i in tmp_table.index:
         m = tmp_table.iloc[i]
         m_j = m.to_json()
-        print m_j
+        #print m_j
         movies.update({len(movies_selected): m_j})
     return jsonify(movies)
