@@ -162,7 +162,7 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
 
     print len(tmp_table.index)
-
+    print tmp_table.head()
     movies_selected = tmp_table.iloc[:num_movies]
 
     tmp_table.reset_index(drop=True, inplace=True)
