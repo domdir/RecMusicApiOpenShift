@@ -177,6 +177,8 @@ def get_movies():
     for rate in rated_by_user:
         rated_by_user_imdbid.append(rate.imdb_id)
 
+    print rated_by_user_imdbid
+
     for i, r in movies_selected.iterrows():
         if r["IMDB_ID"] in rated_by_user_imdbid:
             r["IS_ALREADY_VOTED"]=True
