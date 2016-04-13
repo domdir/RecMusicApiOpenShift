@@ -119,6 +119,8 @@ def get_movies():
     genre = request.args.get('genre')
     order_by = request.args.get('order_by')
     years = request.args.get('years')
+    requested_by = request.args.get('requested_by')
+
 
     features = request.args.get('features')
 
@@ -168,7 +170,18 @@ def get_movies():
     movies_selected.reset_index(drop=True, inplace=True)
 
     print movies_selected.head()
+
+    rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, skipped=0)
+    rated_by_user_imdbid=[]
+
+    for rate in rated_by_user:
+        rated_by_user_imdbid.append(rate.imdb_id)
+
     for i, r in movies_selected.iterrows():
+        if r["IMDB_ID"] in rated_by_user_imdbid:
+            r["IS_ALREADY_VOTED"]=True
+        else:
+            r["IS_ALREADY_VOTED"]=False
         m_j = r.to_json()
         # print m_j
         movies.update({len(movies): m_j})
