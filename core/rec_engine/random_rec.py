@@ -8,7 +8,7 @@ def random_rec(table_to_use, num_of_rec):
     tmp = []
     safe_iter = 0
 
-    while (len(movies_to_rec) <= num_of_rec) and (safe_iter < 20):
+    while (len(movies_to_rec) < num_of_rec) and (safe_iter < 20):
         j = random.randrange(1, len(table_to_use.index))
         safe_iter += 1
         if j not in tmp:

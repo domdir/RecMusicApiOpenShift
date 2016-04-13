@@ -10,7 +10,7 @@ rec_router = {
 @mes_core.route('/get_rec', methods=["GET"])
 def get_rec():
     print "get_rec"
-    rec_request_list=request.args.get('rec_request_list')
+    rec_request_list = request.args.get('rec_request_list')
     for_who = request.args.get('for_who')
 
     if not for_who:
@@ -19,18 +19,15 @@ def get_rec():
     print rec_request_list
 
     try:
-        rec_request_list=rec_request_list.split(str=",")
+        rec_request_list = rec_request_list.split(str=",")
     except:
         return jsonify({})
 
-    print rec_request_list
+    resp = {}
+    for req in rec_request_list:
+        rec_type = rec_types.get(type, "RANDOM")
+        table_to_use = get_table('all_table')()
+        t = rec_router.get(rec_type)(table_to_use, 1)
+        resp.update(t)
 
-    #rec_type = rec_types.get(type, "RANDOM")
-    #print rec_type
-
-    #table_to_use = get_table('all_table')()
-
-    #t = rec_router.get(rec_type)(table_to_use, 5)
-    #return jsonify(t)
-
-    return jsonify({})
+    return jsonify(resp)
