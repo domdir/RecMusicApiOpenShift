@@ -163,8 +163,7 @@ def get_movies():
 
     tmp_table.reset_index(drop=True, inplace=True)
 
-    print num_movies
-    print movies_selected
+    print len(movies_selected.index)
 
     for i in tmp_table.index:
         m = tmp_table.iloc[i]
