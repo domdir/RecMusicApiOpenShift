@@ -180,16 +180,16 @@ def get_movies():
 
     print rated_by_user_imdbid
 
-    print "LEN!!!"
-    print len(movies_selected.index)
+    #print "LEN!!!"
+    #print len(movies_selected.index)
 
     for i, r in movies_selected.iterrows():
         if r["IMDB_ID"] in rated_by_user_imdbid:
             r["IS_ALREADY_VOTED"]=True
-            print "already voted"
+            #print "already voted"
         else:
             r["IS_ALREADY_VOTED"]=False
-            print "NOT already voted"
+            #print "NOT already voted"
 
         m_j = r.to_json()
         # print m_j
