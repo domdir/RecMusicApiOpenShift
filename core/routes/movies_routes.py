@@ -154,6 +154,11 @@ def get_movies():
     #print years
 
     movies = {}
+    try:
+        num_movies=int(num_movies)
+    except:
+        num_movies=10
+
     movies_selected = tmp_table.iloc[:num_movies]
 
     tmp_table.reset_index(drop=True, inplace=True)
