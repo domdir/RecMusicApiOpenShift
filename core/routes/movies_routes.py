@@ -32,7 +32,7 @@ def movies_rated_by():
     if show_skipped:
         rated_by_user = TrailerSeen.query.filter_by(seen_by=user_id).limit(int(limit))
     else:
-        rated_by_user = TrailerSeen.query.filter_by(seen_by=user_id, skipped=0).limit(int(limit))
+        rated_by_user = TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0).limit(int(limit))
 
     resp = {}
     for rate in rated_by_user:
@@ -171,7 +171,7 @@ def get_movies():
 
     print movies_selected.head()
 
-    rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, skipped=0)
+    rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, is_skipped=0)
     rated_by_user_imdbid=[]
 
     for rate in rated_by_user:
