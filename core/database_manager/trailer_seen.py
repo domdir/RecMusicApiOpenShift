@@ -8,6 +8,7 @@ class TrailerSeen(db.Model):
     imdb_id = db.Column(db.String(20))
     rate = db.Column(db.String(10))
     is_skipped = db.Column(db.String(10))
+    time_watched= db.Column(db.String(20))
     type_of_rec = db.Column(db.String(10))
 
     def __init__(self, seen_by, imdb_id, rate, is_skipped,time_watched, type_of_rec):
