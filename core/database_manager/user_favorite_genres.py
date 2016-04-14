@@ -1,21 +1,22 @@
 from core.database_manager import db
 
 
-
-
-
 class UserFavoriteGenre(db.Model):
     __tablename__ = 'user_favorite_genre'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(50))
     fav_genre = db.Column(db.String(20))
 
-    def __init__(self, rated_by, genre1):
+    def __init__(self, rated_by, genre1, genre2, genre3,genre4):
         self.user_id = rated_by
         self.fav_genre = genre1
+        self.genre_1 = genre1
+        self.genre_2 = genre2
+        self.genre_3 = genre3
 
     def __repr__(self):
         return 'user_id: {0} , genre1: {1}'.format(self.user_id, self.genre_1)
+
 
 """
 class UserFavoriteGenre(db.Model):
