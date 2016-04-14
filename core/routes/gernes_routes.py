@@ -17,17 +17,17 @@ def save_genres_liked():
         genre_0 = "NONE"
 
     try:
-        genre_1 = json_data["genres_liked"][0]
+        genre_1 = json_data["genres_liked"][1]
     except:
         genre_1 = "NONE"
 
     try:
-        genre_2 = json_data["genres_liked"][0]
+        genre_2 = json_data["genres_liked"][2]
     except:
         genre_2 = "NONE"
 
     try:
-        genre_3 = json_data["genres_liked"][0]
+        genre_3 = json_data["genres_liked"][3]
     except:
         genre_3 = "NONE"
 
