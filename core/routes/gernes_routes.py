@@ -12,9 +12,7 @@ def save_genres_liked():
     print "save_genres_liked"
     json_data = request.get_json(force=True)
     print json_data
-    print json_data["fav_genre"]
-    print json_data["fav_genre"][0]
-    genres = UserFavoriteGenre(json_data["user_id"], json_data["fav_genre"][0])
+    genres = UserFavoriteGenre(json_data["user_id"], json_data["fav_genre"])
     db.session.add(genres)
     db.session.commit()
     return jsonify({})
