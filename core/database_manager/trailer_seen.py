@@ -10,11 +10,12 @@ class TrailerSeen(db.Model):
     is_skipped = db.Column(db.String(10))
     type_of_rec = db.Column(db.String(10))
 
-    def __init__(self, seen_by, imdb_id, rate, is_skipped, type_of_rec):
+    def __init__(self, seen_by, imdb_id, rate, is_skipped,time_watched, type_of_rec):
         self.seen_by = seen_by
         self.imdb_id = imdb_id
         self.rate = rate
         self.is_skipped = is_skipped
+        self.time_watched=time_watched
         self.type_of_rec = type_of_rec
 
     def __repr__(self):
