@@ -66,15 +66,18 @@ def get_ini_movies():
 
     tmp_table = get_table_by_genre(genre)()
 
-    years_split = years.split(",")
-    years_complete = []
-    for year in years_split:
-        for i in range(0, 10):
-            years_complete.append(int(year) + i)
+    try:
+        int(years)
+    except:
+        years = None
 
-    years_series = Series(years_complete)
-    tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
-    tmp_table.reset_index(drop=True, inplace=True)
+    if years:
+        years_complete = []
+        for i in range(0, 10):
+            years_complete.append(int(years) + i)
+        years_series = Series(years_complete)
+        tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
+        tmp_table.reset_index(drop=True, inplace=True)
 
     movies_selected = {}
     tmp = []
@@ -121,7 +124,6 @@ def get_movies():
     years = request.args.get('years')
     requested_by = request.args.get('requested_by')
 
-
     features = request.args.get('features')
 
     f1 = request.args.get('f1')
@@ -134,12 +136,12 @@ def get_movies():
     else:
         tmp_table = get_table("all_table")()
 
-    #print years
+    # print years
     if not years:
         return jsonify({})
 
     years_split = years.split(",")
-    #print years_split
+    # print years_split
     years_complete = []
     for year in years_split:
         for i in range(0, 10):
@@ -151,28 +153,28 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
     tmp_table.reset_index(drop=True)
 
-    #print genre
-    #print num_movies
-    #print years
+    # print genre
+    # print num_movies
+    # print years
 
     movies = {}
     try:
-        num_movies=int(num_movies)
+        num_movies = int(num_movies)
     except:
-        num_movies=10
+        num_movies = 10
 
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
 
-    #print len(tmp_table.index)
-    #print tmp_table.head()
+    # print len(tmp_table.index)
+    # print tmp_table.head()
     movies_selected = tmp_table.iloc[:num_movies]
 
     movies_selected.reset_index(drop=True, inplace=True)
 
-    #print movies_selected.head()
+    # print movies_selected.head()
 
     rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, is_skipped=0)
-    rated_by_user_imdbid=[]
+    rated_by_user_imdbid = []
 
     for rate in rated_by_user:
         print rate
@@ -180,16 +182,16 @@ def get_movies():
 
     print rated_by_user_imdbid
 
-    #print "LEN!!!"
-    #print len(movies_selected.index)
+    # print "LEN!!!"
+    # print len(movies_selected.index)
 
     for i, r in movies_selected.iterrows():
         if r["IMDB_ID"] in rated_by_user_imdbid:
-            r["IS_ALREADY_VOTED"]=True
-            #print "already voted"
+            r["IS_ALREADY_VOTED"] = True
+            # print "already voted"
         else:
-            r["IS_ALREADY_VOTED"]=False
-            #print "NOT already voted"
+            r["IS_ALREADY_VOTED"] = False
+            # print "NOT already voted"
 
         m_j = r.to_json()
         # print m_j
