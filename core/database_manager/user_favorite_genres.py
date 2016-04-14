@@ -1,6 +1,22 @@
 from core.database_manager import db
 
 
+
+
+
+class UserFavoriteGenre(db.Model):
+    __tablename__ = 'user_favorite_genre'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(50))
+    fav_genre = db.Column(db.String(20))
+
+    def __init__(self, rated_by, genre1):
+        self.user_id = rated_by
+        self.genre_1 = genre1
+    def __repr__(self):
+        return 'user_id: {0} , genre1: {1}'.format(self.user_id, self.genre_1)
+
+"""
 class UserFavoriteGenre(db.Model):
     __tablename__ = 'user_favorite_genre'
     id = db.Column(db.Integer, primary_key=True)
@@ -20,3 +36,4 @@ class UserFavoriteGenre(db.Model):
     def __repr__(self):
         return 'user_id: {0} , genre1: {1}, genre2: {2} genre3: {3}, genre4: {4}' \
             .format(self.user_id, self.genre_1, self.genre_2, self.genre_3,self.genre_4)
+"""
