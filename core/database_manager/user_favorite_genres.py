@@ -6,6 +6,9 @@ class UserFavoriteGenre(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(50))
     fav_genre = db.Column(db.String(20))
+    genre_1 = db.Column(db.String(20))
+    genre_2 = db.Column(db.String(20))
+    genre_3 = db.Column(db.String(20))
 
     def __init__(self, rated_by, genre1, genre2, genre3,genre4):
         self.user_id = rated_by
