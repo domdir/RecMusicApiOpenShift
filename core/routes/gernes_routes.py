@@ -10,10 +10,6 @@ def save_genres_liked():
     print "save_genres_liked"
     json_data = request.get_json(force=True)
     print json_data
-    print json_data["genres_liked"][0]
-    print json_data["genres_liked"][1]
-    print json_data["genres_liked"][2]
-    print json_data["genres_liked"][3]
 
     try:
         genre_0 = json_data["genres_liked"][0]
@@ -34,6 +30,11 @@ def save_genres_liked():
         genre_3 = json_data["genres_liked"][0]
     except:
         genre_3 = "NONE"
+
+    print genre_0
+    print genre_1
+    print genre_2
+    print genre_3
 
     genres = UserFavoriteGenre(json_data["user_id"], genre_0,
                                genre_1, genre_2, genre_3)
