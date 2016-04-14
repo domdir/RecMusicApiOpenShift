@@ -12,7 +12,8 @@ class UserFavoriteGenre(db.Model):
 
     def __init__(self, rated_by, genre1):
         self.user_id = rated_by
-        self.genre_1 = genre1
+        self.fav_genre = genre1
+
     def __repr__(self):
         return 'user_id: {0} , genre1: {1}'.format(self.user_id, self.genre_1)
 
