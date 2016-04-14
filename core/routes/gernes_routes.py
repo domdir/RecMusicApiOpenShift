@@ -15,10 +15,28 @@ def save_genres_liked():
     print json_data["genres_liked"][2]
     print json_data["genres_liked"][3]
 
+    try:
+        genre_0 = json_data["genres_liked"][0]
+    except:
+        genre_0 = "NONE"
 
+    try:
+        genre_1 = json_data["genres_liked"][0]
+    except:
+        genre_1 = "NONE"
 
-    genres = UserFavoriteGenre(json_data["user_id"], json_data["genres_liked"][0],
-                               json_data["genres_liked"][1], json_data["genres_liked"][2], json_data["genres_liked"][3])
+    try:
+        genre_2 = json_data["genres_liked"][0]
+    except:
+        genre_2 = "NONE"
+
+    try:
+        genre_3 = json_data["genres_liked"][0]
+    except:
+        genre_3 = "NONE"
+
+    genres = UserFavoriteGenre(json_data["user_id"], genre_0,
+                               genre_1, genre_2, genre_3)
     db.session.add(genres)
     db.session.commit()
     return jsonify({})
