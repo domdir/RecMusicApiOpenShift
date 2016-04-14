@@ -87,6 +87,7 @@ def get_ini_movies():
     movie_to_exclude = except_movies.split(",")
 
     print movie_to_exclude
+    print len(movie_to_exclude)
 
     if len(movie_to_exclude):
         tmp_table = tmp_table[tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
