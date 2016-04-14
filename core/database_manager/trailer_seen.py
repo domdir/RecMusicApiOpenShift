@@ -1,9 +1,9 @@
 from core.database_manager import db
 
-
 class TrailerSeen(db.Model):
     __tablename__ = 'trailer_seen'
     id = db.Column(db.Integer, primary_key=True)
+    time_stamp=db.Column(db.String(50))
     seen_by = db.Column(db.String(50))
     imdb_id = db.Column(db.String(20))
     rate = db.Column(db.String(10))
@@ -11,7 +11,8 @@ class TrailerSeen(db.Model):
     time_watched= db.Column(db.String(20))
     type_of_rec = db.Column(db.String(10))
 
-    def __init__(self, seen_by, imdb_id, rate, is_skipped,time_watched, type_of_rec):
+    def __init__(self, timestamp,seen_by, imdb_id, rate, is_skipped,time_watched, type_of_rec):
+        self.time_stamp=timestamp
         self.seen_by = seen_by
         self.imdb_id = imdb_id
         self.rate = rate
