@@ -84,10 +84,10 @@ def get_ini_movies():
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
 
-    try:
+    if except_movies=="null":
+        movie_to_exclude=None
+    else:
         movie_to_exclude = except_movies.split(",")
-    except:
-        movie_to_exclude = None
 
     print movie_to_exclude
     print len(movie_to_exclude)
