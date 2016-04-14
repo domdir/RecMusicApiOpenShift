@@ -82,19 +82,21 @@ def get_ini_movies():
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
-        if len(tmp_table.index) < 50:
-            j = random.randrange(1, len(tmp_table.index))
-        else:
-            j = random.randrange(1, 50)
-        safe_iter += 1
-        if j not in tmp:
-            movie = tmp_table.iloc[j]
-            movie = movie.to_json()
-            movies_selected.update({len(movies_selected): movie})
-            tmp.append(j)
-    return jsonify(movies_selected)
-
+    if len(movies_selected):
+        while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
+            if len(tmp_table.index) < 50:
+                j = random.randrange(1, len(tmp_table.index))
+            else:
+                j = random.randrange(1, 50)
+            safe_iter += 1
+            if j not in tmp:
+                movie = tmp_table.iloc[j]
+                movie = movie.to_json()
+                movies_selected.update({len(movies_selected): movie})
+                tmp.append(j)
+        return jsonify(movies_selected)
+    else:
+        return jsonify({})
 
 genres_list = [
 
