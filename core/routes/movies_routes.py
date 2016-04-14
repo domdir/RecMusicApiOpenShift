@@ -84,12 +84,14 @@ def get_ini_movies():
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
 
-    movie_to_exclude = except_movies.split(",")
+    if except_movies=="null":
+        movie_to_exclude=None
+    else:
+        movie_to_exclude=except_movies.split(",")
 
     print movie_to_exclude
-    print len(movie_to_exclude)
 
-    if len(movie_to_exclude):
+    if movie_to_exclude:
         tmp_table = tmp_table[tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
         tmp_table.reset_index(drop=True, inplace=True)
 
