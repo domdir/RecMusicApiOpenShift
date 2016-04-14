@@ -55,6 +55,7 @@ def get_ini_movies():
     num_of_movies = request.args.get('num_of_movies')
     genre = request.args.get('genre')
     years = request.args.get('years')
+    except_movies = request.args.get('except_movies')
 
     if not genre or not years:
         return jsonify({})
@@ -83,6 +84,15 @@ def get_ini_movies():
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
 
+    try:
+        movie_to_exclude = except_movies.split(",")
+    except:
+        movie_to_exclude = None
+
+    if movie_to_exclude:
+        tmp_table = tmp_table[tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
+        tmp_table.reset_index(drop=True, inplace=True)
+
     movies_selected = {}
     tmp = []
     safe_iter = 0
@@ -101,6 +111,7 @@ def get_ini_movies():
         return jsonify(movies_selected)
     else:
         return jsonify({})
+
 
 genres_list = [
 
