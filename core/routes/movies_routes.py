@@ -86,6 +86,9 @@ def get_ini_movies():
         tmp_table.reset_index(drop=True, inplace=True)
     print len(tmp_table.index)
 
+    print "LEN EXCEPT MOVIES"
+    print len(except_movies)
+
     if except_movies=="null":
         movie_to_exclude=None
     else:
