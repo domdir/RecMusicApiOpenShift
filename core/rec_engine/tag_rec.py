@@ -4,7 +4,7 @@ def tag_rec(table_to_use):
     movies_to_rec = {}
     tmp = []
     safe_iter = 0
-    movie = table_to_use.iloc[2]
+    movie = table_to_use.iloc[1]
     movie["REC_TYPE"]="TAG"
     movie = movie.to_json()
     return movie
