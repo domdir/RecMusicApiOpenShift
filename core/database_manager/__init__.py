@@ -11,6 +11,7 @@ db = SQLAlchemy(mes_core)
 print "sql create"
 from core.database_manager.user_favorite_genres import UserFavoriteGenre
 from core.database_manager.trailer_seen import TrailerSeen
+from core.database_manager.questionnaire import Questionnaire
 
 #db.drop_all()
 #db.create_all()
