@@ -6,7 +6,6 @@ from core.rec_engine import tag_rec
 from core.rec_engine import genre_rec
 from core.rec_engine import feature_rec
 
-
 rec_router = {
     0: random_rec.random_rec,
 }
@@ -30,7 +29,7 @@ def get_rec():
 
     print rec_request_list
     resp = {}
-    i=0
+    i = 0
     for req in rec_request_list:
         rec_type = rec_types.get(req, "RANDOM")
 
@@ -38,11 +37,16 @@ def get_rec():
         t = rec_router.get(rec_type)(table_to_use)
         print t
 
-        i+=1
-        resp.update({i:t})
+        i += 1
+        resp.update({i: t})
 
     return jsonify(resp)
 
+
+
+
+
+##############
 
 @mes_core.route('/get_tag_rec', methods=["GET"])
 def get_tag_rec():
@@ -50,17 +54,52 @@ def get_tag_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    num_of_rec=int(num_of_rec)
+    num_of_rec = int(num_of_rec)
 
     print num_of_rec
     resp = {}
-    i=0
+    i = 0
     table_to_use = get_table('all_table')()
-    for req in range(0,num_of_rec):
-        t=tag_rec.tag_rec(table_to_use)
-        resp.update({i:t})
-        i+=1
+    for req in range(0, num_of_rec):
+        t = tag_rec.tag_rec(table_to_use)
+        resp.update({i: t})
+        i += 1
     return jsonify(resp)
 
 
+@mes_core.route('/get_genre_rec', methods=["GET"])
+def get_genre_rec():
+    print "get_rec"
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
 
+    num_of_rec = int(num_of_rec)
+
+    print num_of_rec
+    resp = {}
+    i = 0
+    table_to_use = get_table('all_table')()
+    for req in range(0, num_of_rec):
+        t = genre_rec.genre_rec(table_to_use)
+        resp.update({i: t})
+        i += 1
+    return jsonify(resp)
+
+
+@mes_core.route('/get_feature_rec', methods=["GET"])
+def get_feature_rec():
+    print "get_rec"
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+
+    num_of_rec = int(num_of_rec)
+
+    print num_of_rec
+    resp = {}
+    i = 0
+    table_to_use = get_table('all_table')()
+    for req in range(0, num_of_rec):
+        t = feature_rec.feature_rec(table_to_use)
+        resp.update({i: t})
+        i += 1
+    return jsonify(resp)
