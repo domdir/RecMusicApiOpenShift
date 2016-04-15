@@ -2,6 +2,11 @@ from core import mes_core, get_table
 from flask import request, jsonify
 from core.rec_engine import random_rec, rec_types
 
+from core.rec_engine import tag_rec
+from core.rec_engine import genre_rec
+from core.rec_engine import feature_rec
+
+
 rec_router = {
     0: random_rec.random_rec,
 }
@@ -37,3 +42,24 @@ def get_rec():
         resp.update({i:t})
 
     return jsonify(resp)
+
+
+@mes_core.route('/get_tag_rec', methods=["GET"])
+def get_tag_rec():
+    print "get_rec"
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+
+    num_of_rec=int(num_of_rec)
+
+    print num_of_rec
+    resp = {}
+    i=0
+    table_to_use = get_table('all_table')()
+    for req in range(0,num_of_rec):
+        t=tag_rec.tag_rec(table_to_use)
+        resp.update({i:t})
+    return jsonify(resp)
+
+
+
