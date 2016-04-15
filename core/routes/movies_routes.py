@@ -68,6 +68,25 @@ def get_ini_movies():
     tmp_table = get_table_by_genre(genre)()
     print len(tmp_table.index)
 
+    print "LEN EXCEPT MOVIES"
+    print len(except_movies)
+
+    if not len(except_movies):
+        print "NOT LENGTH"
+        movie_to_exclude = None
+    else:
+        print "LENGTH"
+        movie_to_exclude = except_movies.split(",")
+
+    print movie_to_exclude
+
+    if movie_to_exclude:
+        print "MOVIE TO EXLUdeE"
+        print len(tmp_table.index)
+        tmp_table = tmp_table[~tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
+        tmp_table.reset_index(drop=True, inplace=True)
+        print len(tmp_table.index)
+
     try:
         print "try"
         int(years)
@@ -86,28 +105,12 @@ def get_ini_movies():
         tmp_table.reset_index(drop=True, inplace=True)
     print len(tmp_table.index)
 
-    print "LEN EXCEPT MOVIES"
-    print len(except_movies)
-
-    if not len(except_movies):
-        print "NOT LENGTH"
-        movie_to_exclude=None
-    else:
-        print "LENGTH"
-        movie_to_exclude=except_movies.split(",")
-
-    print movie_to_exclude
-
-    if movie_to_exclude:
-        print "MOVIE TO EXLUdeE"
-        print len(tmp_table.index)
-        tmp_table = tmp_table[~tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
-        tmp_table.reset_index(drop=True, inplace=True)
-        print len(tmp_table.index)
 
     movies_selected = {}
     tmp = []
     safe_iter = 0
+    print len(tmp_table.index)
+
     if len(tmp_table):
         while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
             if len(tmp_table.index) < 200:
