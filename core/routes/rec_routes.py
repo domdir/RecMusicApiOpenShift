@@ -59,6 +59,7 @@ def get_tag_rec():
     for req in range(0,num_of_rec):
         t=tag_rec.tag_rec(table_to_use)
         resp.update({i:t})
+        i+=1
     return jsonify(resp)
 
 
