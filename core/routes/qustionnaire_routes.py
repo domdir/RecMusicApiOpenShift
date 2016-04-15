@@ -9,7 +9,6 @@ def save_quest():
     print "save_quest"
     json_data = request.get_json(force=True)
     print json_data
-    is_skipped=0
 
     questions = Questionnaire(json_data["user_id"],
                               json_data["questions"][0],
