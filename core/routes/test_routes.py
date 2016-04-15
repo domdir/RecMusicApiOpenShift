@@ -1,7 +1,7 @@
 from core import mes_core
 from flask import request, jsonify, send_file
 from core.database_manager import db
-import requests
+
 @mes_core.route('/', methods=["GET"])
 def test():
     return jsonify({})
