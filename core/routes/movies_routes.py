@@ -17,17 +17,16 @@ def movies_rated_by():
     limit = request.args.get('limit')
     show_skipped = request.args.get('show_skipped')
 
-    if not limit:
-        print "NOT LIMIT"
-        limit = 5
+    try:
+        limit=int(limit)
+    except:
+        limit=5
 
-    if not show_skipped:
-        print "NOT SKIPPED"
-        show_skipped = 0
+    try:
+        show_skipped=int(show_skipped)
+    except:
+        show_skipped=0
 
-    print "userId " + user_id
-    print "limit " + limit
-    print "show_skipped " + show_skipped
 
     if show_skipped:
         rated_by_user = TrailerSeen.query.filter_by(seen_by=user_id).limit(int(limit))
@@ -146,25 +145,6 @@ genres_list = [
     'Western',
 ]
 
-
-def filter_feature_very_low(df):
-    return ""
-
-
-def filter_feature_low(df):
-    return ""
-
-
-def filter_feature_medium(df):
-    return ""
-
-
-def filter_feature_high(df):
-    return ""
-
-
-def filter_feature_very_high(df):
-    return ""
 
 
 feature_converter = {
