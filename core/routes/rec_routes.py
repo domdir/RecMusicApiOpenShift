@@ -8,6 +8,9 @@ from core.rec_engine import feature_rec
 
 rec_router = {
     0: random_rec.random_rec,
+    2: genre_rec.genre_rec,
+    3: tag_rec.tag_rec,
+    4: feature_rec.feature_rec
 }
 
 
@@ -34,7 +37,7 @@ def get_rec():
         rec_type = rec_types.get(req, "RANDOM")
 
         table_to_use = get_table('all_table')()
-        t = rec_router.get(rec_type)(table_to_use)
+        t = rec_router.get(rec_type,random_rec.random_rec)(table_to_use)
         print t
 
         i += 1
