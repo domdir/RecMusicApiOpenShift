@@ -191,17 +191,24 @@ def get_movies():
     years_split = years.split(",")
 
     # filter by years
-    years_complete = []
-    for year in years_split:
+
+    try:
+        print "try"
+        int(years)
+    except:
+        "print except"
+        years = None
+
+    if years:
+        print "years"
+        years_complete = []
         for i in range(0, 10):
-            years_complete.append(int(year) + i)
-
-    years_series = Series(years_complete)
-
-    tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
-    tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
-    tmp_table.reset_index(drop=True)
-
+            years_complete.append(int(years) + i)
+        years_series = Series(years_complete)
+        print years_series
+        tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
+        tmp_table.reset_index(drop=True, inplace=True)
+    print len(tmp_table.index)
     # filter by features
 
 
