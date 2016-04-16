@@ -169,15 +169,15 @@ def get_movies():
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    f1_c=feature_converter.get(f1)
+    f1_c= feature_converter.get(f1)
     f2_c = feature_converter.get(f2)
     f4_c = feature_converter.get(f4)
     f6_c = feature_converter.get(f6)
 
-    print f1_c
-    print f2_c
-    print f4_c
-    print f6_c
+    print "f1 "+str(f1_c)
+    print "f2 "+str(f2_c)
+    print "f4 "+str(f4_c)
+    print "f6 "+str(f6_c)
     # filter by genre
     if genre in genres_list:
         tmp_table = get_table_by_genre(genre)()
