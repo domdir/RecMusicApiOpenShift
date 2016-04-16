@@ -28,6 +28,7 @@ def movies_rated_by():
         show_skipped=0
 
 
+
     if show_skipped:
         rated_by_user = TrailerSeen.query.filter_by(seen_by=user_id).limit(int(limit))
     else:
