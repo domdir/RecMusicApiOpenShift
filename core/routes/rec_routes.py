@@ -37,13 +37,17 @@ def get_rec():
     resp = {}
     i = 0
     movie_to_exclude = TrailerSeen.query.filter_by(seen_by=for_who)
+    imdb_to_exclude=[]
+    for m in movie_to_exclude:
+        imdb_to_exclude.append(m.imdb_id)
+
 
     for req in rec_request_list:
         rec_type = rec_types.get(req, "RANDOM")
 
         table_to_use = get_table('all_table')()
 
-        table_to_use = table_to_use[~table_to_use["IMDB_ID"].isin(Series(movie_to_exclude))]
+        table_to_use = table_to_use[~table_to_use["IMDB_ID"].isin(Series(imdb_to_exclude))]
 
         t = rec_router.get(rec_type, random_rec.random_rec)(table_to_use)
         print t
