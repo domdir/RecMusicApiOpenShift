@@ -105,7 +105,6 @@ def get_ini_movies():
         tmp_table.reset_index(drop=True, inplace=True)
     print len(tmp_table.index)
 
-
     movies_selected = {}
     tmp = []
     safe_iter = 0
@@ -148,6 +147,15 @@ genres_list = [
 ]
 
 
+feature_converter = {
+    "VERY_LOW": 1,
+    "LOW": 2,
+    "MEDIUM": 3,
+    "HIGH": 4,
+    "VERY_HIGH": 5
+}
+
+
 @mes_core.route('/get_movies', methods=['GET'])
 def get_movies():
     num_movies = request.args.get('num_of_movies')
@@ -156,13 +164,21 @@ def get_movies():
     years = request.args.get('years')
     requested_by = request.args.get('requested_by')
 
-    features = request.args.get('features')
-
     f1 = request.args.get('f1')
     f2 = request.args.get('f2')
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
+    f1_c=feature_converter.get(f1)
+    f2_c = feature_converter.get(f2)
+    f4_c = feature_converter.get(f4)
+    f6_c = feature_converter.get(f6)
+
+    print f1_c
+    print f2_c
+    print f4_c
+    print f6_c
+    # filter by genre
     if genre in genres_list:
         tmp_table = get_table_by_genre(genre)()
     else:
@@ -173,7 +189,8 @@ def get_movies():
         return jsonify({})
 
     years_split = years.split(",")
-    # print years_split
+
+    # filter by years
     years_complete = []
     for year in years_split:
         for i in range(0, 10):
@@ -185,9 +202,10 @@ def get_movies():
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
     tmp_table.reset_index(drop=True)
 
-    # print genre
-    # print num_movies
-    # print years
+    # filter by features
+
+
+
 
     movies = {}
     try:

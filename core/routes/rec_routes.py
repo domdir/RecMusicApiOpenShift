@@ -1,5 +1,8 @@
+from pandas import Series
 from core import mes_core, get_table
 from flask import request, jsonify
+
+from core.database_manager import TrailerSeen
 from core.rec_engine import random_rec, rec_types
 
 from core.rec_engine import tag_rec
@@ -33,20 +36,22 @@ def get_rec():
     print rec_request_list
     resp = {}
     i = 0
+    movie_to_exclude = TrailerSeen.query.filter_by(seen_by=for_who)
+
     for req in rec_request_list:
         rec_type = rec_types.get(req, "RANDOM")
 
         table_to_use = get_table('all_table')()
-        t = rec_router.get(rec_type,random_rec.random_rec)(table_to_use)
+
+        table_to_use = table_to_use[~table_to_use["IMDB_ID"].isin(Series(movie_to_exclude))]
+
+        t = rec_router.get(rec_type, random_rec.random_rec)(table_to_use)
         print t
 
         i += 1
         resp.update({i: t})
 
     return jsonify(resp)
-
-
-
 
 
 ##############
