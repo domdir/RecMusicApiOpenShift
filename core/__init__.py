@@ -140,7 +140,7 @@ def get_table_by_genre(genre):
         'Fantasy': lambda: movie_table_fantasy.copy(),
         'Horror': lambda: movie_table_horror.copy(),
         'Musical': lambda: movie_table_musical.copy(),
-        'Romance ': lambda: movie_table_romance.copy(),
+        'Romance': lambda: movie_table_romance.copy(),
         'SciFi': lambda: movie_table_scifi.copy(),
         'Thriller': lambda: movie_table_thriller.copy(),
         'Western': lambda: movie_table_western.copy(),
