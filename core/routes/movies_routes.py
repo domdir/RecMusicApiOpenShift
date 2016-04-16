@@ -232,16 +232,16 @@ def get_movies():
     print len(tmp_table.index)
 
     # filter by features
-    tmp_table = tmp_table[tmp_table["f1"]>f1_c[0] & tmp_table["f1"]<f1_c[1]]
 
     if f1 != "ALL":
         tmp_table = tmp_table[tmp_table["f1"] > f1_c[0] & tmp_table["f1"] < f1_c[1]]
     if f2 != "ALL":
         tmp_table = tmp_table[tmp_table["f2"] > f2_c[0] & tmp_table["f2"] < f2_c[1]]
     if f4 != "ALL":
-            tmp_table = tmp_table[tmp_table["f4"] > f4_c[0] & tmp_table["f4"] < f4_c[1]]
+        tmp_table = tmp_table[tmp_table["f4"] > f4_c[0] & tmp_table["f4"] < f4_c[1]]
     if f6 != "ALL":
-            tmp_table = tmp_table[tmp_table["f6"] > f6_c[0] & tmp_table["f6"] < f6_c[1]]
+        tmp_table = tmp_table[tmp_table["f6"] > f6_c[0] & tmp_table["f6"] < f6_c[1]]
+
     movies = {}
     try:
         num_movies = int(num_movies)
