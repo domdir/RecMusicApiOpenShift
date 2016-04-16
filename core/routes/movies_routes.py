@@ -147,12 +147,32 @@ genres_list = [
 ]
 
 
+def filter_feature_very_low(df):
+    return ""
+
+
+def filter_feature_low(df):
+    return ""
+
+
+def filter_feature_medium(df):
+    return ""
+
+
+def filter_feature_high(df):
+    return ""
+
+
+def filter_feature_very_high(df):
+    return ""
+
+
 feature_converter = {
-    "VERY_LOW": 1,
-    "LOW": 2,
-    "MEDIUM": 3,
-    "HIGH": 4,
-    "VERY_HIGH": 5
+    "VERY_LOW": [0, 0.2],
+    "LOW": [0.2, 0.4],
+    "MEDIUM": [0.4, 0.6],
+    "HIGH": [0.6, 0.8],
+    "VERY_HIGH": [0.8, 1],
 }
 
 
@@ -169,15 +189,16 @@ def get_movies():
     f4 = request.args.get('f4')
     f6 = request.args.get('f6')
 
-    f1_c= feature_converter.get(f1)
+    f1_c = feature_converter.get(f1)
     f2_c = feature_converter.get(f2)
     f4_c = feature_converter.get(f4)
     f6_c = feature_converter.get(f6)
 
-    print "f1 "+str(f1_c)
-    print "f2 "+str(f2_c)
-    print "f4 "+str(f4_c)
-    print "f6 "+str(f6_c)
+    print "f1 " + str(f1_c)
+    print "f2 " + str(f2_c)
+    print "f4 " + str(f4_c)
+    print "f6 " + str(f6_c)
+
     # filter by genre
     if genre in genres_list:
         tmp_table = get_table_by_genre(genre)()
@@ -209,10 +230,16 @@ def get_movies():
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
     print len(tmp_table.index)
+
     # filter by features
-
-
-
+    if f1 != "ALL":
+        tmp_table = tmp_table[f1_c[0] <= [tmp_table["f1"] <= f1_c[1]]]
+    if f2 != "ALL":
+        tmp_table = tmp_table[f2_c[0] <= [tmp_table["f2"] <= f2_c[1]]]
+    if f4 != "ALL":
+        tmp_table = tmp_table[f4_c[0] <= [tmp_table["f4"] <= f4_c[1]]]
+    if f6 != "ALL":
+        tmp_table = tmp_table[f6_c[0] <= [tmp_table["f6"] <= f6_c[1]]]
 
     movies = {}
     try:
