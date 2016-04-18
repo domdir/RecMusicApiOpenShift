@@ -48,14 +48,13 @@ def feature_rec(table_to_use, user_id):
     numpy_final = numpy_final[::-1]
 
     rec_imdb=[]
-    for rec in numpy_final:
-        rec_imdb.append(rec[0])
     all_table=get_table("all_table")()
-
-    res=all_table[all_table["IMDB_ID"].isin(rec_imdb)]
     final={}
-    for r in res:
-        print r
-        z=r.to_json()
+
+    for j in range(0,3):
+        rec=numpy_final[j]
+        movie=all_table[all_table["IMDB_ID"]==rec[0]]
+        z=movie.to_json()
         final.update({len(final):z})
+
     return final
