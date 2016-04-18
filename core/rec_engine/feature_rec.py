@@ -32,7 +32,7 @@ def feature_rec(table_to_use, user_id):
             # print imdb
             if rated_imdb.get(imdb, None):
                 #   print "inside second"
-                num += rated_imdb.get(imdb) * float(imdb_sim[1])
+                num += float(rated_imdb.get(imdb)) * float(imdb_sim[1])
                 den += float(imdb_sim[1])
         if den == 0:
             final_v = 0
