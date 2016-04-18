@@ -20,7 +20,7 @@ def feature_rec(table_to_use, user_id):
         num = 0
         den = 0
         i += 1
-        print i
+        #print i
         # d={}
         values = []
         neigh_splitted = row[3].split(",")
