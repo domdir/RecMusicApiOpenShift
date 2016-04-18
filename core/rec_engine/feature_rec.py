@@ -12,7 +12,7 @@ def feature_rec(table_to_use, user_id):
 
     rated_imdb={}
     for r in rated_by_user:
-        rated_imdb.update({r.imdb:r.rate})
+        rated_imdb.update({r.imdb_id:r.rate})
 
     final_array = []
     i = 0
