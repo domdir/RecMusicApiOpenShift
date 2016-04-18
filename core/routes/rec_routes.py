@@ -110,7 +110,6 @@ def get_feature_rec():
     resp = {}
     i = 0
     table_to_use = get_table('all_table')()
-    for req in range(0, num_of_rec):
-        t = feature_rec.feature_rec(table_to_use,for_who)
+    t = feature_rec.feature_rec(table_to_use,for_who)
 
     return jsonify(t)

@@ -51,10 +51,10 @@ def feature_rec(table_to_use, user_id):
     all_table=get_table("all_table")()
     final={}
 
-    for j in range(0,3):
+    for j in range(0,4):
         rec=numpy_final[j]
         movie=all_table[all_table["IMDB_ID"]==rec[0]]
         z=movie.to_json()
         final.update({len(final):z})
-
+    print final
     return final
