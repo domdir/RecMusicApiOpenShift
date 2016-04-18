@@ -161,25 +161,15 @@ def get_table(table):
 #########################################
 
 
+"""
+Feature
+"""
+path_feat = os.getcwd() + "/app-root/repo/csv/feature_sim.csv"
+feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
+feature_sim.drop("Unnamed: 0", 1, inplace=True)
+
+
+
 import routes
 import database_manager
 
-"""
-MAIN_GENRES = {
-    'ACTION': {"name": 'Action', "img": 'action.png'},
-    'ADVENTURE': {"name": 'Adventure', "img": 'adventure.png'},
-    'ANIMATION': {"name": 'Animation', "img": 'animation.png'},
-    'CHILDREN': {"name": 'Children', "img": 'children.png'},
-    'COMEDY': {"name": 'Comedy', "img": 'comedy.png'},
-    'CRIME': {"name": 'Crime', "img": 'crime.png'},
-    'DOCUMENTARY': {"name": 'Documentary', "img": 'documentary.png'},
-    'DRAMA': {"name": 'Drama', "img": 'drama.png'},
-    'FANTASY': {"name": 'Fantasy', "img": 'fantasy.png'},
-    'HORROR': {"name": 'Horror', "img": 'horror.png'},
-    'MUSICAL': {"name": 'Musical', "img": 'musical.png'},
-    'ROMANCE ': {"name": 'Romance', "img": 'romance.png'},
-    'SCIFI': {"name": 'SciFi', "img": 'sciFi.png'},
-    'THRILLER': {"name": 'Thriller', "img": 'thriller.png'},
-    'WESTERN': {"name": 'Western', "img": 'western.png'},
-}
-"""
