@@ -55,6 +55,7 @@ def feature_rec(table_to_use, user_id):
     res=all_table[all_table["IMDB_ID"].isin(rec_imdb)]
     final={}
     for r in res:
+        print r
         z=r.to_json()
         final.update({len(final):z})
     return final
