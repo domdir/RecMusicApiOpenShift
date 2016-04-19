@@ -63,20 +63,12 @@ def get_rec():
 @mes_core.route('/get_tag_rec', methods=["GET"])
 def get_tag_rec():
     print "get_rec"
+
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
+    t = tag_rec.tag_rec(for_who,num_of_rec)
 
-    num_of_rec = int(num_of_rec)
-
-    print num_of_rec
-    resp = {}
-    i = 0
-    table_to_use = get_table('all_table')()
-    for req in range(0, num_of_rec):
-        t = tag_rec.tag_rec(table_to_use)
-        resp.update({i: t})
-        i += 1
-    return jsonify(resp)
+    return jsonify(t)
 
 
 @mes_core.route('/get_genre_rec', methods=["GET"])
@@ -85,17 +77,9 @@ def get_genre_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    num_of_rec = int(num_of_rec)
+    t = genre_rec.genre_rec(for_who,num_of_rec)
 
-    print num_of_rec
-    resp = {}
-    i = 0
-    table_to_use = get_table('all_table')()
-    for req in range(0, num_of_rec):
-        t = genre_rec.genre_rec(table_to_use)
-        resp.update({i: t})
-        i += 1
-    return jsonify(resp)
+    return jsonify(t)
 
 
 @mes_core.route('/get_feature_rec', methods=["GET"])
