@@ -96,7 +96,7 @@ def get_ini_movies():
     if len(tmp_table):
         while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
             print safe_iter
-            print movies_selected
+            #print movies_selected
             if len(tmp_table.index) < 200:
                 j = random.randrange(1, len(tmp_table.index))
             else:
