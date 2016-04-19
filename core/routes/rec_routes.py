@@ -104,12 +104,6 @@ def get_feature_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    num_of_rec = int(num_of_rec)
-
-    print num_of_rec
-    resp = {}
-    i = 0
-    table_to_use = get_table('all_table')()
-    t = feature_rec.feature_rec(table_to_use,for_who)
+    t = feature_rec.feature_rec(for_who,num_of_rec)
 
     return jsonify(t)

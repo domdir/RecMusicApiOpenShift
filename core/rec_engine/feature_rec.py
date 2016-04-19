@@ -2,16 +2,20 @@ import random
 from core import feature_sim
 from core.database_manager import trailer_seen
 from core import get_table
+from pandas import Series
 import numpy
 
-def feature_rec(table_to_use, user_id):
+
+def feature_rec(user_id,num_of_rec):
     print "feature rec"
 
-    rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id,is_skipped=0)
+    rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0)
 
-    rated_imdb={}
+    rated_imdb = {}
+    movies_to_exclude = []
     for r in rated_by_user:
-        rated_imdb.update({r.imdb_id:r.rate})
+        rated_imdb.update({r.imdb_id: r.rate})
+        movies_to_exclude.append(r.imdb_id)
 
     final_array = []
     i = 0
@@ -19,18 +23,11 @@ def feature_rec(table_to_use, user_id):
         num = 0
         den = 0
         i += 1
-        #print i
-        # d={}
-        values = []
         neigh_splitted = row[3].split(",")
-        # print neigh_splitted
         for j in neigh_splitted:
-            # print "inside first"
             imdb_sim = j.split(":")
             imdb = imdb_sim[0]
-            # print imdb
             if rated_imdb.get(imdb, None):
-                #   print "inside second"
                 num += float(rated_imdb.get(imdb)) * float(imdb_sim[1])
                 den += float(imdb_sim[1])
         if den == 0:
@@ -46,17 +43,18 @@ def feature_rec(table_to_use, user_id):
     numpy_final = numpy.sort(numpy_final, order=['PREDICTED_VOTE', "IMDB_VOTES"])
     numpy_final = numpy_final[::-1]
 
-    rec_imdb=[]
-    all_table=get_table("all_table")()
-    final={}
+    all_table = get_table("all_table")()
+    all_table = all_table[~all_table["IMDB_ID"].isin(Series(movies_to_exclude))]
+    all_table.reset_index(drop=True, inplace=True)
 
-    for j in range(0,4):
-        rec=numpy_final[j]
-        movie=all_table[all_table["IMDB_ID"]==rec[0]].copy()
+    final = {}
+
+    for j in range(0, num_of_rec):
+        rec = numpy_final[j]
+        movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         movie.reset_index(drop=True, inplace=True)
         movie = movie.iloc[0]
         movie["REC_TYPE"] = "FEATURES"
-        z=movie.to_json()
-        final.update({len(final):z})
-    print final
+        z = movie.to_json()
+        final.update({len(final): z})
     return final
