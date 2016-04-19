@@ -56,10 +56,11 @@ def feature_rec(user_id,num_of_rec):
 
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         if len(movie.index):
-            movie
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
             movie["REC_TYPE"] = "FEATURE"
+            movie["PREDICTED_VOTE"]=rec[1]
+
             z = movie.to_json()
             safe_iter += 1
             final.update({len(final): z})

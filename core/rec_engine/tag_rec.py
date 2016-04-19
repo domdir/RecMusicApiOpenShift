@@ -57,6 +57,7 @@ def tag_rec(user_id, num_of_rec):
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
             movie["REC_TYPE"] = "TAGS"
+            movie["PREDICTED_VOTE"]=rec[1]
             z = movie.to_json()
             safe_iter += 1
             final.update({len(final): z})
