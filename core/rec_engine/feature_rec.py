@@ -7,7 +7,6 @@ import numpy
 def feature_rec(table_to_use, user_id):
     print "feature rec"
 
-    final_array = []
     rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id,is_skipped=0)
 
     rated_imdb={}
@@ -53,8 +52,9 @@ def feature_rec(table_to_use, user_id):
 
     for j in range(0,4):
         rec=numpy_final[j]
-        movie=all_table[all_table["IMDB_ID"]==rec[0]]
-        movie = table_to_use.iloc[j]
+        movie=all_table[all_table["IMDB_ID"]==rec[0]].copy()
+        movie.reset_index(drop=True, inplace=True)
+        movie = movie.iloc[0]
         movie["REC_TYPE"] = "FEATURES"
         z=movie.to_json()
         final.update({len(final):z})
