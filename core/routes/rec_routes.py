@@ -37,10 +37,9 @@ def get_rec():
     resp = {}
     i = 0
     movie_to_exclude = TrailerSeen.query.filter_by(seen_by=for_who)
-    imdb_to_exclude=[]
+    imdb_to_exclude = []
     for m in movie_to_exclude:
         imdb_to_exclude.append(m.imdb_id)
-
 
     for req in rec_request_list:
         rec_type = rec_types.get(req, "RANDOM")
@@ -66,7 +65,7 @@ def get_tag_rec():
 
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
-    t = tag_rec.tag_rec(for_who,num_of_rec)
+    t = tag_rec.tag_rec(for_who, int(num_of_rec))
 
     return jsonify(t)
 
@@ -77,7 +76,7 @@ def get_genre_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    t = genre_rec.genre_rec(for_who,num_of_rec)
+    t = genre_rec.genre_rec(for_who, int(num_of_rec))
 
     return jsonify(t)
 
@@ -88,6 +87,6 @@ def get_feature_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
-    t = feature_rec.feature_rec(for_who,num_of_rec)
+    t = feature_rec.feature_rec(for_who, int(num_of_rec))
 
     return jsonify(t)
