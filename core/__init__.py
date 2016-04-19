@@ -1,4 +1,3 @@
-print "init"
 from flask import Flask
 import pandas as pd
 import logging
@@ -22,7 +21,6 @@ movie_table_all.drop("Unnamed: 0", 1, inplace=True)
 col_to_keep = ["IMDB_ID", "TITLE", "GENRES", "YEAR",
                "LENGTH", "POSTER", "YOU_TUBE_ID", "IMDB_RATING", "IMDB_VOTES",
                "f1", "f2", "f4", "f6"]
-
 
 col_to_drop = [
 
@@ -57,22 +55,22 @@ create all the data frame divided by genre, it's much faster! already ordered by
 
 movie_table_action = movie_table_all[movie_table_all["Action"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[
     col_to_keep].copy()
-#print movie_table_action.head()
-#movie_table_action.drop(col_to_drop, inplace=True)
+# movie_table_action.head()
+# movie_table_action.drop(col_to_drop, inplace=True)
 movie_table_action.reset_index(drop=True, inplace=True)
-#print movie_table_action.head()
+# movie_table_action.head()
 
 
 
 movie_table_adventure = \
     movie_table_all[movie_table_all["Adventure"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[col_to_keep].copy()
 
-#movie_table_adventure.drop(col_to_drop, inplace=True)
+# movie_table_adventure.drop(col_to_drop, inplace=True)
 movie_table_adventure.reset_index(drop=True, inplace=True)
 
 movie_table_animation = \
     movie_table_all[movie_table_all["Animation"] == 1].sort_values(by=["IMDB_VOTES"], ascending=[0])[col_to_keep].copy()
-#movie_table_animation.drop(col_to_drop, inplace=True)
+# movie_table_animation.drop(col_to_drop, inplace=True)
 movie_table_animation.reset_index(drop=True, inplace=True)
 
 movie_table_children = \
@@ -124,7 +122,7 @@ movie_table_western = movie_table_all[movie_table_all["Western"] == 1].sort_valu
     col_to_keep].copy()
 movie_table_western.reset_index(drop=True, inplace=True)
 
-print "CREATED ALL THE TABLES"
+"CREATED ALL THE TABLES"
 
 
 def get_table_by_genre(genre):
@@ -168,19 +166,13 @@ path_feat = os.getcwd() + "/app-root/repo/csv/feature_sim.csv"
 feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
 feature_sim.drop("Unnamed: 0", 1, inplace=True)
 
-
 path_genre = os.getcwd() + "/app-root/repo/csv/genre_sim.csv"
 genre_sim = pd.read_csv(path_genre, ",")  # dtype=object)
 genre_sim.drop("Unnamed: 0", 1, inplace=True)
-
 
 path_tags = os.getcwd() + "/app-root/repo/csv/tags_sim.csv"
 tags_sim = pd.read_csv(path_tags, ",")  # dtype=object)
 tags_sim.drop("Unnamed: 0", 1, inplace=True)
 
-
-
-
 import routes
 import database_manager
-

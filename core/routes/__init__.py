@@ -1,4 +1,4 @@
-print "init_routes"
+"init_routes"
 import movies_routes
 import rates_routes
 import gernes_routes

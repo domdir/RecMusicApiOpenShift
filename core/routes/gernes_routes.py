@@ -7,9 +7,9 @@ from core.database_manager import db
 
 @mes_core.route('/save_genres_liked', methods=['POST'])
 def save_genres_liked():
-    print "save_genres_liked"
+    "save_genres_liked"
     json_data = request.get_json(force=True)
-    print json_data
+    json_data
 
     try:
         genre_0 = json_data["genres_liked"][0]
@@ -31,10 +31,10 @@ def save_genres_liked():
     except:
         genre_3 = "NONE"
 
-    print genre_0
-    print genre_1
-    print genre_2
-    print genre_3
+    genre_0
+    genre_1
+    genre_2
+    genre_3
 
     genres = UserFavoriteGenre(json_data["user_id"], genre_0,
                                genre_1, genre_2, genre_3)
@@ -48,11 +48,11 @@ def save_genres_liked():
 
 @mes_core.route('/save_genres_liked', methods=['POST'])
 def save_genres_liked():
-    print "save_genres_liked"
+    "save_genres_liked"
     json_data = request.get_json(force=True)
-    print json_data
-    print json_data["genres_liked"]
-    print json_data["genres_liked"][0]
+    json_data
+    json_data["genres_liked"]
+    json_data["genres_liked"][0]
     genres = UserFavoriteGenre(json_data["user_id"], json_data["genres_liked"][0], json_data["genres_liked"][1],
                                json_data["genres_liked"][2], json_data["genres_liked"][3])
     db.session.add(genres)

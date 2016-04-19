@@ -51,7 +51,7 @@ def movies_rated_by():
 
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
-    print "get_ini_movies"
+    "get_ini_movies"
     num_of_movies = request.args.get('num_of_movies')
     genre = request.args.get('genre')
     years = request.args.get('years')
@@ -66,49 +66,49 @@ def get_ini_movies():
         num_of_movies = int(num_of_movies)
 
     tmp_table = get_table_by_genre(genre)()
-    print len(tmp_table.index)
+    len(tmp_table.index)
 
-    print "LEN EXCEPT MOVIES"
-    print len(except_movies)
+    "LEN EXCEPT MOVIES"
+    len(except_movies)
 
     if not len(except_movies):
-        print "NOT LENGTH"
+        "NOT LENGTH"
         movie_to_exclude = None
     else:
-        print "LENGTH"
+        "LENGTH"
         movie_to_exclude = except_movies.split(",")
 
-    print movie_to_exclude
+    movie_to_exclude
 
     if movie_to_exclude:
-        print "MOVIE TO EXLUdeE"
-        print len(tmp_table.index)
+        "MOVIE TO EXLUdeE"
+        len(tmp_table.index)
         tmp_table = tmp_table[~tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
         tmp_table.reset_index(drop=True, inplace=True)
-        print len(tmp_table.index)
+        len(tmp_table.index)
 
     try:
-        print "try"
+        "try"
         int(years)
     except:
-        "print except"
+        "except"
         years = None
 
     if years:
-        print "years"
+        "years"
         years_complete = []
         for i in range(0, 10):
             years_complete.append(int(years) + i)
         years_series = Series(years_complete)
-        print years_series
+        years_series
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
-    print len(tmp_table.index)
+    len(tmp_table.index)
 
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    print len(tmp_table.index)
+    len(tmp_table.index)
 
     if len(tmp_table):
         while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
@@ -175,10 +175,10 @@ def get_movies():
     f4_c = feature_converter.get(f4)
     f6_c = feature_converter.get(f6)
 
-    print "f1 " + str(f1_c)
-    print "f2 " + str(f2_c)
-    print "f4 " + str(f4_c)
-    print "f6 " + str(f6_c)
+    "f1 " + str(f1_c)
+    "f2 " + str(f2_c)
+    "f4 " + str(f4_c)
+    "f6 " + str(f6_c)
 
     # filter by genre
     if genre in genres_list:
@@ -186,7 +186,7 @@ def get_movies():
     else:
         tmp_table = get_table("all_table")()
 
-    # print years
+    # years
     if not years:
         return jsonify({})
 
@@ -195,22 +195,22 @@ def get_movies():
     # filter by years
 
     try:
-        print "try"
+        "try"
         int(years)
     except:
-        "print except"
+        "except"
         years = None
 
     if years:
-        print "years"
+        "years"
         years_complete = []
         for i in range(0, 10):
             years_complete.append(int(years) + i)
         years_series = Series(years_complete)
-        print years_series
+        years_series
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
-    print len(tmp_table.index)
+    len(tmp_table.index)
 
     # filter by features
 
@@ -231,36 +231,36 @@ def get_movies():
 
     tmp_table = tmp_table.sort_values(by=["IMDB_VOTES"], ascending=[0])
 
-    # print len(tmp_table.index)
-    # print tmp_table.head()
+    # len(tmp_table.index)
+    # tmp_table.head()
     movies_selected = tmp_table.iloc[:num_movies]
 
     movies_selected.reset_index(drop=True, inplace=True)
 
-    # print movies_selected.head()
+    # movies_selected.head()
 
     rated_by_user = TrailerSeen.query.filter_by(seen_by=requested_by, is_skipped=0)
     rated_by_user_imdbid = []
 
     for rate in rated_by_user:
-        print rate
+        rate
         rated_by_user_imdbid.append(rate.imdb_id)
 
-    print rated_by_user_imdbid
+    rated_by_user_imdbid
 
-    # print "LEN!!!"
-    # print len(movies_selected.index)
+    # "LEN!!!"
+    # len(movies_selected.index)
 
     for i, r in movies_selected.iterrows():
         if r["IMDB_ID"] in rated_by_user_imdbid:
             r["IS_ALREADY_VOTED"] = True
-            # print "already voted"
+            # "already voted"
         else:
             r["IS_ALREADY_VOTED"] = False
-            # print "NOT already voted"
+            # "NOT already voted"
 
         m_j = r.to_json()
-        # print m_j
+        # m_j
         movies.update({len(movies): m_j})
 
     return jsonify(movies)

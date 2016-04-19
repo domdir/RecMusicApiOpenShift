@@ -5,7 +5,7 @@ from pandas import Series
 import numpy
 
 def tag_rec(user_id, num_of_rec):
-    print "tag rec"
+    "tag rec"
     rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0)
 
     rated_imdb = {}
@@ -50,11 +50,11 @@ def tag_rec(user_id, num_of_rec):
 
     while (len(final) < num_of_rec) and (safe_iter < 20):
         rec = numpy_final[safe_iter]
-        print rec
-        print rec[0]
+        rec
+        rec[0]
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         if len(movie.index):
-            print movie
+            movie
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
             movie["REC_TYPE"] = "TAGS"

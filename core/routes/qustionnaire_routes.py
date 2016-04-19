@@ -6,9 +6,9 @@ from core import mes_core
 
 @mes_core.route('/save_quest',methods=["POST"])
 def save_quest():
-    print "save_quest"
+    "save_quest"
     json_data = request.get_json(force=True)
-    print json_data
+    json_data
 
     questions = Questionnaire(json_data["user_id"],
                               json_data["questions"][0],
@@ -34,7 +34,7 @@ def save_quest():
                               json_data["questions"][20],
                               json_data["questions"][21],
                               json_data["questions"][22])
-    print questions
+    questions
     db.session.add(questions)
     db.session.commit()
     return jsonify({})

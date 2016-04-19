@@ -69,17 +69,17 @@ class DF_Manipulator:
 
     def delete_column(self, *args):
         col_index = []
-        #print args
+        #args
         for arg in args:
-            print arg
+            arg
             col_index.append(self.router.get(arg))
-        print col_index
+        col_index
         self.df = self.df.drop(self.df.columns[col_index], axis=1)
         self.recompute_router()
-        print self.router
+        self.router
 
     def filert(self, column, condition):
-        print "filter"
+        "filter"
 
     def order_by(self, col_names, ascending):
         self.df.sort_values(by=col_names, ascending=[ascending])
@@ -93,7 +93,7 @@ class DF_Manipulator:
 
 t = DF_Manipulator(movie_table.copy())
 
-#print t
+#t
 
 t.delete_column("f1")
 t.delete_column("f2")
