@@ -46,14 +46,15 @@ def genre_rec(user_id, num_of_rec):
     all_table = all_table[~all_table["IMDB_ID"].isin(Series(movies_to_exclude))]
     all_table.reset_index(drop=True, inplace=True)
 
+    print all_table.head()
+    print numpy_final
     final = {}
 
     for j in range(0, num_of_rec):
         rec = numpy_final[j]
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         movie.reset_index(drop=True, inplace=True)
-        if(movie.iloc[0]):
-            movie = movie.iloc[0]
+        movie = movie.iloc[0]
         movie["REC_TYPE"] = "GENRE"
         z = movie.to_json()
         final.update({len(final): z})
