@@ -50,11 +50,10 @@ def tag_rec(user_id, num_of_rec):
 
     while (len(final) < num_of_rec) and (safe_iter < 20):
         rec = numpy_final[safe_iter]
-        rec
-        rec[0]
+
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         if len(movie.index):
-            movie
+
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
             movie["REC_TYPE"] = "TAGS"

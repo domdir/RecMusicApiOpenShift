@@ -11,5 +11,4 @@ def test():
 def reset():
     db.drop_all()
     db.create_all()
-    "db erased"
     return jsonify({})

@@ -26,14 +26,12 @@ def get_rec():
     if not for_who:
         return jsonify({})
 
-    rec_request_list
 
     try:
         rec_request_list = rec_request_list.split(",")
     except:
         return jsonify({})
 
-    rec_request_list
     resp = {}
     i = 0
     movie_to_exclude = TrailerSeen.query.filter_by(seen_by=for_who)
@@ -61,7 +59,6 @@ def get_rec():
 
 @mes_core.route('/get_tag_rec', methods=["GET"])
 def get_tag_rec():
-    "get_rec"
 
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
@@ -72,7 +69,6 @@ def get_tag_rec():
 
 @mes_core.route('/get_genre_rec', methods=["GET"])
 def get_genre_rec():
-    "get_rec"
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 
@@ -83,7 +79,6 @@ def get_genre_rec():
 
 @mes_core.route('/get_feature_rec', methods=["GET"])
 def get_feature_rec():
-    "get_rec"
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
 

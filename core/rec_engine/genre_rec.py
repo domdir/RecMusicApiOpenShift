@@ -6,7 +6,6 @@ import numpy
 
 
 def genre_rec(user_id, num_of_rec):
-    "genre rec"
 
     rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0)
 
@@ -47,15 +46,13 @@ def genre_rec(user_id, num_of_rec):
     all_table.reset_index(drop=True, inplace=True)
 
     all_table.head()
-    numpy_final
     final = {}
 
     safe_iter = 0
 
     while (len(final) < num_of_rec) and (safe_iter < 20):
         rec = numpy_final[safe_iter]
-        rec
-        rec[0]
+
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         if len(movie.index):
             movie
