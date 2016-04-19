@@ -169,6 +169,17 @@ feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
 feature_sim.drop("Unnamed: 0", 1, inplace=True)
 
 
+path_feat = os.getcwd() + "/app-root/repo/csv/genre_sim.csv"
+genre_sim = pd.read_csv(path_feat, ",")  # dtype=object)
+genre_sim.drop("Unnamed: 0", 1, inplace=True)
+
+
+path_feat = os.getcwd() + "/app-root/repo/csv/tags_sim.csv"
+tags_sim = pd.read_csv(path_feat, ",")  # dtype=object)
+tags_sim.drop("Unnamed: 0", 1, inplace=True)
+
+
+
 
 import routes
 import database_manager
