@@ -53,6 +53,7 @@ def genre_rec(user_id, num_of_rec):
     for j in range(0, num_of_rec):
         rec = numpy_final[j]
         print rec
+        print rec[0]
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
         print movie
         movie.reset_index(drop=True, inplace=True)
