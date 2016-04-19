@@ -57,7 +57,7 @@ def genre_rec(user_id, num_of_rec):
         print rec
         print rec[0]
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
-        if movie:
+        if len(movie.index):
             print movie
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
