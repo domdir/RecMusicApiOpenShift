@@ -50,15 +50,22 @@ def genre_rec(user_id, num_of_rec):
     print numpy_final
     final = {}
 
-    for j in range(0, num_of_rec):
-        rec = numpy_final[j]
+    safe_iter = 0
+
+    while (len(final) < num_of_rec) and (safe_iter < 20):
+        rec = numpy_final[safe_iter]
         print rec
         print rec[0]
         movie = all_table[all_table["IMDB_ID"] == rec[0]].copy()
-        print movie
-        movie.reset_index(drop=True, inplace=True)
-        movie = movie.iloc[0]
-        movie["REC_TYPE"] = "GENRE"
-        z = movie.to_json()
-        final.update({len(final): z})
+        if movie:
+            print movie
+            movie.reset_index(drop=True, inplace=True)
+            movie = movie.iloc[0]
+            movie["REC_TYPE"] = "GENRE"
+            z = movie.to_json()
+            safe_iter += 1
+            final.update({len(final): z})
+        else:
+            safe_iter+=1
+
     return final
