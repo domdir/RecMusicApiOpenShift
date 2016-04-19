@@ -54,6 +54,8 @@ def feature_rec(table_to_use, user_id):
     for j in range(0,4):
         rec=numpy_final[j]
         movie=all_table[all_table["IMDB_ID"]==rec[0]]
+        movie = table_to_use.iloc[j]
+        movie["REC_TYPE"] = "FEATURES"
         z=movie.to_json()
         final.update({len(final):z})
     print final
