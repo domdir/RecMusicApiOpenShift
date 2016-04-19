@@ -51,7 +51,6 @@ def movies_rated_by():
 
 @mes_core.route('/get_ini_movies', methods=['GET'])
 def get_ini_movies():
-    "get_ini_movies"
     num_of_movies = request.args.get('num_of_movies')
     genre = request.args.get('genre')
     years = request.args.get('years')
@@ -66,52 +65,37 @@ def get_ini_movies():
         num_of_movies = int(num_of_movies)
 
     tmp_table = get_table_by_genre(genre)()
-    len(tmp_table.index)
 
-    "LEN EXCEPT MOVIES"
-    len(except_movies)
 
     if not len(except_movies):
-        "NOT LENGTH"
         movie_to_exclude = None
     else:
-        "LENGTH"
         movie_to_exclude = except_movies.split(",")
 
-    movie_to_exclude
-
     if movie_to_exclude:
-        "MOVIE TO EXLUdeE"
-        len(tmp_table.index)
         tmp_table = tmp_table[~tmp_table["IMDB_ID"].isin(Series(movie_to_exclude))]
         tmp_table.reset_index(drop=True, inplace=True)
-        len(tmp_table.index)
 
     try:
-        "try"
         int(years)
     except:
-        "except"
         years = None
 
     if years:
-        "years"
         years_complete = []
         for i in range(0, 10):
             years_complete.append(int(years) + i)
         years_series = Series(years_complete)
-        years_series
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
-    len(tmp_table.index)
 
     movies_selected = {}
     tmp = []
     safe_iter = 0
-    len(tmp_table.index)
 
     if len(tmp_table):
         while (len(movies_selected) <= num_of_movies - 1) and (safe_iter < 20):
+            print safe_iter
             if len(tmp_table.index) < 200:
                 j = random.randrange(1, len(tmp_table.index))
             else:
@@ -175,11 +159,6 @@ def get_movies():
     f4_c = feature_converter.get(f4)
     f6_c = feature_converter.get(f6)
 
-    "f1 " + str(f1_c)
-    "f2 " + str(f2_c)
-    "f4 " + str(f4_c)
-    "f6 " + str(f6_c)
-
     # filter by genre
     if genre in genres_list:
         tmp_table = get_table_by_genre(genre)()
@@ -190,24 +169,19 @@ def get_movies():
     if not years:
         return jsonify({})
 
-    years_split = years.split(",")
-
     # filter by years
 
     try:
-        "try"
         int(years)
     except:
-        "except"
+
         years = None
 
     if years:
-        "years"
         years_complete = []
         for i in range(0, 10):
             years_complete.append(int(years) + i)
         years_series = Series(years_complete)
-        years_series
         tmp_table = tmp_table[tmp_table['YEAR'].isin(years_series)]
         tmp_table.reset_index(drop=True, inplace=True)
     len(tmp_table.index)
@@ -243,10 +217,7 @@ def get_movies():
     rated_by_user_imdbid = []
 
     for rate in rated_by_user:
-        rate
         rated_by_user_imdbid.append(rate.imdb_id)
-
-    rated_by_user_imdbid
 
     # "LEN!!!"
     # len(movies_selected.index)

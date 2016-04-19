@@ -31,11 +31,6 @@ def save_genres_liked():
     except:
         genre_3 = "NONE"
 
-    genre_0
-    genre_1
-    genre_2
-    genre_3
-
     genres = UserFavoriteGenre(json_data["user_id"], genre_0,
                                genre_1, genre_2, genre_3)
     db.session.add(genres)
