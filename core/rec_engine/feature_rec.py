@@ -58,6 +58,7 @@ def feature_rec(user_id,num_of_rec):
         if len(movie.index):
             movie.reset_index(drop=True, inplace=True)
             movie = movie.iloc[0]
+            print rec
             movie["REC_TYPE"] = "FEATURE"
             movie["PREDICTED_VOTE"]=rec[1]
 
