@@ -7,8 +7,8 @@ def test():
     return jsonify({})
 
 
-@mes_core.route('/reset', methods=["GET"])
-def reset():
-    db.drop_all()
-    db.create_all()
-    return jsonify({})
+#@mes_core.route('/reset', methods=["GET"])
+#def reset():
+#    db.drop_all()
+#    db.create_all()
+#    return jsonify({})
