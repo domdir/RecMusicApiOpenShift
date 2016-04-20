@@ -32,6 +32,9 @@ def tag_rec(user_id, num_of_rec):
         else:
             final_v = num / den
 
+        if not final_v:
+            final_v = 3
+
         final_array.append((row[1], final_v, row[2]))
 
     dtype = [('IMDB_ID', 'S10'), ('PREDICTED_VOTE', float), ('IMDB_VOTES', int)]

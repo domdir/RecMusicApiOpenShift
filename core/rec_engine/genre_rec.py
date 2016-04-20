@@ -28,10 +28,13 @@ def genre_rec(user_id, num_of_rec):
             if rated_imdb.get(imdb, None):
                 num += float(rated_imdb.get(imdb)) * float(imdb_sim[1])
                 den += float(imdb_sim[1])
-        if den == 0:
-            final_v = 0
-        else:
+        try:
             final_v = num / den
+        except:
+            final_v = 0
+
+        if not final_v:
+            final_v=3
 
         final_array.append((row[1], final_v, row[2]))
 
