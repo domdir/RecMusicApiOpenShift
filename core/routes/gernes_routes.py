@@ -9,7 +9,6 @@ from core.database_manager import db
 def save_genres_liked():
     "save_genres_liked"
     json_data = request.get_json(force=True)
-    json_data
 
     try:
         genre_0 = json_data["genres_liked"][0]

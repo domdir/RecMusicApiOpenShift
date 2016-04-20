@@ -5,7 +5,6 @@ from pandas import Series
 import numpy
 
 def tag_rec(user_id, num_of_rec):
-    "tag rec"
     rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0)
 
     rated_imdb = {}
@@ -17,6 +16,7 @@ def tag_rec(user_id, num_of_rec):
     final_array = []
     i = 0
     for row in tags_sim.itertuples():
+        print "TAG INSIDE"
         num = 0
         den = 0
         i += 1
@@ -33,7 +33,7 @@ def tag_rec(user_id, num_of_rec):
             final_v = num / den
 
         if not final_v:
-            final_v = 3
+            final_v = 0
 
         final_array.append((row[1], final_v, row[2]))
 

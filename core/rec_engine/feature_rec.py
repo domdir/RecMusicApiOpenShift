@@ -20,6 +20,8 @@ def feature_rec(user_id,num_of_rec):
     final_array = []
     i = 0
     for row in feature_sim.itertuples():
+        print "FEATURE INSIDE"
+
         num = 0
         den = 0
         i += 1
@@ -36,7 +38,7 @@ def feature_rec(user_id,num_of_rec):
             final_v = num / den
 
         if not final_v:
-            final_v = 3
+            final_v = 0
 
         final_array.append((row[1], final_v, row[2]))
 
