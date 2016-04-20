@@ -16,9 +16,8 @@ def tag_rec(user_id, num_of_rec):
     final_array = []
     i = 0
     for row in tags_sim.itertuples():
-        print "TAG INSIDE"
-        num = 0
-        den = 0
+        num = float(0)
+        den = float(0)
         i += 1
         neigh_splitted = row[3].split(",")
         for j in neigh_splitted:
@@ -27,13 +26,13 @@ def tag_rec(user_id, num_of_rec):
             if rated_imdb.get(imdb, None):
                 num += float(rated_imdb.get(imdb)) * float(imdb_sim[1])
                 den += float(imdb_sim[1])
-        if den == 0:
-            final_v = 0
+        if den == float(0):
+            final_v = float(0)
         else:
-            final_v = num / den
+            final_v = float(num / den)
 
         if not final_v:
-            final_v = 0
+            final_v = float(0)
 
         final_array.append((row[1], final_v, row[2]))
 
