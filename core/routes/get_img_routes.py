@@ -8,4 +8,4 @@ def get_img():
     imdb_id = request.args.get('imdb_id')
     print imdb_id
     print os.getcwd() + "/app-root/repo/images/" + imdb_id+'.jpg'
-    return send_file(os.getcwd()+"/app-root/repo/images/"+"tt0115907.jpg")
+    return send_file(os.getcwd()+"/app-root/repo/images/"+ imdb_id+'.jpg')
