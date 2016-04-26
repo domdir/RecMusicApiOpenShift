@@ -7,7 +7,6 @@ from core.database_manager import db
 
 @mes_core.route('/save_genres_liked', methods=['POST'])
 def save_genres_liked():
-    "save_genres_liked"
     json_data = request.get_json(force=True)
 
     try:
