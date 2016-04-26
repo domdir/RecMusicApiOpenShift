@@ -5,3 +5,4 @@ import gernes_routes
 import rec_routes
 import test_routes
 import qustionnaire_routes
+import get_img_routes
