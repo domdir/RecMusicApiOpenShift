@@ -41,7 +41,7 @@ def genre_rec(user_id, num_of_rec):
     dtype = [('IMDB_ID', 'S10'), ('PREDICTED_VOTE', float), ('IMDB_VOTES', int)]
 
     numpy_final = numpy.array(final_array, dtype=dtype)
-    numpy_final = numpy.sort(numpy_final, order=['PREDICTED_VOTE', "IMDB_VOTES"])
+    numpy_final = numpy.sort(numpy_final, order=['PREDICTED_VOTE'])
     numpy_final = numpy_final[::-1]
 
     all_table = get_table("all_table")()

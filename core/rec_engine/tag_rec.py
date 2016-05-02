@@ -39,17 +39,19 @@ def tag_rec(user_id, num_of_rec):
     dtype = [('IMDB_ID', 'S10'), ('PREDICTED_VOTE', float), ('IMDB_VOTES', int)]
 
     numpy_final = numpy.array(final_array, dtype=dtype)
-    numpy_final = numpy.sort(numpy_final, order=['PREDICTED_VOTE', "IMDB_VOTES"])
+    numpy_final = numpy.sort(numpy_final, order=['PREDICTED_VOTE'])
     numpy_final = numpy_final[::-1]
 
     all_table = get_table("all_table")()
     all_table = all_table[~all_table["IMDB_ID"].isin(Series(movies_to_exclude))]
     all_table.reset_index(drop=True, inplace=True)
 
+
     final = {}
 
     safe_iter = 0
 
+    print len()
     while (len(final) < num_of_rec) and (safe_iter < 20):
         rec = numpy_final[safe_iter]
 
