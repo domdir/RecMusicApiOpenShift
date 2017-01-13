@@ -19,6 +19,6 @@ from core import mes_core as application
 #
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
-    httpd = make_server('localhost', 8052, application)
+    httpd = make_server('', 8052, application)
     # Wait for a single request, serve it and quit.
     httpd.serve_forever()
