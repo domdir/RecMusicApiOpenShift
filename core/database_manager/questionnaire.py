@@ -19,7 +19,6 @@ class Questionnaire(db.Model):
     question_12 = db.Column(db.String(10))
     question_13 = db.Column(db.String(10))
     question_14 = db.Column(db.String(10))
-    question_15 = db.Column(db.String(10))
 
     def __init__(self, rated_by,
                  question_1,
@@ -35,8 +34,7 @@ class Questionnaire(db.Model):
                  question_11,
                  question_12,
                  question_13,
-                 question_14,
-                 question_15,):
+                 question_14,):
 
         self.user_id = rated_by
         self.question_1 = question_1
@@ -53,4 +51,3 @@ class Questionnaire(db.Model):
         self.question_12 = question_12
         self.question_13 = question_13
         self.question_14 = question_14
-        self.question_15 = question_15
