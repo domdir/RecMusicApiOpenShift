@@ -51,7 +51,7 @@ def tag_rec(user_id, num_of_rec):
 
     safe_iter = 0
 
-    print len()
+    print len(final)
     while (len(final) < num_of_rec) and (safe_iter < 20):
         rec = numpy_final[safe_iter]
 

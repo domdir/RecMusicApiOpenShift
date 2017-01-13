@@ -13,7 +13,7 @@ import os
 mes_core = Flask(__name__)
 mes_core.config['PROPAGATE_EXCEPTIONS'] = True
 
-path = os.getcwd() + "/app-root/repo/csv/movie_info_reduced_with_genre.csv"
+path = os.getcwd() + "/csv/movie_info_reduced_with_genre.csv"
 movie_table_all = pd.read_csv(path, ",")  # dtype=object)
 
 movie_table_all.drop("Unnamed: 0", 1, inplace=True)
@@ -44,7 +44,7 @@ movie_table_all_ordered = movie_table_all[col_to_keep].sort_values(by=["IMDB_VOT
 
 empty_df = movie_table_all[movie_table_all["IMDB_ID"] == "kkkkkkkkk"][col_to_keep]
 
-# path = os.getcwd()+ "/app-root/repo/csv/movie_info_reduced.csv"
+# path = os.getcwd()+ "/csv/movie_info_reduced.csv"
 # movie_table_sorted_by_pop = movie_table.sort_values(by=["IMDB_VOTES"], ascending=[0]).copy()
 
 
@@ -162,15 +162,15 @@ def get_table(table):
 """
 Feature
 """
-path_feat = os.getcwd() + "/app-root/repo/csv/feature_sim.csv"
+path_feat = os.getcwd() + "/csv/feature_sim.csv"
 feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
 feature_sim.drop("Unnamed: 0", 1, inplace=True)
 
-path_genre = os.getcwd() + "/app-root/repo/csv/genre_sim.csv"
+path_genre = os.getcwd() + "/csv/genre_sim.csv"
 genre_sim = pd.read_csv(path_genre, ",")  # dtype=object)
 genre_sim.drop("Unnamed: 0", 1, inplace=True)
 
-path_tags = os.getcwd() + "/app-root/repo/csv/tags_sim.csv"
+path_tags = os.getcwd() + "/csv/tags_sim.csv"
 tags_sim = pd.read_csv(path_tags, ",")  # dtype=object)
 tags_sim.drop("Unnamed: 0", 1, inplace=True)
 
