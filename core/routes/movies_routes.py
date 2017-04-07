@@ -40,6 +40,8 @@ def movies_rated_by():
         rate = rate.rate
         all_movie = get_table("all_table")()
         movie = all_movie[all_movie["IMDB_ID"] == imdb_id]
+        print movie
+        print imdb_id
         movie["user_rate"] = rate
         movie.reset_index(drop=True, inplace=True)
         t = movie.iloc[0]
