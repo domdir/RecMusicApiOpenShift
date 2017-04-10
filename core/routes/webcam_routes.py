@@ -18,16 +18,20 @@ def get_json_img():
     
     files = {'refImage': open(os.getcwd()+"/tmp.jpg", "rb")} 
     r = requests.post('http://jolscube.tilab.com/instore/products/query', files=files)
+    # print r
     json_data = json.loads(r.text)
 
-   # print "os.getcwd() " + os.getcwd()
-   # print "os.path.dirname" + os.path.dirname(__file__)
+    # print "os.getcwd() " + os.getcwd()
+    # print "os.path.dirname" + os.path.dirname(__file__)
    
     # Starting from the obtained ID we get the imdb one.
-   # df = pd.read_csv(os.getcwd() + "/csv/movies_info.csv")
-   # print df.columns.values
+    df = pd.read_csv(os.getcwd() + "/csv/movies_info.csv")
+    # print df.columns.values
 
-  #  print("Init translation: "+ json_data) 
+    # print("Init translation: "+ json_data) 
 
-    #print(json_data)
+    print ("json data: ")  
+    print (json_data)
+    print ("jsonify(json_data): ")
+    print jsonify(json_data)
     return jsonify(json_data)
