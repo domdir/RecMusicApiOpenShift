@@ -8,8 +8,8 @@ import os
 import pandas as pd
 from core import mes_core, get_table, get_table_by_genre
 
-@mes_core.route('/get_json_img', methods=['POST'])
-def get_json_img():
+@mes_core.route('/get_json_movie_by_image', methods=['POST'])
+def get_json_movie_by_image():
     image = request.data[30:-1]
     image = base64.decodestring(image)
     with open('tmp.png','wb') as f:
@@ -37,11 +37,27 @@ def get_json_img():
     movie_table_all = pd.read_csv(path, ",")  # dtype=object)
     movie_table_all.drop("Unnamed: 0", 1, inplace=True)
     movieLineServer = movie_table_all[movie_table_all["TITLE"].str.lower() == json_data[0]["name"].lower()][col_to_keep]
-    movieIMDB = movieLineServer["IMDB_ID"].values[0]
-    json_data.append({'IMDB_ID':movieIMDB})
+    # movieIMDB = movieLineServer["IMDB_ID"].values[0]
+    # json_data.append({'IMDB_ID':movieIMDB})
+    
+    movieLineServer = movieLineServer.values
+    
+    movieLineServer2 = movieLineServer.reshape((-1,13))
+    df = pd.DataFrame({'IMDB_ID':movieLineServer2.item(0),'TITLE':movieLineServer2.item(1),'GENRES':movieLineServer2.item(2), \
+                       'YEAR':movieLineServer2.item(3),'LENGTH':movieLineServer2.item(4),'POSTER':movieLineServer2.item(5), \
+                       'YOU_TUBE_ID':movieLineServer2.item(6),'IMDB_RATING':movieLineServer2.item(7),'IMDB_VOTES':movieLineServer2.item(8), \
+                       'f1':movieLineServer2.item(9),'f2':movieLineServer2.item(10),'f4':movieLineServer2.item(11),'f6':movieLineServer2.item(12)}, index=[0])
+    
+  
+    df2= df.iloc[0]
 
-    print ("json data: ")  
-    print (json_data)
-    # print ("jsonify(json_data): ")
-    # print jsonify(json_data)
-    return jsonify(json_data)
+    print df2.to_json()
+    print("-----------------------------------------------------------------------------")
+
+ 
+    movieLine = df2.to_json()
+    resp = {}
+    resp.update({len(resp): movieLine})
+
+    return jsonify(resp)
+
