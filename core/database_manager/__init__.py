@@ -11,6 +11,7 @@ db = SQLAlchemy(mes_core)
 from core.database_manager.user_favorite_genres import UserFavoriteGenre
 from core.database_manager.trailer_seen import TrailerSeen
 from core.database_manager.questionnaire import Questionnaire
+from core.database_manager.dem_questionnaire import DemQuestionnaire
 
 if not os.path.isfile(os.getcwd()+'\db\MesProject_OpenShift_DB.db'):
 	db.drop_all()

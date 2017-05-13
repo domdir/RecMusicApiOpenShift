@@ -6,3 +6,4 @@ import test_routes
 import qustionnaire_routes
 import get_img_routes
 import webcam_routes
+import dem_routes
