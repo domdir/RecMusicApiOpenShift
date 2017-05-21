@@ -22,7 +22,21 @@ def save_quest():
                               json_data["questions"][10],
                               json_data["questions"][11],
                               json_data["questions"][12],
-                              json_data["questions"][13])
+                              json_data["questions"][13],
+                              json_data["questions"][14],
+                              json_data["questions"][15],
+                              json_data["questions"][16],
+                              json_data["questions"][17],
+                              json_data["questions"][18],
+                              json_data["questions"][19],
+                              json_data["questions"][20],
+                              json_data["questions"][21],
+                              json_data["questions"][22],
+                              json_data["questions"][23],
+                              json_data["questions"][24],
+                              json_data["questions"][25],
+                              json_data["questions"][26],
+                              json_data["questions"][27])
     db.session.add(questions)
     db.session.commit()
     return jsonify({})
