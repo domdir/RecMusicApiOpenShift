@@ -25,15 +25,16 @@ def get_json_movie_by_image():
     files = {'refImage': open(os.getcwd()+"/tmp.jpg", "rb")} 
     
     #pass throught the classifier
-    clf = joblib.load('svm.pkl')
-    img = cv2.imread('tmp.jpg')
-    res = cv2.resize(img, (250, 250))
-    gray_image = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
-    xarr = np.squeeze(np.array(gray_image).astype(np.float32))
-    m, v = cv2.PCACompute(xarr, mean=np.array([]))
-    arr = np.array(xarr)
-    flat_arr = arr.ravel()
-    y = clf.predict([flat_arr])
+    #clf = joblib.load('svm.pkl')
+    #img = cv2.imread('tmp.jpg')
+    #res = cv2.resize(img, (250, 250))
+    #gray_image = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
+    #xarr = np.squeeze(np.array(gray_image).astype(np.float32))
+    #m, v = cv2.PCACompute(xarr, mean=np.array([]))
+    #arr = np.array(xarr)
+    #flat_arr = arr.ravel()
+    #y = clf.predict([flat_arr])
+    y=1
     if(y==1):
         r = requests.post('http://jolscube.tilab.com/instore/products/query', files=files)
         # print r

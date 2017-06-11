@@ -5,6 +5,9 @@ class Questionnaire(db.Model):
     __tablename__ = 'questionnaire'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(50))
+    list1 = db.Column(db.String(10))
+    list2 = db.Column(db.String(10))
+    list3 = db.Column(db.String(10))
     question_1 = db.Column(db.String(10))
     question_2 = db.Column(db.String(10))
     question_3 = db.Column(db.String(10))
@@ -35,6 +38,9 @@ class Questionnaire(db.Model):
     question_28 = db.Column(db.String(10))
 
     def __init__(self, rated_by,
+                 list1,
+                 list2,
+                 list3,
                  question_1,
                  question_2,
                  question_3,
@@ -65,6 +71,9 @@ class Questionnaire(db.Model):
                  question_28,):
 
         self.user_id = rated_by
+        self.list1=list1
+        self.list2=list2
+        self.list3=list3
         self.question_1 = question_1
         self.question_2 = question_2
         self.question_3 = question_3

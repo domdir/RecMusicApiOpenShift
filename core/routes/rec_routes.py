@@ -85,3 +85,12 @@ def get_feature_rec():
     t = feature_rec.feature_rec(for_who, int(num_of_rec))
 
     return jsonify(t)
+
+@mes_core.route('/get_audio_rec', methods=["GET"])
+def get_audio_rec():
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+
+    t = feature_rec.feature_rec(for_who, int(num_of_rec))
+
+    return jsonify(t)

@@ -9,6 +9,9 @@ def save_quest():
     json_data = request.get_json(force=True)
 
     questions = Questionnaire(json_data["user_id"],
+                              json_data["recs"][0],
+                              json_data["recs"][1],
+                              json_data["recs"][2],
                               json_data["questions"][0],
                               json_data["questions"][1],
                               json_data["questions"][2],
