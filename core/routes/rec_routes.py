@@ -8,6 +8,7 @@ from core.rec_engine import random_rec, rec_types
 from core.rec_engine import tag_rec
 from core.rec_engine import genre_rec
 from core.rec_engine import feature_rec
+from core.rec_engine import audio_rec
 
 rec_router = {
     0: random_rec.random_rec,
@@ -90,7 +91,6 @@ def get_feature_rec():
 def get_audio_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
-
-    t = feature_rec.feature_rec(for_who, int(num_of_rec))
+    t = audio_rec.audio_rec(for_who, int(num_of_rec))
 
     return jsonify(t)

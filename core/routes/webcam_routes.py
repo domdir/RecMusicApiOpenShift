@@ -7,11 +7,11 @@ import base64
 import os 
 import numpy as np
 import cv2
-from sklearn import svm
+#from sklearn import svm
 import pandas as pd
 from core import mes_core, get_table, get_table_by_genre
-from sklearn.externals import joblib
-from matplotlib import pyplot as plt
+#from sklearn.externals import joblib
+#from matplotlib import pyplot as plt
 
 @mes_core.route('/get_json_movie_by_image', methods=['POST'])
 def get_json_movie_by_image():
