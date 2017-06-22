@@ -8,6 +8,13 @@ class Questionnaire(db.Model):
     list1 = db.Column(db.String(10))
     list2 = db.Column(db.String(10))
     list3 = db.Column(db.String(10))
+    timestamp1= db.Column(db.String(20))
+    timestamp2= db.Column(db.String(20))
+    timestamp3= db.Column(db.String(20))
+    timestamp4= db.Column(db.String(20))
+    timestamp5= db.Column(db.String(20))
+    timestamp6= db.Column(db.String(20))
+    timestamp7= db.Column(db.String(20))
     question_1 = db.Column(db.String(10))
     question_2 = db.Column(db.String(10))
     question_3 = db.Column(db.String(10))
@@ -41,6 +48,13 @@ class Questionnaire(db.Model):
                  list1,
                  list2,
                  list3,
+                 timestamp1,
+                 timestamp2,
+                 timestamp3,
+                 timestamp4,
+                 timestamp5,
+                 timestamp6,
+                 timestamp7,
                  question_1,
                  question_2,
                  question_3,
@@ -74,6 +88,13 @@ class Questionnaire(db.Model):
         self.list1=list1
         self.list2=list2
         self.list3=list3
+        self.timestamp1=timestamp1
+        self.timestamp2=timestamp2
+        self.timestamp3=timestamp3
+        self.timestamp4=timestamp4
+        self.timestamp5=timestamp5
+        self.timestamp6=timestamp6
+        self.timestamp7=timestamp7
         self.question_1 = question_1
         self.question_2 = question_2
         self.question_3 = question_3

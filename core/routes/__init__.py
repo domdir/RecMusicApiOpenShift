@@ -8,3 +8,4 @@ import get_img_routes
 import webcam_routes
 import dem_routes
 import personality_routes
+import load_page_routes

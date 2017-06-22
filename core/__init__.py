@@ -162,6 +162,10 @@ def get_table(table):
 """
 Feature
 """
+path_audio = os.getcwd() + "/csv/audio_sim.csv"
+audio_sim = pd.read_csv(path_audio, ",")  # dtype=object)
+audio_sim.drop("Unnamed: 0", 1, inplace=True)
+
 path_feat = os.getcwd() + "/csv/feature_sim.csv"
 feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
 feature_sim.drop("Unnamed: 0", 1, inplace=True)

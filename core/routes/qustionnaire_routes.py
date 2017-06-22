@@ -7,11 +7,18 @@ from core import mes_core
 @mes_core.route('/save_quest',methods=["POST"])
 def save_quest():
     json_data = request.get_json(force=True)
-
+    print(json_data["timestamps"])
     questions = Questionnaire(json_data["user_id"],
                               json_data["recs"][0],
                               json_data["recs"][1],
                               json_data["recs"][2],
+                              json_data["timestamps"][0],
+                              json_data["timestamps"][1],
+                              json_data["timestamps"][2],
+                              json_data["timestamps"][3],
+                              json_data["timestamps"][4],
+                              json_data["timestamps"][5],
+                              json_data["timestamps"][6],
                               json_data["questions"][0],
                               json_data["questions"][1],
                               json_data["questions"][2],
