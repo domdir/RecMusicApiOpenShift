@@ -13,7 +13,7 @@ except IOError:
 #
 
 from core import mes_core as application
-
+print("CIAO")
 #
 # Below for testing only
 #
