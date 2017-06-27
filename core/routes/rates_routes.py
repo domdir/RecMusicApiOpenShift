@@ -15,7 +15,9 @@ def save_rec_rate():
                        json_data["seen_by"],
                        json_data["imdb_id"],
                        json_data["rate"],
-                       is_skipped, json_data["time_watched"],
+                       is_skipped,
+                       json_data["reported"],
+                       json_data["time_watched"],
                        json_data["predicted_rate"],
                        json_data["rec_type"])
 
