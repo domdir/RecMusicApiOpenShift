@@ -8,10 +8,10 @@ import numpy
 
 def feature_rec(user_id,num_of_rec):
     rated_by_user = trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id, is_skipped=0)
-
+    movies_seen=trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id)
     rated_imdb = {}
     movies_to_exclude = []
-    for r in rated_by_user:
+    for r in movies_seen:
         rated_imdb.update({r.imdb_id: r.rate})
         movies_to_exclude.append(r.imdb_id)
 
