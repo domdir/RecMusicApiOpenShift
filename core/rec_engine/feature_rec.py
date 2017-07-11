@@ -11,8 +11,9 @@ def feature_rec(user_id,num_of_rec):
     movies_seen=trailer_seen.TrailerSeen.query.filter_by(seen_by=user_id)
     rated_imdb = {}
     movies_to_exclude = []
-    for r in movies_seen:
+    for r in rated_by_user:
         rated_imdb.update({r.imdb_id: r.rate})
+    for r in movies_seen:
         movies_to_exclude.append(r.imdb_id)
 
     final_array = []
