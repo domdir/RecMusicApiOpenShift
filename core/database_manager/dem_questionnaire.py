@@ -6,7 +6,7 @@ class DemQuestionnaire(db.Model):
     __tablename__ = 'dem_questionnaire'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(50))
-    dateOfBirth = db.Column(db.String(10))
+    age = db.Column(db.String(10))
     gender = db.Column(db.String(10))
     nationality = db.Column(db.String(60))
     question1_1 = db.Column(db.String(10))
@@ -29,7 +29,7 @@ class DemQuestionnaire(db.Model):
     
 
     def __init__(self, user_id,
-                 dateOfBirth,
+                 age,
     gender,
     nationality,
     question1_1,
@@ -52,7 +52,7 @@ class DemQuestionnaire(db.Model):
     ):
 
         self.user_id = user_id
-        self.dateOfBirth = dateOfBirth
+        self.age = age
         self.gender = gender
         self.nationality = nationality
         self.question1_1 = question1_1

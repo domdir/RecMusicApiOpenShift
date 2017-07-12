@@ -9,7 +9,7 @@ def save_dem_quest():
     json_data = request.get_json(force=True)
 
     questions = DemQuestionnaire(json_data["user_id"],
-                              json_data["questions"]["dateOfBirth"],
+                              json_data["questions"]["age"],
                               json_data["questions"]["gender"],
                               json_data["questions"]["nationality"],
                               json_data["questions"]["question1"][0],
