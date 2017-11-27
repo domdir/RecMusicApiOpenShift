@@ -162,21 +162,29 @@ def get_table(table):
 """
 Feature
 """
-path_audio = os.getcwd() + "/csv/audio_sim.csv"
-audio_sim = pd.read_csv(path_audio, ",")  # dtype=object)
-audio_sim.drop("Unnamed: 0", 1, inplace=True)
-
-path_feat = os.getcwd() + "/csv/feature_sim.csv"
-feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
-feature_sim.drop("Unnamed: 0", 1, inplace=True)
-
-path_genre = os.getcwd() + "/csv/genre_sim.csv"
-genre_sim = pd.read_csv(path_genre, ",")  # dtype=object)
-genre_sim.drop("Unnamed: 0", 1, inplace=True)
+#path_audio = os.getcwd() + "/csv/audio_sim.csv"
+#audio_sim = pd.read_csv(path_audio, ",")  # dtype=object)
+#audio_sim.drop("Unnamed: 0", 1, inplace=True)
+#
+#path_feat = os.getcwd() + "/csv/feature_sim.csv"
+#feature_sim = pd.read_csv(path_feat, ",")  # dtype=object)
+#feature_sim.drop("Unnamed: 0", 1, inplace=True)
+#
+#path_genre = os.getcwd() + "/csv/genre_sim.csv"
+#genre_sim = pd.read_csv(path_genre, ",")  # dtype=object)
+#genre_sim.drop("Unnamed: 0", 1, inplace=True)
 
 path_tags = os.getcwd() + "/csv/tags_sim.csv"
 tags_sim = pd.read_csv(path_tags, ",")  # dtype=object)
 tags_sim.drop("Unnamed: 0", 1, inplace=True)
+
+path_audio_ivec = os.getcwd() + "/csv/audio_ivec_sim.csv"
+audio_ivec_sim = pd.read_csv(path_audio_ivec, ",") # dtype = object)
+audio_ivec_sim.drop("Unnamed: 0", 1, inplace=True)
+
+path_audio_blf = os.getcwd() + "/csv/audio_blf_sim.csv"
+audio_blf_sim = pd.read_csv(path_audio_blf, ",") # dtype = object)
+audio_blf_sim.drop("Unnamed: 0", 1, inplace=True)
 
 import routes
 import database_manager

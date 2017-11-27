@@ -6,15 +6,17 @@ from core.database_manager import TrailerSeen
 from core.rec_engine import random_rec, rec_types
 
 from core.rec_engine import tag_rec
-from core.rec_engine import genre_rec
-from core.rec_engine import feature_rec
-from core.rec_engine import audio_rec
+from core.rec_engine import audio_ivec_rec
+from core.rec_engine import audio_blf_rec
+#from core.rec_engine import genre_rec
+#from core.rec_engine import feature_rec
+#from core.rec_engine import audio_rec
+#from core.rec_engine import foo_rec
 
 rec_router = {
-    0: random_rec.random_rec,
-    2: genre_rec.genre_rec,
-    3: tag_rec.tag_rec,
-    4: feature_rec.feature_rec
+    0: tag_rec.tag_rec,
+    1: audio_ivec_rec.audio_ivec_rec,
+    2: audio_blf_rec.audio_blf_rec
 }
 
 
@@ -67,30 +69,48 @@ def get_tag_rec():
 
     return jsonify(t)
 
+@mes_core.route('/get_audio_ivec_rec', methods=["GET"])
+def get_audio_ivec_rec():
 
-@mes_core.route('/get_genre_rec', methods=["GET"])
-def get_genre_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
+    t = audio_ivec_rec.audio_ivec_rec(for_who, int(num_of_rec))
 
-    t = genre_rec.genre_rec(for_who, int(num_of_rec))
+    return jsonify(t)
+
+@mes_core.route('/get_audio_blf_rec', methods=["GET"])
+def get_audio_blf_rec():
+
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+    t = audio_blf_rec.audio_blf_rec(for_who, int(num_of_rec))
 
     return jsonify(t)
 
 
-@mes_core.route('/get_feature_rec', methods=["GET"])
-def get_feature_rec():
-    num_of_rec = request.args.get('num_of_rec')
-    for_who = request.args.get('for_who')
-
-    t = feature_rec.feature_rec(for_who, int(num_of_rec))
-
-    return jsonify(t)
-
-@mes_core.route('/get_audio_rec', methods=["GET"])
-def get_audio_rec():
-    num_of_rec = request.args.get('num_of_rec')
-    for_who = request.args.get('for_who')
-    t = audio_rec.audio_rec(for_who, int(num_of_rec))
-
-    return jsonify(t)
+#@mes_core.route('/get_genre_rec', methods=["GET"])
+#def get_genre_rec():
+#    num_of_rec = request.args.get('num_of_rec')
+#    for_who = request.args.get('for_who')
+#
+#    t = genre_rec.genre_rec(for_who, int(num_of_rec))
+#
+#    return jsonify(t)
+#
+#
+#@mes_core.route('/get_feature_rec', methods=["GET"])
+#def get_feature_rec():
+#    num_of_rec = request.args.get('num_of_rec')
+#    for_who = request.args.get('for_who')
+#
+#    t = feature_rec.feature_rec(for_who, int(num_of_rec))
+#
+#    return jsonify(t)
+#
+#@mes_core.route('/get_audio_rec', methods=["GET"])
+#def get_audio_rec():
+#    num_of_rec = request.args.get('num_of_rec')
+#    for_who = request.args.get('for_who')
+#    t = audio_rec.audio_rec(for_who, int(num_of_rec))
+#
+#    return jsonify(t)
