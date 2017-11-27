@@ -42,7 +42,7 @@ def movies_rated_by():
         movie = all_movie[all_movie["IMDB_ID"] == imdb_id]
         print movie
         print imdb_id
-        movie["user_rate"] = rate
+        movie.loc["user_rate"] = rate
         movie.reset_index(drop=True, inplace=True)
         t = movie.iloc[0]
         m_j = t.to_json()

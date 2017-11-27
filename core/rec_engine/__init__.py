@@ -1,8 +1,6 @@
 
 rec_types = {
-    "RANDOM": 0,
-    "TOP_POP": 1,
-    "GENRE": 2,
-    "FEATURE": 3,
-    "TAG": 4
+    "TAG": 0,
+    "AUDIO_IVEC": 1,
+    "AUDIO_BLF": 2
 }
