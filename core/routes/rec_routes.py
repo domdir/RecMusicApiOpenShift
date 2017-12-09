@@ -11,11 +11,16 @@ from core.rec_engine import audio_blf_rec
 from core.rec_engine import genre_rec
 from core.rec_engine import feature_rec
 from core.rec_engine import audio_rec
+from core.rec_engine import video_avf_rec
+from core.rec_engine import video_deep_rec
 
 rec_router = {
     0: tag_rec.tag_rec,
-    1: audio_ivec_rec.audio_ivec_rec,
-    2: audio_blf_rec.audio_blf_rec
+    1: genre_rec.genre_rec,
+    2: audio_ivec_rec.audio_ivec_rec,
+    3: audio_blf_rec.audio_blf_rec,
+    4: video_avf_rec.video_avf_rec,
+    5: video_deep_rec.video_deep_rec
 }
 
 
@@ -113,5 +118,21 @@ def get_audio_rec():
     num_of_rec = request.args.get('num_of_rec')
     for_who = request.args.get('for_who')
     t = audio_rec.audio_rec(for_who, int(num_of_rec))
+
+    return jsonify(t)
+
+@mes_core.route('/get_video_avf_rec', methods=["GET"])
+def get_video_avf_rec():
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+    t = video_avf_rec.video_avf_rec(for_who, int(num_of_rec))
+
+    return jsonify(t)
+
+@mes_core.route('/get_video_deep_rec', methods=["GET"])
+def get_video_deep_rec():
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+    t = video_deep_rec.video_deep_rec(for_who, int(num_of_rec))
 
     return jsonify(t)

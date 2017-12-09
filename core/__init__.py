@@ -186,5 +186,13 @@ path_audio_blf = os.getcwd() + "/csv/audio_blf_sim.csv"
 audio_blf_sim = pd.read_csv(path_audio_blf, ",") # dtype = object)
 audio_blf_sim.drop("Unnamed: 0", 1, inplace=True)
 
+path_video_avf = os.getcwd() + "/csv/video_avf_sim.csv"
+video_avf_sim = pd.read_csv(path_video_avf, ",") # dtype = object)
+video_avf_sim.drop("Unnamed: 0", 1, inplace=True)
+
+path_video_deep = os.getcwd() + "/csv/video_deep_sim.csv"
+video_deep_sim = pd.read_csv(path_video_deep, ",") # dtype = object)
+video_deep_sim.drop("Unnamed: 0", 1, inplace=True)
+
 import routes
 import database_manager
