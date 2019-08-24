@@ -16,7 +16,18 @@ class Personality(db.Model):
     Calm_EmSt = db.Column(db.String(10))
     Conv_Uncr = db.Column(db.String(10))
 
-    def __init__(self, rated_by,
+    def TIPI_TO_OCEAN(self):
+        return [
+            (self.OTNE_Comp + self.Conv_Uncr) / 2,
+            (self.Depe_SeDi + self.Diso_Care) / 2,
+            (self.Extr_Enth + self.Rese_Quie) / 2,
+            (self.Crit_Quar + self.Symp_Warm) / 2,
+            (self.Anxi_EaUp + self.Calm_EmSt) / 2
+        ]
+
+    def __init__(self,
+                 user_id,
+                 rated_by,
                  Extr_Enth,
                  Crit_Quar,
                  Depe_SeDi,
@@ -29,7 +40,8 @@ class Personality(db.Model):
                  Conv_Uncr,
                 ):
 
-        self.user_id = rated_by
+        self.user_id = user_id
+        self.rated_by = rated_by
         self.Extr_Enth = Extr_Enth
         self.Crit_Quar = Crit_Quar
         self.Depe_SeDi = Depe_SeDi
