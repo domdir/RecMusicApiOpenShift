@@ -2,6 +2,7 @@ import random
 from core import audio_ivec_sim
 from core.database_manager import trailer_seen, personality
 from core import get_table
+from core import movie_pers
 from pandas import Series
 import numpy
 import operator
@@ -14,7 +15,7 @@ def pers_rec(user_id,num_of_rec,num_of_skip,pers_type):
     for r in movies_seen:
         movies_to_exclude.append(r.imdb_id)
 
-    pers_user = personality.Personality.query.get(user_id).TIPI_TO_OCEAN()
+    pers_user = personality.Personality.query.filter_by(user_id=user_id).first().TIPI_TO_OCEAN()
     final_array = []
 
     if pers_type == "users":
@@ -25,17 +26,14 @@ def pers_rec(user_id,num_of_rec,num_of_skip,pers_type):
             movies_seen=trailer_seen.TrailerSeen.query.filter_by(seen_by=pers_other.user_id, is_skipped=0)
             for r in movies_seen:
                 # problem when multiple users rated the same movie, it should prob aggregate the score
-                final_array.append((r.imdb_id, float((1/d) * r.rate), r.rate))
+                final_array.append((r.imdb_id, float((1/d) * float(r.rate)), r.rate))
     else:
         # TODO use real data source
         pers_others = {}
 
-        # for other_id, pers_other in pers_others:
-        #     d = get_distance(pers_user, pers_other)
-        #     movies_seen=trailer_seen.TrailerSeen.query.filter_by(seen_by=other_id, is_skipped=0)
-        #     for r in movies_seen:
-        #         # problem when multiple users rated the same movie, it should prob aggregate the score
-        #         final_array.append((r.imdb_id, float((1/d) * r.rate), r.rate))
+        for row in movie_pers.itertuples():
+            d = get_distance(pers_user, [row.openness, row.conscientiousness, row.extraversion, row.agreeableness, row.emotional_range])
+            final_array.append((row.IMDB_ID, 1/d, d))
 
     dtype = [('IMDB_ID', 'S10'), ('PREDICTED_VOTE', float), ('IMDB_VOTES', int)]
 

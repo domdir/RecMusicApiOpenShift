@@ -18,11 +18,11 @@ class Personality(db.Model):
 
     def TIPI_TO_OCEAN(self):
         return [
-            (self.OTNE_Comp + self.Conv_Uncr) / 2,
-            (self.Depe_SeDi + self.Diso_Care) / 2,
-            (self.Extr_Enth + self.Rese_Quie) / 2,
-            (self.Crit_Quar + self.Symp_Warm) / 2,
-            (self.Anxi_EaUp + self.Calm_EmSt) / 2
+            (float(self.OTNE_Comp) + float(self.Conv_Uncr)) / float(2),
+            (float(self.Depe_SeDi) + float(self.Diso_Care)) / float(2),
+            (float(self.Extr_Enth) + float(self.Rese_Quie)) / float(2),
+            (float(self.Crit_Quar) + float(self.Symp_Warm)) / float(2),
+            (float(self.Anxi_EaUp) + float(self.Calm_EmSt)) / float(2)
         ]
 
     def __init__(self,

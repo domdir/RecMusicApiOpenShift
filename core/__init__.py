@@ -194,5 +194,9 @@ path_video_deep = os.getcwd() + "/csv/video_deep_sim.csv"
 video_deep_sim = pd.read_csv(path_video_deep, ",") # dtype = object)
 video_deep_sim.drop("Unnamed: 0", 1, inplace=True)
 
+path_movie_pers = os.getcwd() + "/csv/movies_info_ir_is_ws.csv"
+movie_pers = pd.read_csv(path_movie_pers, ",") # dtype = object)
+movie_pers.drop("Unnamed: 0", 1, inplace=True)
+
 import routes
 import database_manager
