@@ -27,7 +27,6 @@ class Personality(db.Model):
 
     def __init__(self,
                  user_id,
-                 rated_by,
                  Extr_Enth,
                  Crit_Quar,
                  Depe_SeDi,
@@ -41,7 +40,6 @@ class Personality(db.Model):
                 ):
 
         self.user_id = user_id
-        self.rated_by = rated_by
         self.Extr_Enth = Extr_Enth
         self.Crit_Quar = Crit_Quar
         self.Depe_SeDi = Depe_SeDi

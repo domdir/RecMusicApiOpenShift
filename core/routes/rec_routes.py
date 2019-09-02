@@ -14,6 +14,7 @@ from core.rec_engine import audio_rec
 from core.rec_engine import video_avf_rec
 from core.rec_engine import video_deep_rec
 from core.rec_engine import pers_rec
+from core.rec_engine import merged_rec
 
 rec_router = {
     0: tag_rec.tag_rec,
@@ -146,5 +147,13 @@ def get_pers_rec():
     for_who = request.args.get('for_who')
     pers_type = request.args.get('type')
     t = pers_rec.pers_rec(for_who, int(num_of_rec), int(num_of_skip), pers_type)
+
+    return jsonify(t)
+
+@mes_core.route('/get_merged_rec', methods=["GET"])
+def get_merged_rec():
+    num_of_rec = request.args.get('num_of_rec')
+    for_who = request.args.get('for_who')
+    t = merged_rec.merged_rec(for_who, int(num_of_rec))
 
     return jsonify(t)

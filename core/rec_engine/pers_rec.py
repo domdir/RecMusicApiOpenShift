@@ -28,9 +28,6 @@ def pers_rec(user_id,num_of_rec,num_of_skip,pers_type):
                 # problem when multiple users rated the same movie, it should prob aggregate the score
                 final_array.append((r.imdb_id, float((1/d) * float(r.rate)), r.rate))
     else:
-        # TODO use real data source
-        pers_others = {}
-
         for row in movie_pers.itertuples():
             d = get_distance(pers_user, [row.openness, row.conscientiousness, row.extraversion, row.agreeableness, row.emotional_range])
             final_array.append((row.IMDB_ID, 1/d, d))

@@ -58,7 +58,7 @@ def get_ini_movies():
     years = request.args.get('years')
     except_movies = request.args.get('except_movies')
 
-    if not genre or not years:
+    if not genre:
         return jsonify({})
 
     if not num_of_movies:
@@ -108,6 +108,7 @@ def get_ini_movies():
                 movie = movie.to_json()
                 movies_selected.update({len(movies_selected): movie})
                 tmp.append(j)
+        print movies_selected
         return jsonify(movies_selected)
     else:
         return jsonify({})
